@@ -348,7 +348,14 @@ const carouselImages = [
 </style>
 
 <script>
-	(function () {
+	let carouselTimer: ReturnType<typeof setInterval> | null = null;
+
+	function initCarousel() {
+		if (carouselTimer !== null) {
+			clearInterval(carouselTimer);
+			carouselTimer = null;
+		}
+
 		const images = Array.from(
 			document.querySelectorAll<HTMLImageElement>('.carousel-img')
 		);
@@ -358,7 +365,13 @@ const carouselImages = [
 		let currentIndex = 0;
 		let isAnimating = false;
 
-		// Snap first image into view immediately (no transition)
+		// Reset all images to off-screen right, then snap first into view
+		images.forEach((img) => {
+			img.style.transition = 'none';
+			img.style.transform = 'translateX(100%)';
+			img.style.zIndex = '0';
+			img.style.filter = '';
+		});
 		images[0].style.transform = 'translateX(0)';
 		images[0].style.zIndex = '20';
 
@@ -372,29 +385,24 @@ const carouselImages = [
 			const prev = images[prevIndex];
 			const curr = images[currentIndex];
 
-			// Enable smooth transition on both
 			const t = 'transform 500ms ease-out, filter 500ms ease-out';
 			prev.style.transition = t;
 			curr.style.transition = t;
 
-			// Motion blur while sliding (matches React blur-[4px] scale-105)
 			prev.style.filter = 'blur(4px)';
 			curr.style.filter = 'blur(4px)';
 
-			// Slide prev out left, curr in from right
 			prev.style.zIndex = '10';
 			prev.style.transform = 'translateX(-100%) scale(1.05)';
 			curr.style.zIndex = '20';
 			curr.style.transform = 'translateX(0) scale(1.05)';
 
 			setTimeout(() => {
-				// Instantly reset prev to its off-screen waiting position (right)
 				prev.style.transition = 'none';
 				prev.style.transform = 'translateX(100%)';
 				prev.style.zIndex = '0';
 				prev.style.filter = '';
 
-				// Remove scale from curr without re-animating
 				curr.style.transition = 'none';
 				curr.style.transform = 'translateX(0)';
 				curr.style.filter = '';
@@ -403,6 +411,14 @@ const carouselImages = [
 			}, 510);
 		}
 
-		setInterval(advance, 5000);
-	})();
+		carouselTimer = setInterval(advance, 5000);
+	}
+
+	// Initial load
+	initCarousel();
+
+	// Reinitialise when browser restores the page from bfcache
+	window.addEventListener('pageshow', (event) => {
+		if (event.persisted) initCarousel();
+	});
 </script>
