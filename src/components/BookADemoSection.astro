@@ -68,13 +68,8 @@ const details = [
 
 					<!-- Success state -->
 					<div class="dem-success" id="dem-success" hidden>
-						<div class="dem-success-title-row">
-							<div class="dem-success-icon">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" aria-hidden="true"><path d="M320 576C178.6 576 64 461.4 64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576zM438 209.7C427.3 201.9 412.3 204.3 404.5 215L285.1 379.2L233 327.1C223.6 317.7 208.4 317.7 199.1 327.1C189.8 336.5 189.7 351.7 199.1 361L271.1 433C276.1 438 282.9 440.5 289.9 440C296.9 439.5 303.3 435.9 307.4 430.2L443.3 243.2C451.1 232.5 448.7 217.5 438 209.7z"/></svg>
-							</div>
-							<h2 class="dem-success-heading">Request Received!</h2>
-						</div>
-						<p class="dem-success-body">Thanks for your interest — we'll be in touch shortly to confirm your demo.</p>
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" aria-hidden="true"><path d="M320 576C178.6 576 64 461.4 64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576zM438 209.7C427.3 201.9 412.3 204.3 404.5 215L285.1 379.2L233 327.1C223.6 317.7 208.4 317.7 199.1 327.1C189.8 336.5 189.7 351.7 199.1 361L271.1 433C276.1 438 282.9 440.5 289.9 440C296.9 439.5 303.3 435.9 307.4 430.2L443.3 243.2C451.1 232.5 448.7 217.5 438 209.7z"/></svg>
+						<span><strong>Request received!</strong> Thanks for your interest — we'll be in touch shortly to confirm your demo.</span>
 					</div>
 
 					<!-- Form -->
@@ -457,58 +452,25 @@ const details = [
 		border-radius: 12px;
 		padding: 2rem;
 		box-sizing: border-box;
-		position: relative;
 	}
 
 	@media (min-width: 768px) { .dem-form-card { padding: 2.5rem; } }
 
 	/* ─── Success ────────────────────────────────── */
 	.dem-success {
-		position: absolute;
-		inset: 0;
 		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-		gap: 1.25rem;
-		padding: 2rem;
-	}
-
-	.dem-success-title-row {
-		display: flex;
-		align-items: center;
-		gap: 0.75rem;
-	}
-
-	.dem-success-icon {
-		width: 36px;
-		height: 36px;
-		border-radius: 50%;
-		background-color: #021300;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-shrink: 0;
-	}
-
-	.dem-success-icon svg { width: 20px; height: 20px; fill: #0FED27; }
-
-	.dem-success-heading {
-		color: #021300;
-		font-size: 1.75rem;
-		font-weight: 800;
-		margin: 0;
+		align-items: flex-start;
+		gap: 0.625rem;
+		background-color: #f0fdf4;
+		border: 1px solid #86efac;
+		border-radius: 8px;
+		padding: 0.75rem 1rem;
+		color: #166534;
+		font-size: 0.875rem;
 		font-family: 'Poppins', system-ui, sans-serif;
 	}
 
-	.dem-success-body {
-		color: #374151;
-		font-size: 1rem;
-		line-height: 1.625;
-		margin: 0;
-		font-family: 'Poppins', system-ui, sans-serif;
-	}
+	.dem-success svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px; fill: #16a34a; }
 
 	/* ─── Form ───────────────────────────────────── */
 	.dem-form {
@@ -769,8 +731,6 @@ const details = [
 				const json = await res.json();
 
 				if (res.ok && json.ok) {
-					const card = form.closest('.dem-form-card') as HTMLElement;
-					if (card) card.style.minHeight = card.offsetHeight + 'px';
 					form.hidden = true;
 					successEl.hidden = false;
 				} else {
