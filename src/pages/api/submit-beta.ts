@@ -4,14 +4,14 @@ import type { APIRoute } from 'astro';
 
 export const POST: APIRoute = async ({ request }) => {
 	const body = await request.json();
-	const { name, email, spotName, role, gdprAgreed, repConfirmed, company_website, load_time } = body;
+	const { name, email, spotName, role, honeypot, elapsed } = body;
 
-	if (company_website) return new Response(JSON.stringify({ ok: true }), { status: 200 });
-	if (!load_time || Date.now() - Number(load_time) < 3000) {
+	if (honeypot) return new Response(JSON.stringify({ ok: true }), { status: 200 });
+	if (!elapsed || Number(elapsed) < 3000) {
 		return new Response(JSON.stringify({ ok: true }), { status: 200 });
 	}
 
-	if (!name || !email || !spotName || !gdprAgreed || !repConfirmed) {
+	if (!name || !email || !spotName) {
 		return new Response(JSON.stringify({ error: 'Missing required fields.' }), { status: 400 });
 	}
 
@@ -33,13 +33,13 @@ export const POST: APIRoute = async ({ request }) => {
 				<p><strong>Email:</strong> ${email}</p>
 				<p><strong>Venue:</strong> ${spotName}</p>
 				<p><strong>Role:</strong> ${role || 'Not specified'}</p>
-				<hr>
-				<p><small>GDPR agreed: yes | Authority confirmed: yes</small></p>
 			`,
 		}),
 	});
 
 	if (!res.ok) {
+		const err = await res.text();
+		console.error('Brevo error (beta):', res.status, err);
 		return new Response(JSON.stringify({ error: 'Failed to send email.' }), { status: 500 });
 	}
 

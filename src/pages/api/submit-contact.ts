@@ -4,15 +4,15 @@ import type { APIRoute } from 'astro';
 
 export const POST: APIRoute = async ({ request }) => {
 	const body = await request.json();
-	const { forename, surname, email, message, gdprAgreed, marketingOptIn, website, load_time } = body;
+	const { forename, surname, email, message, marketingOptIn, honeypot, elapsed } = body;
 
-	// Honeypot / timing checks
-	if (website) return new Response(JSON.stringify({ ok: true }), { status: 200 });
-	if (!load_time || Date.now() - Number(load_time) < 3000) {
+	// Honeypot / timing bot protection
+	if (honeypot) return new Response(JSON.stringify({ ok: true }), { status: 200 });
+	if (!elapsed || Number(elapsed) < 3000) {
 		return new Response(JSON.stringify({ ok: true }), { status: 200 });
 	}
 
-	if (!forename || !surname || !email || !message || !gdprAgreed) {
+	if (!forename || !surname || !email || !message) {
 		return new Response(JSON.stringify({ error: 'Missing required fields.' }), { status: 400 });
 	}
 
@@ -35,12 +35,14 @@ export const POST: APIRoute = async ({ request }) => {
 				<p><strong>Message:</strong></p>
 				<p>${message.replace(/\n/g, '<br>')}</p>
 				<hr>
-				<p><small>GDPR agreed: yes | Marketing opt-in: ${marketingOptIn ? 'yes' : 'no'}</small></p>
+				<p><small>Marketing opt-in: ${marketingOptIn ? 'yes' : 'no'}</small></p>
 			`,
 		}),
 	});
 
 	if (!res.ok) {
+		const err = await res.text();
+		console.error('Brevo error (contact):', res.status, err);
 		return new Response(JSON.stringify({ error: 'Failed to send email.' }), { status: 500 });
 	}
 

@@ -4,14 +4,14 @@ import type { APIRoute } from 'astro';
 
 export const POST: APIRoute = async ({ request }) => {
 	const body = await request.json();
-	const { forename, surname, email, spot, role, gdprAgreed, authorityConfirmed, marketingOptIn, website, load_time } = body;
+	const { forename, surname, email, spot, role, authorityConfirmed, marketingOptIn, honeypot, elapsed } = body;
 
-	if (website) return new Response(JSON.stringify({ ok: true }), { status: 200 });
-	if (!load_time || Date.now() - Number(load_time) < 3000) {
+	if (honeypot) return new Response(JSON.stringify({ ok: true }), { status: 200 });
+	if (!elapsed || Number(elapsed) < 3000) {
 		return new Response(JSON.stringify({ ok: true }), { status: 200 });
 	}
 
-	if (!forename || !surname || !email || !spot || !role || !gdprAgreed || !authorityConfirmed) {
+	if (!forename || !surname || !email || !spot || !role) {
 		return new Response(JSON.stringify({ error: 'Missing required fields.' }), { status: 400 });
 	}
 
@@ -34,12 +34,14 @@ export const POST: APIRoute = async ({ request }) => {
 				<p><strong>Venue:</strong> ${spot}</p>
 				<p><strong>Role:</strong> ${role}</p>
 				<hr>
-				<p><small>GDPR agreed: yes | Authority confirmed: yes | Marketing opt-in: ${marketingOptIn ? 'yes' : 'no'}</small></p>
+				<p><small>Authority confirmed: ${authorityConfirmed ? 'yes' : 'no'} | Marketing opt-in: ${marketingOptIn ? 'yes' : 'no'}</small></p>
 			`,
 		}),
 	});
 
 	if (!res.ok) {
+		const err = await res.text();
+		console.error('Brevo error (onboarding):', res.status, err);
 		return new Response(JSON.stringify({ error: 'Failed to send email.' }), { status: 500 });
 	}
 
