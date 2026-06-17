@@ -1,10 +1,13 @@
 // @ts-check
 
+import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig, fontProviders } from 'astro/config';
 
 export default defineConfig({
 	site: 'https://about.haveaspot.com',
+	output: 'hybrid',
+	adapter: vercel(),
 	integrations: [sitemap()],
 	fonts: [
 		{
