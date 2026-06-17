@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import demImg from '../assets/images/HAS-BookADemo-Image.webp';
+
 const details = [
 	{
 		label: "Our Spot",
@@ -57,7 +60,7 @@ const details = [
 						</li>
 					</ol>
 					<div class="dem-image">
-						<img src="/HAS-BookADemo-Image.webp" alt="The Haveaspot team" class="dem-img" />
+						<Image src={demImg} alt="The Haveaspot team" class="dem-img" />
 					</div>
 				</div>
 			</div>
@@ -420,7 +423,6 @@ const details = [
 		border: 2px solid #ffffff;
 		border-radius: 8px;
 		overflow: hidden;
-		background-color: #d1d5db;
 		height: 200px;
 		position: relative;
 	}

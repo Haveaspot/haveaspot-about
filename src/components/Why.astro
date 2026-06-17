@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import whyImg1 from '../assets/images/HAS-Why-Image1.webp';
+import whyImg2 from '../assets/images/HAS-Why-Image2.webp';
 ---
 
 <section class="why">
@@ -8,7 +11,7 @@
 
 			<!-- Image 1 — left on desktop, top-left on mobile -->
 			<div class="why-image why-image--1">
-				<img src="/HAS-Why-Image1.webp" alt="Community building exterior" />
+				<Image src={whyImg1} alt="Community building exterior" loading="eager" />
 			</div>
 
 			<!-- Text — centre on desktop, top (full width) on mobile -->
@@ -42,7 +45,7 @@
 
 			<!-- Image 2 — right on desktop, top-right on mobile -->
 			<div class="why-image why-image--2">
-				<img src="/HAS-Why-Image2.webp" alt="Community interaction" />
+				<Image src={whyImg2} alt="Community interaction" loading="eager" />
 			</div>
 
 		</div>
@@ -192,7 +195,6 @@
 		border: 2px solid #021300;
 		border-radius: 12px;
 		overflow: hidden;
-		background-color: #e5e7eb;
 		height: 250px;
 	}
 

@@ -1,4 +1,8 @@
 ---
+import { Image } from 'astro:assets';
+import hs2aImg from '../assets/images/HAS-Spots-Hero-2a.webp';
+import hs3Img from '../assets/images/HAS-Spots-Hero-3.webp';
+import hs2bImg from '../assets/images/HAS-Spots-Hero-2b.webp';
 ---
 
 <!-- Video Lightbox -->
@@ -64,12 +68,12 @@
 
 			<!-- 2a: Top right image -->
 			<div class="hs-media hs-item-2a">
-				<img src="/HAS-Spots-Hero-2a.webp" alt="Netball match at a community sports hall" class="hs-panel-img" />
+				<Image src={hs2aImg} alt="Netball match at a community sports hall" class="hs-panel-img" loading="eager" />
 			</div>
 
 			<!-- 3: Video panel -->
 			<div class="hs-media hs-item-3">
-				<img src="/HAS-Spots-Hero-3.webp" alt="The Ashby Community Hall surrounded by gardens" class="hs-panel-img" />
+				<Image src={hs3Img} alt="The Ashby Community Hall surrounded by gardens" class="hs-panel-img" loading="eager" />
 
 				<div class="hs-video-overlay">
 					<div class="hs-find-out">
@@ -87,7 +91,7 @@
 
 			<!-- 2b: Bottom right image -->
 			<div class="hs-media hs-item-2b">
-				<img src="/HAS-Spots-Hero-2b.webp" alt="Children's birthday party at a community hall" class="hs-panel-img" />
+				<Image src={hs2bImg} alt="Children's birthday party at a community hall" class="hs-panel-img" loading="eager" />
 			</div>
 
 		</div>
@@ -258,7 +262,6 @@
 		border-radius: 12px;
 		overflow: hidden;
 		position: relative;
-		background-color: #e5e7eb;
 	}
 
 	/* Top right image — stretches to fill row 1 on desktop */
@@ -279,7 +282,6 @@
 	.hs-placeholder {
 		position: absolute;
 		inset: 0;
-		background-color: #d1d5db;
 	}
 
 	/* Full-cover image for media panels */

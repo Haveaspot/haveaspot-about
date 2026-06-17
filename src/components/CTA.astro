@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import ctaImg from '../assets/images/HAS-CTA-Image.webp';
 ---
 
 <section class="cta">
@@ -26,7 +28,7 @@
 			<!-- Right: Image -->
 			<div class="cta-right">
 				<div class="cta-image">
-					<img src="/HAS-CTA-Image.webp" alt="Administrator managing bookings on a laptop" />
+					<Image src={ctaImg} alt="Administrator managing bookings on a laptop" />
 				</div>
 			</div>
 
@@ -160,7 +162,6 @@
 		border: 2px solid #021300;
 		border-radius: 12px;
 		overflow: hidden;
-		background-color: #e5e7eb;
 		height: 300px;
 	}
 

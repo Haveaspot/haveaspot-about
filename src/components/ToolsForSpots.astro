@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import toolsImg from '../assets/images/HAS-Tools-Image1.webp';
 ---
 
 <section class="tools">
@@ -75,7 +77,7 @@
 
 			<!-- Right column: dashboard image -->
 			<div class="tools-image">
-				<img src="/HAS-Tools-Image1.webp" alt="Dashboard preview" />
+				<Image src={toolsImg} alt="Dashboard preview" />
 			</div>
 
 		</div>
@@ -257,7 +259,6 @@
 		border: 2px solid #021300;
 		border-radius: 12px;
 		overflow: hidden;
-		background-color: #e5e7eb;
 		height: 250px;
 	}
 

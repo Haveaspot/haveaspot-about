@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import chImg from '../assets/images/HAS-Challenges-Image.webp';
 ---
 
 <section class="ch-section">
@@ -12,7 +14,7 @@
 
 				<!-- Left: Image -->
 				<div class="ch-left">
-					<img src="/HAS-Challenges-Image.webp" alt="Venue managers reviewing bookings together at a desk" class="ch-img" />
+					<Image src={chImg} alt="Venue managers reviewing bookings together at a desk" class="ch-img" loading="eager" />
 				</div>
 
 				<!-- Right: Text -->
@@ -81,7 +83,6 @@
 		width: 100%;
 		min-height: 350px;
 		position: relative;
-		background-color: #d1d5db;
 		flex-shrink: 0;
 		/* Mobile: round top corners only — bottom edge abuts text below */
 		border-radius: 12px 12px 0 0;
@@ -101,7 +102,6 @@
 	.ch-img-placeholder {
 		position: absolute;
 		inset: 0;
-		background-color: #d1d5db;
 	}
 
 	.ch-img {

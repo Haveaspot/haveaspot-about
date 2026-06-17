@@ -1,4 +1,8 @@
 ---
+import { Image } from 'astro:assets';
+import esLargeImg from '../assets/images/HAS-EasySetup-Large.webp';
+import esTopImg from '../assets/images/HAS-EasySetup-Top.webp';
+import esBottomImg from '../assets/images/HAS-EasySetup-Bottom.webp';
 ---
 
 <section class="es-section">
@@ -20,16 +24,16 @@
 
 			<!-- Large left image (mobile: order 2 | desktop: cols 1-3) -->
 			<div class="es-media es-large">
-				<img src="/HAS-EasySetup-Large.webp" alt="Venue manager setting up their listing on a laptop" class="es-panel-img" />
+				<Image src={esLargeImg} alt="Venue manager setting up their listing on a laptop" class="es-panel-img" />
 			</div>
 
 			<!-- Stacked images wrapper (mobile: order 3 side-by-side | desktop: cols 4-6) -->
 			<div class="es-stacked">
 				<div class="es-media es-top">
-					<img src="/HAS-EasySetup-Top.webp" alt="Community centre exterior" class="es-panel-img" />
+					<Image src={esTopImg} alt="Community centre exterior" class="es-panel-img" />
 				</div>
 				<div class="es-media es-bottom">
-					<img src="/HAS-EasySetup-Bottom.webp" alt="Community gathering at a local venue" class="es-panel-img" />
+					<Image src={esBottomImg} alt="Community gathering at a local venue" class="es-panel-img" />
 				</div>
 			</div>
 
@@ -164,13 +168,11 @@
 		border-radius: 12px;
 		overflow: hidden;
 		position: relative;
-		background-color: #e5e7eb;
 	}
 
 	.es-placeholder {
 		position: absolute;
 		inset: 0;
-		background-color: #d1d5db;
 	}
 
 	.es-panel-img {

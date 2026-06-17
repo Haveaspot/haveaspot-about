@@ -1,4 +1,9 @@
 ---
+import { Image } from 'astro:assets';
+import vts1 from '../assets/images/HAS-VenueTypes-1.webp';
+import vts2 from '../assets/images/HAS-VenueTypes-2.webp';
+import vts3 from '../assets/images/HAS-VenueTypes-3.webp';
+import vts4 from '../assets/images/HAS-VenueTypes-4.webp';
 ---
 
 <section class="vts-section">
@@ -19,16 +24,16 @@
 			<!-- 2×2 image grid -->
 			<div class="vts-images">
 				<div class="vts-media">
-					<img src="/HAS-VenueTypes-1.png" alt="Community venue" class="vts-panel-img" />
+					<Image src={vts1} alt="Community venue" class="vts-panel-img" />
 				</div>
 				<div class="vts-media">
-					<img src="/HAS-VenueTypes-2.png" alt="Village hall" class="vts-panel-img" />
+					<Image src={vts2} alt="Village hall" class="vts-panel-img" />
 				</div>
 				<div class="vts-media">
-					<img src="/HAS-VenueTypes-3.png" alt="School facility" class="vts-panel-img" />
+					<Image src={vts3} alt="School facility" class="vts-panel-img" />
 				</div>
 				<div class="vts-media">
-					<img src="/HAS-VenueTypes-4.png" alt="Sports and leisure space" class="vts-panel-img" />
+					<Image src={vts4} alt="Sports and leisure space" class="vts-panel-img" />
 				</div>
 			</div>
 
@@ -167,7 +172,6 @@
 		border-radius: 12px;
 		overflow: hidden;
 		position: relative;
-		background-color: #e5e7eb;
 		height: 160px;
 	}
 

@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import ctabImg from '../assets/images/HAS-CTABeta-Image.webp';
+
 const steps = [
 	{ num: "Step 1.", text: "Complete this form" },
 	{ num: "Step 2.", text: "We'll contact you to arrange a set up time" },
@@ -28,7 +31,7 @@ const roles = ["Director", "Manager", "Administrator", "Volunteer", "Owner", "Ot
 				</div>
 
 				<div class="ctab-image">
-					<img src="/HAS-CTABeta-Image.webp" alt="Person managing bookings on a laptop" class="ctab-img" />
+					<Image src={ctabImg} alt="Person managing bookings on a laptop" class="ctab-img" />
 				</div>
 			</div>
 
@@ -245,7 +248,6 @@ const roles = ["Director", "Manager", "Administrator", "Volunteer", "Owner", "Ot
 		border: 2px solid #021300;
 		border-radius: 12px;
 		overflow: hidden;
-		background-color: #d1d5db;
 		height: 280px;
 		position: relative;
 		flex-grow: 1;

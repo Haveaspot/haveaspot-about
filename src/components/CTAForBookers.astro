@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import ctafbImg from '../assets/images/HAS-CTAForBookers-Image.webp';
 ---
 
 <section class="ctab-section">
@@ -23,7 +25,7 @@
 			<!-- Right: Image -->
 			<div class="ctab-right">
 				<div class="ctab-image">
-					<img src="/HAS-CTAForBookers-Image.webp" alt="A beautiful community venue surrounded by gardens" />
+					<Image src={ctafbImg} alt="A beautiful community venue surrounded by gardens" />
 				</div>
 			</div>
 
@@ -156,7 +158,6 @@
 		border: 2px solid #021300;
 		border-radius: 12px;
 		overflow: hidden;
-		background-color: #e5e7eb;
 		height: 300px;
 		position: relative;
 	}

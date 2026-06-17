@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import mobImg from '../assets/images/HAS-ManagedOnboarding-Image.webp';
 ---
 
 <section class="mob-section">
@@ -40,7 +42,7 @@
 					</ol>
 
 					<div class="mob-image">
-						<img src="/HAS-ManagedOnboarding-Image.webp" alt="Online onboarding session" class="mob-img" />
+						<Image src={mobImg} alt="Online onboarding session" class="mob-img" />
 					</div>
 				</div>
 			</div>
@@ -324,7 +326,6 @@
 		border: 2px solid #ffffff;
 		border-radius: 8px;
 		overflow: hidden;
-		background-color: #d1d5db;
 		height: 200px;
 		position: relative;
 	}

@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import gst1Img from '../assets/images/HAS-GettingStarted-1.webp';
+import gst2Img from '../assets/images/HAS-GettingStarted-2.webp';
 ---
 
 <section class="gst-section">
@@ -18,12 +21,12 @@
 
 			<!-- Image 1 (desktop: cols 7-9) -->
 			<div class="gst-media gst-img1">
-				<img src="/HAS-GettingStarted-1.webp" alt="Venue manager getting onboarding support" class="gst-panel-img" />
+				<Image src={gst1Img} alt="Venue manager getting onboarding support" class="gst-panel-img" />
 			</div>
 
 			<!-- Image 2 (desktop: cols 10-12) -->
 			<div class="gst-media gst-img2">
-				<img src="/HAS-GettingStarted-2.webp" alt="Haveaspot venue listing on mobile" class="gst-panel-img" />
+				<Image src={gst2Img} alt="Haveaspot venue listing on mobile" class="gst-panel-img" />
 			</div>
 
 		</div>
@@ -152,7 +155,6 @@
 		border-radius: 12px;
 		overflow: hidden;
 		position: relative;
-		background-color: #e5e7eb;
 		height: 300px;
 	}
 
@@ -162,7 +164,6 @@
 	.gst-placeholder {
 		position: absolute;
 		inset: 0;
-		background-color: #d1d5db;
 	}
 
 	.gst-panel-img {

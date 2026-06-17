@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import ctafsImg from '../assets/images/HAS-CTAForSpots-Image.webp';
 ---
 
 <section class="ctas-section">
@@ -23,7 +25,7 @@
 			<!-- Right: Image -->
 			<div class="ctas-right">
 				<div class="ctas-image">
-					<img src="/HAS-CTAForSpots-Image.webp" alt="A modern community venue surrounded by gardens" />
+					<Image src={ctafsImg} alt="A modern community venue surrounded by gardens" />
 				</div>
 			</div>
 
@@ -156,7 +158,6 @@
 		border: 2px solid #021300;
 		border-radius: 12px;
 		overflow: hidden;
-		background-color: #e5e7eb;
 		height: 300px;
 		position: relative;
 	}
@@ -167,7 +168,6 @@
 	.ctas-placeholder {
 		position: absolute;
 		inset: 0;
-		background-color: #d1d5db;
 	}
 
 	.ctas-image img {

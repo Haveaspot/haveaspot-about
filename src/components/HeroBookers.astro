@@ -1,4 +1,8 @@
 ---
+import { Image } from 'astro:assets';
+import hb2aImg from '../assets/images/HAS-Bookers-Hero-2a.webp';
+import hbVideoImg from '../assets/images/HAS-Bookers-Hero-Video-Panel.webp';
+import hb2bImg from '../assets/images/HAS-Bookers-Hero-2b.webp';
 ---
 
 <!-- Video Lightbox -->
@@ -64,12 +68,12 @@
 
 			<!-- 2a: Top right image -->
 			<div class="hb-media hb-item-2a">
-				<img src="/HAS-Bookers-Hero-2a.webp" alt="Community event at a local space" class="hb-panel-img" />
+				<Image src={hb2aImg} alt="Community event at a local space" class="hb-panel-img" loading="eager" />
 			</div>
 
 			<!-- 3: Video panel -->
 			<div class="hb-media hb-item-3">
-				<img src="/HAS-Bookers-Hero-Video-Panel.webp" alt="Person booking a community space" class="hb-panel-img" />
+				<Image src={hbVideoImg} alt="Person booking a community space" class="hb-panel-img" loading="eager" />
 
 				<div class="hb-video-overlay">
 					<div class="hb-find-out">
@@ -87,7 +91,7 @@
 
 			<!-- 2b: Bottom right image -->
 			<div class="hb-media hb-item-2b">
-				<img src="/HAS-Bookers-Hero-2b.webp" alt="Children's birthday party at a community hall" class="hb-panel-img" />
+				<Image src={hb2bImg} alt="Children's birthday party at a community hall" class="hb-panel-img" loading="eager" />
 			</div>
 
 		</div>
@@ -258,7 +262,6 @@
 		border-radius: 12px;
 		overflow: hidden;
 		position: relative;
-		background-color: #e5e7eb;
 	}
 
 	/* Top right image — stretches to fill row 1 on desktop */
@@ -280,7 +283,6 @@
 	.hb-placeholder {
 		position: absolute;
 		inset: 0;
-		background-color: #d1d5db;
 	}
 
 	/* Full-cover image for media panels */

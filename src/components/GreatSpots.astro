@@ -1,4 +1,8 @@
 ---
+import { Image } from 'astro:assets';
+import gsLargeImg from '../assets/images/HAS-GreatSpots-Large.webp';
+import gsTopImg from '../assets/images/HAS-GreatSpots-Top.webp';
+import gsBottomImg from '../assets/images/HAS-GreatSpots-Bottom.webp';
 ---
 
 <section class="gs-section">
@@ -20,16 +24,16 @@
 
 			<!-- Large left image (mobile: order 2 | desktop: col 1-3) -->
 			<div class="gs-media gs-large">
-				<img src="/HAS-GreatSpots-Large.webp" alt="Fitness class at a community space" class="gs-panel-img" />
+				<Image src={gsLargeImg} alt="Fitness class at a community space" class="gs-panel-img" />
 			</div>
 
 			<!-- Stacked images (mobile: order 3 | desktop: col 4-6) -->
 			<div class="gs-stacked">
 				<div class="gs-media gs-top">
-					<img src="/HAS-GreatSpots-Top.webp" alt="Netball match at a community sports hall" class="gs-panel-img" />
+					<Image src={gsTopImg} alt="Netball match at a community sports hall" class="gs-panel-img" />
 				</div>
 				<div class="gs-media gs-bottom">
-					<img src="/HAS-GreatSpots-Bottom.webp" alt="Group meeting at a community space" class="gs-panel-img" />
+					<Image src={gsBottomImg} alt="Group meeting at a community space" class="gs-panel-img" />
 				</div>
 			</div>
 
@@ -164,13 +168,11 @@
 		border-radius: 12px;
 		overflow: hidden;
 		position: relative;
-		background-color: #e5e7eb;
 	}
 
 	.gs-placeholder {
 		position: absolute;
 		inset: 0;
-		background-color: #d1d5db;
 	}
 
 	.gs-panel-img {

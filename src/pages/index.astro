@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from "../layouts/Layout.astro";
 import Why from "../components/Why.astro";
 import SpaceTypes from "../components/SpaceTypes.astro";
@@ -7,16 +8,17 @@ import Features from "../components/Features.astro";
 import BlogPreview from "../components/BlogPreview.astro";
 import CTA from "../components/CTA.astro";
 
-const carouselImages = [
-  "/HAS-Carsouel-Image1.webp",
-  "/HAS-Carsouel-Image2.webp",
-  "/HAS-Carsouel-Image3.webp",
-  "/HAS-Carsouel-Image4.webp",
-  "/HAS-Carsouel-Image5.webp",
-  "/HAS-Carsouel-Image6.webp",
-  "/HAS-Carsouel-Image7.webp",
-  "/HAS-Carsouel-Image8.webp",
-];
+import carousel1 from "../assets/images/HAS-Carsouel-Image1.webp";
+import carousel2 from "../assets/images/HAS-Carsouel-Image2.webp";
+import carousel3 from "../assets/images/HAS-Carsouel-Image3.webp";
+import carousel4 from "../assets/images/HAS-Carsouel-Image4.webp";
+import carousel5 from "../assets/images/HAS-Carsouel-Image5.webp";
+import carousel6 from "../assets/images/HAS-Carsouel-Image6.webp";
+import carousel7 from "../assets/images/HAS-Carsouel-Image7.webp";
+import carousel8 from "../assets/images/HAS-Carsouel-Image8.webp";
+import overlayImg from "../assets/images/Hero-Image1.webp";
+
+const carouselImages = [carousel1, carousel2, carousel3, carousel4, carousel5, carousel6, carousel7, carousel8];
 ---
 
 <Layout
@@ -46,18 +48,19 @@ const carouselImages = [
 				<!-- Carousel -->
 				<div class="hero-carousel">
 					{carouselImages.map((src, i) => (
-						<img
+						<Image
 							src={src}
 							alt={`Community space ${i + 1}`}
 							class="carousel-img"
 							loading={i === 0 ? "eager" : "lazy"}
+							fetchpriority={i === 0 ? "high" : undefined}
 						/>
 					))}
 				</div>
 
 				<!-- Overlay portrait image -->
 				<div class="hero-overlay-img">
-					<img src="/Hero-Image1.webp" alt="Community event" />
+					<Image src={overlayImg} alt="Community event" loading="eager" />
 				</div>
 
 				<!-- Banner -->
@@ -178,14 +181,13 @@ const carouselImages = [
 		box-sizing: border-box;
 		position: relative;
 		overflow: hidden;
-		background-color: #e5e7eb;
 		z-index: 0;
 	}
 
 	@media (min-width: 768px)  { .hero-carousel { aspect-ratio: auto; height: 350px; } }
 	@media (min-width: 1024px) { .hero-carousel { height: 450px; } }
 
-	/* All carousel images sit off-screen right; JS pulls the first one into view */
+	/* All carousel images sit off-screen right; first is visible by default */
 	.carousel-img {
 		position: absolute;
 		inset: 0;
@@ -195,6 +197,11 @@ const carouselImages = [
 		will-change: transform;
 		transform: translateX(100%);
 		z-index: 0;
+	}
+
+	.carousel-img:first-child {
+		transform: translateX(0);
+		z-index: 20;
 	}
 
 	/* ─── Overlay portrait image ─────────────────── */
@@ -208,7 +215,6 @@ const carouselImages = [
 		transform: translateY(50%);
 		border-radius: 12px;
 		overflow: hidden;
-		background-color: #d1d5db;
 		box-shadow: 0 0 50px rgba(0, 0, 0, 0.25);
 		z-index: 20;
 	}

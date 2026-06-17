@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import modImg1 from '../assets/images/HAS-Model-Image1.webp';
+import modImg2 from '../assets/images/HAS-Model-Image2.webp';
 ---
 
 <section class="mod-section">
@@ -15,12 +18,12 @@
 
 			<!-- Image 1 -->
 			<div class="mod-image mod-image--1">
-				<img src="/HAS-Model-Image1.webp" alt="Community venue space" class="mod-img" />
+				<Image src={modImg1} alt="Community venue space" class="mod-img" />
 			</div>
 
 			<!-- Image 2 -->
 			<div class="mod-image mod-image--2">
-				<img src="/HAS-Model-Image2.webp" alt="Venue booking in action" class="mod-img" />
+				<Image src={modImg2} alt="Venue booking in action" class="mod-img" />
 			</div>
 
 		</div>
@@ -119,7 +122,6 @@
 		border: 2px solid #021300;
 		border-radius: 12px;
 		overflow: hidden;
-		background-color: #d1d5db;
 		position: relative;
 		height: 300px;
 	}

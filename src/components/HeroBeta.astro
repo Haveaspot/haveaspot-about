@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import hbtImg from '../assets/images/HAS-Beta-Hero.webp';
 ---
 
 <section class="hbt-section">
@@ -24,7 +26,7 @@
 
 		<!-- Hero image with button overlay -->
 		<div class="hbt-image-wrap">
-			<img src="/HAS-Beta-Hero.webp" alt="A modern community venue surrounded by gardens" class="hbt-img" />
+			<Image src={hbtImg} alt="A modern community venue surrounded by gardens" class="hbt-img" loading="eager" />
 			<div class="hbt-overlay">
 				<div class="hbt-btn-group">
 					<a href="#beta-cta" class="hbt-btn">Join Beta</a>
@@ -131,7 +133,6 @@
 		border-radius: 12px;
 		border: 2px solid #021300;
 		overflow: hidden;
-		background-color: #d1d5db;
 	}
 
 	@media (min-width: 768px)  { .hbt-image-wrap { height: 335px; } }
