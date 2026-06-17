@@ -589,6 +589,7 @@ const roles = ["Director", "Manager", "Administrator", "Volunteer", "Owner", "Ot
 				if (res.ok && json.ok) {
 					successEl.hidden = false;
 					submitBtn.disabled = true;
+					submitBtn.textContent = 'Sent';
 				} else {
 					showError(json.error ?? 'Something went wrong. Please try again.');
 				}
