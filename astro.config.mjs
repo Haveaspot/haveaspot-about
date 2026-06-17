@@ -6,7 +6,7 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 export default defineConfig({
 	site: 'https://about.haveaspot.com',
-	output: 'hybrid',
+	output: 'static',
 	adapter: vercel(),
 	integrations: [sitemap()],
 	fonts: [
