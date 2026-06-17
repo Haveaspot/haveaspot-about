@@ -1,0 +1,164 @@
+---
+---
+
+<section class="ch-section">
+	<div class="ch-container">
+
+		<!-- Outer frame -->
+		<div class="ch-frame">
+
+			<!-- Dark green card -->
+			<div class="ch-card">
+
+				<!-- Left: Image -->
+				<div class="ch-left">
+					<img src="/HAS-Challenges-Image.webp" alt="Venue managers reviewing bookings together at a desk" class="ch-img" />
+				</div>
+
+				<!-- Right: Text -->
+				<div class="ch-right">
+					<h2 class="ch-heading">
+						We Get Your<br class="ch-br" /> Challenges
+					</h2>
+
+					<p class="ch-body">
+						<strong>Tired of trying to piece everything together?</strong> From deciphering enquiry emails and blocking out times on a shared digital calendar, to physically collecting cash in envelopes and cross-referencing bank transfers just to see who has paid, your current system is costing you valuable time and creating unnecessary stress.
+					</p>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</section>
+
+<style>
+	/* ─── Section ─────────────────────────────────── */
+	.ch-section {
+		width: 100%;
+		padding: 4rem 0;
+		background-color: #ffffff;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 1024px) { .ch-section { padding: 6rem 0; } }
+
+	/* ─── Container ──────────────────────────────── */
+	.ch-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		padding: 0 1rem;
+		box-sizing: border-box;
+	}
+
+	/* ─── Outer frame ────────────────────────────── */
+	.ch-frame {
+		border: 2px solid #021300;
+		border-radius: 12px;
+		padding: 2rem;
+		background-color: #ffffff;
+		box-sizing: border-box;
+	}
+
+	@media (min-width: 768px)  { .ch-frame { padding: 3rem; } }
+
+	/* ─── Inner dark green card ──────────────────── */
+	/* No overflow:hidden here — each panel clips itself so interior
+	   edges stay sharp while outer corners stay rounded. */
+	.ch-card {
+		background-color: #0E491F;
+		border-radius: 12px;
+		display: flex;
+		flex-direction: column;
+	}
+
+	@media (min-width: 1024px) {
+		.ch-card { flex-direction: row; align-items: stretch; }
+	}
+
+	/* ─── Left: Image ────────────────────────────── */
+	.ch-left {
+		width: 100%;
+		min-height: 350px;
+		position: relative;
+		background-color: #d1d5db;
+		flex-shrink: 0;
+		/* Mobile: round top corners only — bottom edge abuts text below */
+		border-radius: 12px 12px 0 0;
+		overflow: hidden;
+	}
+
+	@media (min-width: 768px)  { .ch-left { min-height: 450px; } }
+	@media (min-width: 1024px) {
+		.ch-left {
+			width: 50%;
+			min-height: 0;
+			/* Desktop: round left corners only — right edge abuts text panel */
+			border-radius: 12px 0 0 12px;
+		}
+	}
+
+	.ch-img-placeholder {
+		position: absolute;
+		inset: 0;
+		background-color: #d1d5db;
+	}
+
+	.ch-img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		border-radius: 0;
+	}
+
+	/* ─── Right: Text ────────────────────────────── */
+	.ch-right {
+		width: 100%;
+		padding: 2rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 2rem;
+		box-sizing: border-box;
+	}
+
+	@media (min-width: 768px)  { .ch-right { padding: 3rem; } }
+	@media (min-width: 1024px) { .ch-right { width: 50%; padding: 4rem; } }
+
+	/* ─── Heading ────────────────────────────────── */
+	.ch-heading {
+		color: #D5FF00;
+		font-size: 2.25rem;
+		font-weight: 800;
+		line-height: 0.95;
+		letter-spacing: -0.02em;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px)  { .ch-heading { font-size: 3rem; } }
+	@media (min-width: 1024px) { .ch-heading { font-size: clamp(3rem, 5.5vw, 4.75rem); } }
+
+	/* Show the <br> only at xl so the heading wraps naturally on smaller desktops */
+	.ch-br { display: none; }
+	@media (min-width: 1280px) { .ch-br { display: block; } }
+
+	/* ─── Body ───────────────────────────────────── */
+	.ch-body {
+		color: rgba(255, 255, 255, 0.9);
+		font-size: 1rem;
+		font-weight: 300;
+		line-height: 1.625;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+		max-width: 36rem;
+	}
+
+	.ch-body strong {
+		color: #ffffff;
+		font-weight: 700;
+	}
+</style>

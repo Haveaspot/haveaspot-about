@@ -1,0 +1,203 @@
+---
+const spaces = [
+	{
+		image: "/icons/SpaceTypesCommunityVenues.png",
+		title: "Community Venues",
+		description: "Community centres, neighbourhood hubs, and multipurpose spaces available for hire at the heart of local life.",
+	},
+	{
+		image: "/icons/SpaceTypesVillageHalls.png",
+		title: "Village Halls",
+		description: "The heartbeat of rural communities — traditional meeting spaces serving generations of local residents.",
+	},
+	{
+		image: "/icons/SpaceTypesSchools.png",
+		title: "Schools & Education",
+		description: "Classrooms, sports halls, and event spaces available outside of school hours for community use.",
+	},
+	{
+		image: "/icons/SpaceTypesSports.png",
+		title: "Sports & Leisure",
+		description: "Courts, pitches, sports halls, and leisure facilities open for clubs, teams, and casual hire.",
+	},
+	{
+		image: "/icons/SpaceTypesArts.png",
+		title: "Arts & Culture",
+		description: "Studios, theatres, rehearsal rooms, and creative spaces for artists, performers, and cultural groups.",
+	},
+	{
+		image: "/icons/SpaceTypesCommercial.png",
+		title: "Commercial Spaces",
+		description: "Meeting rooms, event venues, and independent commercial spaces available for professional hire.",
+	},
+];
+---
+
+<section class="st-section">
+	<div class="st-container">
+
+		<!-- Header -->
+		<div class="st-header">
+			<h2 class="st-heading">A Platform For Every Kind Of Venue</h2>
+			<p class="st-subtext">From village halls and community centres to schools, sports facilities, and independent commercial spaces — Haveaspot is built to help any venue manage bookings, get paid, and grow.</p>
+		</div>
+
+		<!-- Grid -->
+		<div class="st-grid">
+			{spaces.map((space) => (
+				<div class="st-card">
+					<div class="st-icon">
+						<img src={space.image} alt={space.title} width="100" height="100" />
+					</div>
+					<div class="st-text">
+						<h3 class="st-card-title">{space.title}</h3>
+						<p class="st-card-body">{space.description}</p>
+					</div>
+				</div>
+			))}
+		</div>
+
+	</div>
+</section>
+
+<style>
+	/* ─── Section ─────────────────────────────────── */
+	.st-section {
+		width: 100%;
+		padding: 4rem 0;
+		background-color: #ffffff;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 1024px) { .st-section { padding: 6rem 0; } }
+
+	/* ─── Container ──────────────────────────────── */
+	.st-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		padding: 0 1rem;
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+	}
+
+	/* ─── Header ─────────────────────────────────── */
+	.st-header {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	/* Align header width to the right edge of column 2 in the 3-col grid:
+	   2 cols + 1 gap = (2W - gap) / 3, where gap = 2rem and W = container */
+	@media (min-width: 1024px) {
+		.st-header { max-width: calc((200% - 2rem) / 3); }
+	}
+
+	.st-heading {
+		color: #021300;
+		font-size: 2rem;
+		font-weight: 800;
+		line-height: 1.1;
+		letter-spacing: -0.02em;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px)  { .st-heading { font-size: 2.5rem; } }
+	@media (min-width: 1024px) { .st-heading { font-size: clamp(2rem, 3vw, 3rem); white-space: nowrap; } }
+
+	.st-subtext {
+		color: #021300;
+		font-size: 1rem;
+		font-weight: 300;
+		line-height: 1.625;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	/* ─── Grid ───────────────────────────────────── */
+	.st-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+		align-items: stretch;
+	}
+
+	@media (min-width: 768px)  { .st-grid { gap: 2rem; } }
+	@media (min-width: 1024px) { .st-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+	/* ─── Card ───────────────────────────────────── */
+	.st-card {
+		background-color: #ffffff;
+		border: 2px solid #021300;
+		border-radius: 12px;
+		padding: 1rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		transition: box-shadow 0.3s ease;
+	}
+
+	@media (min-width: 768px) {
+		.st-card { padding: 2rem; gap: 1.5rem; }
+	}
+
+	.st-card:hover { box-shadow: 0 10px 30px rgba(2, 19, 0, 0.12); }
+
+	@media (min-width: 1024px) {
+		.st-card { flex-direction: row; align-items: flex-start; gap: 1.25rem; }
+	}
+
+	/* ─── Image ──────────────────────────────────── */
+	.st-icon {
+		width: 60px;
+		height: 60px;
+		flex-shrink: 0;
+	}
+
+	.st-icon img {
+		width: 60px;
+		height: 60px;
+		display: block;
+	}
+
+	@media (min-width: 768px) {
+		.st-icon { width: 100px; height: 100px; }
+		.st-icon img { width: 100px; height: 100px; }
+	}
+
+	/* ─── Card text ──────────────────────────────── */
+	.st-text {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.st-card-title {
+		color: #021300;
+		font-size: 1rem;
+		font-weight: 700;
+		line-height: 1.2;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px)  { .st-card-title { font-size: 1.5rem; } }
+	@media (min-width: 1024px) { .st-card-title { font-size: 1.125rem; } }
+
+	.st-card-body {
+		color: #021300;
+		font-size: 0.875rem;
+		font-weight: 400;
+		line-height: 1.5;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px)  { .st-card-body { font-size: 1rem; line-height: 1.625; } }
+	@media (min-width: 1024px) { .st-card-body { font-size: 0.875rem; line-height: 1.5; } }
+
+	/* ─── Icon ───────────────────────────────────── */
+</style>

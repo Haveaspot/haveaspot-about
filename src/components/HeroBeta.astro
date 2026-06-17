@@ -1,0 +1,214 @@
+---
+---
+
+<section class="hbt-section">
+	<div class="hbt-container">
+
+		<!-- Text block -->
+		<div class="hbt-text">
+			<h1 class="hbt-heading">
+				The Effortless<br class="hbt-br-mob" /> Booking Platform For<br class="hbt-br-mob" /> Community Venues.
+			</h1>
+
+			<div class="hbt-subtext">
+				<div class="hbt-body-wrap">
+					<h3 class="hbt-subheading">
+						Join our free Beta Program and discover a simpler way to manage your bookings online.
+					</h3>
+					<p class="hbt-body">
+						We'll guide you through a personalised setup and provide full support as we work together to shape the future of community space management. No subscriptions. No commission. Just tools to help your community venue thrive.
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Hero image with button overlay -->
+		<div class="hbt-image-wrap">
+			<img src="/HAS-Beta-Hero.webp" alt="A modern community venue surrounded by gardens" class="hbt-img" />
+			<div class="hbt-overlay">
+				<div class="hbt-btn-group">
+					<a href="#beta-cta" class="hbt-btn">Join Beta</a>
+					<a href="/book-a-demo" class="hbt-btn hbt-btn-outline">Book A Demo</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</section>
+
+<style>
+	/* ─── Section ─────────────────────────────────── */
+	.hbt-section {
+		width: 100%;
+		padding: 4rem 0;
+		background-color: #ffffff;
+		font-family: 'Poppins', system-ui, sans-serif;
+		overflow: hidden;
+	}
+
+	@media (min-width: 1024px) { .hbt-section { padding: 6rem 0; } }
+
+	/* ─── Container ──────────────────────────────── */
+	.hbt-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		padding: 0 1rem;
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+	}
+
+	@media (min-width: 1024px) { .hbt-container { gap: 4rem; } }
+
+	/* ─── Text block ─────────────────────────────── */
+	.hbt-text {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		width: 100%;
+	}
+
+	/* ─── Heading — matches home hero exactly ────── */
+	.hbt-heading {
+		color: #021300;
+		font-size: 2.5rem;
+		font-weight: 800;
+		line-height: 1.0;
+		letter-spacing: -0.02em;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px)  { .hbt-heading { font-size: 3.75rem; } }
+	@media (min-width: 1024px) { .hbt-heading { font-size: clamp(3rem, 5vw, 4.75rem); } }
+
+	.hbt-br-mob { display: inline; }
+	@media (min-width: 768px) { .hbt-br-mob { display: none; } }
+
+	/* ─── Subtext row (body + button) ───────────── */
+	.hbt-subtext {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		width: 100%;
+	}
+
+	@media (min-width: 1024px) { .hbt-subtext { width: 70%; } }
+
+	/* ─── Body wrap ──────────────────────────────── */
+	.hbt-body-wrap {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.hbt-subheading {
+		color: #021300;
+		font-size: 1.125rem;
+		font-weight: 700;
+		line-height: 1.4;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px) { .hbt-subheading { font-size: 1.25rem; } }
+
+	.hbt-body {
+		color: #021300;
+		font-size: 1rem;
+		font-weight: 300;
+		line-height: 1.625;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	/* ─── Image wrap ─────────────────────────────── */
+	.hbt-image-wrap {
+		position: relative;
+		width: 100%;
+		height: 300px;
+		border-radius: 12px;
+		border: 2px solid #021300;
+		overflow: hidden;
+		background-color: #d1d5db;
+	}
+
+	@media (min-width: 768px)  { .hbt-image-wrap { height: 335px; } }
+	@media (min-width: 1024px) { .hbt-image-wrap { height: 400px; } }
+
+	/* ─── Hero image ────────────────────────────────── */
+	.hbt-img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+
+	/* ─── Button overlay — mirrors hb-video-overlay ─ */
+	.hbt-overlay {
+		position: absolute;
+		inset: 0;
+		padding: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		align-items: flex-start;
+		z-index: 10;
+	}
+
+	@media (min-width: 640px) { .hbt-overlay { padding: 2rem; } }
+
+	/* ─── Button group ───────────────────────────── */
+	.hbt-btn-group {
+		display: flex;
+		flex-direction: row;
+		gap: 0.75rem;
+		width: 100%;
+	}
+
+	@media (min-width: 640px) { .hbt-btn-group { width: auto; } }
+
+	/* ─── Button — matches all other hero buttons ─ */
+	.hbt-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #021300;
+		color: #ffffff;
+		text-decoration: none;
+		border: 2px solid #021300;
+		border-radius: 6px;
+		height: 44px;
+		flex: 1;
+		font-size: 16px;
+		font-weight: 500;
+		font-family: 'Poppins', system-ui, sans-serif;
+		transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+		box-sizing: border-box;
+	}
+
+	@media (min-width: 640px) { .hbt-btn { flex: none; width: 150px; } }
+
+	.hbt-btn:hover {
+		background-color: #0AAD0A;
+		border-color: #0AAD0A;
+		text-decoration: none;
+		color: #ffffff;
+	}
+
+	/* ─── Outline variant ─────────────────────── */
+	.hbt-btn-outline {
+		background-color: #ffffff;
+		color: #021300;
+		border-color: #ffffff;
+	}
+
+	.hbt-btn-outline:hover {
+		background-color: #0AAD0A;
+		border-color: #0AAD0A;
+		color: #ffffff;
+	}
+</style>

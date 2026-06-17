@@ -1,0 +1,88 @@
+---
+const pathname = Astro.url.pathname;
+
+const navItems = [
+	{ label: "About", href: "/" },
+	{ label: "For Bookers", href: "/for-bookers" },
+	{ label: "For Spots", href: "/for-spots" },
+	{ label: "Beta", href: "/beta" },
+	{ label: "Contact", href: "/contact" },
+];
+
+function isActive(href: string) {
+	if (href === "/") return pathname === "/";
+	return pathname.startsWith(href);
+}
+---
+
+<nav class="has-subnav">
+	<div class="has-subnav-inner">
+		{navItems.map((item) => (
+			<a
+				href={item.href}
+				class:list={["subnav-link", { "subnav-link--active": isActive(item.href) }]}
+			>
+				{item.label}
+			</a>
+		))}
+	</div>
+</nav>
+
+<style is:global>
+	.has-subnav {
+		width: 100% !important;
+		background-color: #f9fafb !important;
+		border-bottom: 1px solid #e5e7eb !important;
+		font-family: "Poppins", system-ui, sans-serif !important;
+		position: -webkit-sticky !important;
+		position: sticky !important;
+		top: 64px !important;
+		z-index: 99 !important;
+	}
+
+	.has-subnav-inner {
+		display: flex !important;
+		flex-direction: row !important;
+		align-items: center !important;
+		gap: 0.25rem !important;
+		max-width: 1536px !important;
+		margin: 0 auto !important;
+		padding: 0 1rem !important;
+		height: 40px !important;
+		box-sizing: border-box !important;
+		overflow-x: auto !important;
+		scrollbar-width: none !important;
+	}
+
+	.has-subnav-inner::-webkit-scrollbar {
+		display: none !important;
+	}
+
+	.subnav-link {
+		color: #6b7280 !important;
+		text-decoration: none !important;
+		font-size: 12px !important;
+		font-weight: 500 !important;
+		padding: 4px 10px !important;
+		border-radius: 4px !important;
+		white-space: nowrap !important;
+		transition: color 0.2s ease, background-color 0.2s ease !important;
+		letter-spacing: 0.01em !important;
+	}
+
+	.subnav-link:hover {
+		color: #021300 !important;
+		background-color: #e5e7eb !important;
+		text-decoration: none !important;
+	}
+
+	.subnav-link--active {
+		color: #021300 !important;
+		font-weight: 600 !important;
+		background-color: #e5e7eb !important;
+	}
+
+	.subnav-link--active:hover {
+		background-color: #d1d5db !important;
+	}
+</style>

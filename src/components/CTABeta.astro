@@ -1,0 +1,632 @@
+---
+const steps = [
+	{ num: "Step 1.", text: "Complete this form" },
+	{ num: "Step 2.", text: "We'll contact you to arrange a set up time" },
+	{ num: "Step 3.", text: "We'll get you set up" },
+	{ num: "Step 4.", text: "Start taking bookings" },
+];
+
+const roles = ["Director", "Manager", "Administrator", "Volunteer", "Owner", "Other"];
+---
+
+<section class="ctab-section" id="beta-cta">
+	<div class="ctab-container">
+		<div class="ctab-card">
+
+			<!-- Left: Headline, Steps & Image -->
+			<div class="ctab-left">
+				<div class="ctab-left-text">
+					<h2 class="ctab-heading">Ready For An Easier Way To Manage Your Bookings?</h2>
+					<div class="ctab-steps">
+						{steps.map((s) => (
+							<div class="ctab-step">
+								<span class="ctab-step-num">{s.num}</span>
+								<span class="ctab-step-text">{s.text}</span>
+							</div>
+						))}
+					</div>
+				</div>
+
+				<div class="ctab-image">
+					<img src="/HAS-CTABeta-Image.webp" alt="Person managing bookings on a laptop" class="ctab-img" />
+				</div>
+			</div>
+
+			<!-- Right: Form -->
+			<div class="ctab-right">
+				<div class="ctab-form-card">
+
+					<!-- Success state (hidden until submission) -->
+					<div class="ctab-success" id="ctab-success" hidden>
+						<div class="ctab-success-icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+								<polyline points="22 4 12 14.01 9 11.01"/>
+							</svg>
+						</div>
+						<h3 class="ctab-success-heading">Application Sent!</h3>
+						<p class="ctab-success-body">Thank you — we'll be in touch shortly to arrange your setup.</p>
+					</div>
+
+					<!-- Form -->
+					<form class="ctab-form" id="ctab-form" novalidate>
+
+						<!-- ── Honeypot: hidden from humans, bots fill it ── -->
+						<div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;overflow:hidden;pointer-events:none;">
+							<label for="company_website">Company Website</label>
+							<input type="text" name="company_website" id="company_website" tabindex="-1" autocomplete="off" />
+						</div>
+
+						<!-- ── Time trap: populated by JS on load ── -->
+						<input type="hidden" id="ctab-load-time" name="load_time" value="0" />
+
+						<!-- Name -->
+						<div class="ctab-field">
+							<label class="ctab-label" for="ctab-name">Your Name</label>
+							<input class="ctab-input" type="text" id="ctab-name" name="name" placeholder="Forename Surname" required />
+						</div>
+
+						<!-- Email -->
+						<div class="ctab-field">
+							<label class="ctab-label" for="ctab-email">Your Email</label>
+							<input class="ctab-input" type="email" id="ctab-email" name="email" placeholder="hello@yourvenue.com" required />
+						</div>
+
+						<!-- Spot Name -->
+						<div class="ctab-field">
+							<label class="ctab-label" for="ctab-spot">Name Of Your Spot</label>
+							<input class="ctab-input" type="text" id="ctab-spot" name="spotName" placeholder="Forthay Village Hall" required />
+						</div>
+
+						<!-- Role -->
+						<div class="ctab-field">
+							<label class="ctab-label" for="ctab-role">Your Role At Your Spot</label>
+							<div class="ctab-select-wrap">
+								<select class="ctab-input ctab-select" id="ctab-role" name="role">
+									{roles.map((r) => <option value={r}>{r}</option>)}
+								</select>
+								<span class="ctab-select-arrow" aria-hidden="true">
+									<svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+										<path d="M1 1L6 6L11 1" stroke="#021300" stroke-width="2" stroke-linecap="round"/>
+									</svg>
+								</span>
+							</div>
+						</div>
+
+						<!-- ── Custom CAPTCHA ── -->
+						<div class="ctab-field">
+							<div class="ctab-captcha-box">
+								<div class="ctab-captcha-header">
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+										<rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+										<path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+									</svg>
+									<span>Security Check</span>
+								</div>
+								<p class="ctab-captcha-question" id="ctab-captcha-q">Loading…</p>
+								<input
+									class="ctab-input ctab-captcha-input"
+									type="text"
+									inputmode="numeric"
+									id="ctab-captcha-answer"
+									placeholder="Enter your answer"
+									autocomplete="off"
+								/>
+							</div>
+						</div>
+
+						<!-- Checkboxes -->
+						<div class="ctab-checks">
+							<label class="ctab-check">
+								<input type="checkbox" name="gdprAgreed" required />
+								<span>I agree to my personal data being processed by Haveaspot Ltd in order to respond to my application, in accordance with our <a href="/legal/privacy-policy" class="ctab-terms-link">Privacy Policy</a>. <strong>(Required)</strong></span>
+							</label>
+							<label class="ctab-check">
+								<input type="checkbox" name="repConfirmed" required />
+								<span>I confirm that I am an authorised representative of the above-named venue and have the necessary permission to sign it up for this service. <strong>(Required)</strong></span>
+							</label>
+							</div>
+
+						<p class="ctab-feedback-notice">As a Beta partner, we may contact you from time to time for feedback to help shape the platform.</p>
+
+						<!-- Error message -->
+						<div class="ctab-error-box" id="ctab-error" hidden>
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+								<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+							</svg>
+							<span id="ctab-error-msg"></span>
+						</div>
+
+						<!-- Submit -->
+						<div class="ctab-submit-wrap">
+							<button type="submit" class="ctab-btn" id="ctab-submit">Join Beta</button>
+						</div>
+
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<style>
+	/* ─── Section ─────────────────────────────────── */
+	.ctab-section {
+		width: 100%;
+		padding: 4rem 0;
+		background-color: #ffffff;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 1024px) { .ctab-section { padding: 6rem 0; } }
+
+	/* ─── Container ──────────────────────────────── */
+	.ctab-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		padding: 0 1rem;
+		box-sizing: border-box;
+	}
+
+	/* ─── Outer card ─────────────────────────────── */
+	.ctab-card {
+		border: 2px solid #021300;
+		border-radius: 12px;
+		padding: 2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+		box-sizing: border-box;
+	}
+
+	@media (min-width: 768px)  { .ctab-card { padding: 3rem; } }
+	@media (min-width: 1024px) {
+		.ctab-card {
+			flex-direction: row;
+			align-items: stretch;
+			padding: 4rem 5rem;
+			gap: 5rem;
+		}
+	}
+
+	/* ─── Left column ────────────────────────────── */
+	.ctab-left {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	@media (min-width: 1024px) { .ctab-left { width: 55%; } }
+
+	.ctab-left-text {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	/* ─── Heading ────────────────────────────────── */
+	.ctab-heading {
+		color: #021300;
+		font-size: 2.5rem;
+		font-weight: 800;
+		line-height: 1.1;
+		letter-spacing: -0.02em;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px)  { .ctab-heading { font-size: 3rem; } }
+	@media (min-width: 1024px) { .ctab-heading { font-size: clamp(2.5rem, 4vw, 4rem); } }
+
+	/* ─── Steps ──────────────────────────────────── */
+	.ctab-steps {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.ctab-step {
+		display: flex;
+		gap: 0.5rem;
+		font-size: 1rem;
+	}
+
+	.ctab-step-num {
+		font-weight: 700;
+		color: #021300;
+		min-width: 60px;
+		flex-shrink: 0;
+	}
+
+	.ctab-step-text {
+		color: #021300;
+		font-weight: 300;
+	}
+
+	/* ─── Image ──────────────────────────────────── */
+	.ctab-image {
+		width: 100%;
+		border: 2px solid #021300;
+		border-radius: 12px;
+		overflow: hidden;
+		background-color: #d1d5db;
+		height: 280px;
+		position: relative;
+		flex-grow: 1;
+	}
+
+	@media (min-width: 768px)  { .ctab-image { height: 380px; } }
+	@media (min-width: 1024px) { .ctab-image { height: auto; min-height: 300px; } }
+
+	.ctab-img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		border-radius: 0;
+	}
+
+	/* ─── Right column ───────────────────────────── */
+	.ctab-right {
+		width: 100%;
+	}
+
+	@media (min-width: 1024px) { .ctab-right { width: 45%; } }
+
+	/* ─── Form card ──────────────────────────────── */
+	.ctab-form-card {
+		border: 2px solid #021300;
+		border-radius: 12px;
+		padding: 2rem;
+		height: 100%;
+		box-sizing: border-box;
+	}
+
+	@media (min-width: 768px) { .ctab-form-card { padding: 2.5rem; } }
+
+	/* ─── Hidden attribute override ─────────────── */
+	[hidden] { display: none !important; }
+
+	/* ─── Success state ──────────────────────────── */
+	.ctab-success {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		gap: 1.25rem;
+		padding: 3rem 1rem;
+		height: 100%;
+	}
+
+	.ctab-success-icon {
+		width: 64px;
+		height: 64px;
+		border-radius: 50%;
+		background-color: #D5FF00;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #021300;
+	}
+
+	.ctab-success-icon svg { width: 32px; height: 32px; }
+
+	.ctab-success-heading {
+		color: #021300;
+		font-size: 1.75rem;
+		font-weight: 800;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	.ctab-success-body {
+		color: #021300;
+		font-size: 1rem;
+		font-weight: 300;
+		line-height: 1.625;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	/* ─── Honeypot (invisible to humans) ─────────── */
+	.ctab-honeypot {
+		position: absolute;
+		left: -9999px;
+		top: -9999px;
+		opacity: 0;
+		height: 0;
+		overflow: hidden;
+		pointer-events: none;
+	}
+
+	/* ─── Form ───────────────────────────────────── */
+	.ctab-form {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	/* ─── Field ──────────────────────────────────── */
+	.ctab-field {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.ctab-label {
+		color: #021300;
+		font-size: 0.9375rem;
+		font-weight: 500;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	.ctab-input {
+		width: 100%;
+		height: 52px;
+		padding: 0 1.25rem;
+		border-radius: 8px;
+		border: 1px solid #6B7280;
+		background-color: #F9FAFB;
+		color: #021300;
+		font-size: 0.9375rem;
+		font-family: 'Poppins', system-ui, sans-serif;
+		box-sizing: border-box;
+		outline: none;
+		transition: border-color 0.2s ease;
+		appearance: none;
+	}
+
+	.ctab-input::placeholder { color: #6B7280; }
+	.ctab-input:focus { border-color: #021300; }
+
+	/* ─── Select ─────────────────────────────────── */
+	.ctab-select-wrap { position: relative; }
+	.ctab-select { cursor: pointer; }
+
+	.ctab-select-arrow {
+		position: absolute;
+		right: 1.25rem;
+		top: 50%;
+		transform: translateY(-50%);
+		pointer-events: none;
+		display: flex;
+		align-items: center;
+	}
+
+	/* ─── Custom CAPTCHA ─────────────────────────── */
+	.ctab-captcha-box {
+		border: 2px solid #021300;
+		border-radius: 8px;
+		padding: 1rem 1.25rem;
+		background-color: #EDF5FF;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.ctab-captcha-header {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: #021300;
+		font-size: 0.8125rem;
+		font-weight: 700;
+		font-family: 'Poppins', system-ui, sans-serif;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.ctab-captcha-header svg {
+		width: 14px;
+		height: 14px;
+		flex-shrink: 0;
+	}
+
+	.ctab-captcha-question {
+		color: #021300;
+		font-size: 1rem;
+		font-weight: 600;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	.ctab-captcha-input {
+		background-color: #ffffff;
+	}
+
+	/* ─── Checkboxes ─────────────────────────────── */
+	.ctab-checks {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.ctab-check {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.75rem;
+		cursor: pointer;
+	}
+
+	.ctab-check input[type="checkbox"] {
+		margin-top: 3px;
+		width: 16px;
+		height: 16px;
+		flex-shrink: 0;
+		accent-color: #021300;
+		cursor: pointer;
+	}
+
+	.ctab-check span {
+		color: #021300;
+		font-size: 0.875rem;
+		line-height: 1.5;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	.ctab-terms-link {
+		color: #021300;
+		font-weight: 700;
+		text-decoration: underline;
+	}
+
+	.ctab-terms-link:hover { color: #0E491F; }
+
+	/* ─── Feedback notice ───────────────────────── */
+	.ctab-feedback-notice {
+		color: #6B7280;
+		font-size: 0.8125rem;
+		line-height: 1.5;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	/* ─── Error box ──────────────────────────────── */
+	.ctab-error-box {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.625rem;
+		background-color: #fef2f2;
+		border: 1px solid #fca5a5;
+		border-radius: 8px;
+		padding: 0.75rem 1rem;
+		color: #991b1b;
+		font-size: 0.875rem;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	.ctab-error-box svg {
+		width: 16px;
+		height: 16px;
+		flex-shrink: 0;
+		margin-top: 1px;
+	}
+
+	/* ─── Submit ─────────────────────────────────── */
+	.ctab-submit-wrap { padding-top: 0.5rem; }
+
+	.ctab-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #021300;
+		color: #ffffff;
+		border: none;
+		border-radius: 6px;
+		height: 44px;
+		width: 100%;
+		font-size: 16px;
+		font-weight: 600;
+		font-family: 'Poppins', system-ui, sans-serif;
+		cursor: pointer;
+		transition: background-color 0.2s ease;
+		box-sizing: border-box;
+	}
+
+	@media (min-width: 640px) { .ctab-btn { width: 150px; } }
+
+	.ctab-btn:hover:not(:disabled) { background-color: #0AAD0A; }
+	.ctab-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+</style>
+
+<script>
+	(function () {
+		// ── Set time trap ──────────────────────────────────────────────────────
+		const loadTimeEl = document.getElementById('ctab-load-time') as HTMLInputElement;
+		if (loadTimeEl) loadTimeEl.value = String(Date.now());
+
+		// ── Generate CAPTCHA ───────────────────────────────────────────────────
+		const a = Math.floor(Math.random() * 9) + 1;
+		const b = Math.floor(Math.random() * 9) + 1;
+		const questionEl = document.getElementById('ctab-captcha-q');
+		if (questionEl) questionEl.textContent = `What is ${a} + ${b}?`;
+
+		// ── Form submission ────────────────────────────────────────────────────
+		const form = document.getElementById('ctab-form') as HTMLFormElement;
+		const submitBtn = document.getElementById('ctab-submit') as HTMLButtonElement;
+		const errorBox = document.getElementById('ctab-error') as HTMLElement;
+		const errorMsg = document.getElementById('ctab-error-msg') as HTMLElement;
+		const successEl = document.getElementById('ctab-success') as HTMLElement;
+
+		function showError(msg: string) {
+			errorMsg.textContent = msg;
+			errorBox.hidden = false;
+			submitBtn.disabled = false;
+			submitBtn.textContent = 'Join Beta';
+		}
+
+		function hideError() {
+			errorBox.hidden = true;
+			errorMsg.textContent = '';
+		}
+
+		form?.addEventListener('submit', async (e) => {
+			e.preventDefault();
+			hideError();
+
+			// Validate CAPTCHA
+			const answerEl = document.getElementById('ctab-captcha-answer') as HTMLInputElement;
+			const userAnswer = parseInt(answerEl.value.trim(), 10);
+			if (isNaN(userAnswer) || userAnswer !== a + b) {
+				showError('Incorrect answer to the security check. Please try again.');
+				answerEl.value = '';
+				return;
+			}
+
+			// Validate checkboxes
+			const gdprEl = form.querySelector('[name="gdprAgreed"]') as HTMLInputElement;
+			const repEl  = form.querySelector('[name="repConfirmed"]') as HTMLInputElement;
+			if (!gdprEl.checked) {
+				showError('Please agree to the data processing terms before submitting.');
+				return;
+			}
+			if (!repEl.checked) {
+				showError('Please confirm you are an authorised representative before submitting.');
+				return;
+			}
+
+			// Gather data
+			const loadTime = parseInt((document.getElementById('ctab-load-time') as HTMLInputElement).value, 10);
+			const elapsed = Date.now() - loadTime;
+
+			const payload = {
+				name:     (document.getElementById('ctab-name') as HTMLInputElement).value.trim(),
+				email:    (document.getElementById('ctab-email') as HTMLInputElement).value.trim(),
+				spotName: (document.getElementById('ctab-spot') as HTMLInputElement).value.trim(),
+				role:     (document.getElementById('ctab-role') as HTMLSelectElement).value,
+				honeypot: (document.getElementById('company_website') as HTMLInputElement).value,
+				elapsed,
+				captchaA: a,
+				captchaB: b,
+				captchaAnswer: userAnswer,
+			};
+
+			submitBtn.disabled = true;
+			submitBtn.textContent = 'Sending…';
+
+			try {
+				const res = await fetch('/api/submit-beta', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(payload),
+				});
+
+				const json = await res.json();
+
+				if (res.ok && json.ok) {
+					form.hidden = true;
+					successEl.hidden = false;
+				} else {
+					showError(json.error ?? 'Something went wrong. Please try again.');
+				}
+			} catch {
+				showError('Network error. Please check your connection and try again.');
+			}
+		});
+	})();
+</script>

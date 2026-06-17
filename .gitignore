@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.output/
+
+# Astro cache
+.astro/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# macOS resource forks
+._*
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*

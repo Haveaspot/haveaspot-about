@@ -1,0 +1,313 @@
+---
+const benefits = [
+	{
+		icon: `<svg width="36" height="36" viewBox="0 0 640 640" fill="#ffffff" xmlns="http://www.w3.org/2000/svg"><path d="M96.5 160L96.5 309.5C96.5 326.5 103.2 342.8 115.2 354.8L307.2 546.8C332.2 571.8 372.7 571.8 397.7 546.8L547.2 397.3C572.2 372.3 572.2 331.8 547.2 306.8L355.2 114.8C343.2 102.7 327 96 310 96L160.5 96C125.2 96 96.5 124.7 96.5 160zM208.5 176C226.2 176 240.5 190.3 240.5 208C240.5 225.7 226.2 240 208.5 240C190.8 240 176.5 225.7 176.5 208C176.5 190.3 190.8 176 208.5 176z"/></svg>`,
+		text: "Free use of the Haveaspot booking platform",
+	},
+	{
+		icon: `<svg width="36" height="36" viewBox="0 0 640 640" fill="#ffffff" xmlns="http://www.w3.org/2000/svg"><path d="M96 192C96 130.1 146.1 80 208 80C269.9 80 320 130.1 320 192C320 253.9 269.9 304 208 304C146.1 304 96 253.9 96 192zM32 528C32 430.8 110.8 352 208 352C305.2 352 384 430.8 384 528L384 534C384 557.2 365.2 576 342 576L74 576C50.8 576 32 557.2 32 534L32 528zM464 128C517 128 560 171 560 224C560 277 517 320 464 320C411 320 368 277 368 224C368 171 411 128 464 128zM464 368C543.5 368 608 432.5 608 512L608 534.4C608 557.4 589.4 576 566.4 576L421.6 576C428.2 563.5 432 549.2 432 534L432 528C432 476.5 414.6 429.1 385.5 391.3C408.1 376.6 435.1 368 464 368z"/></svg>`,
+		text: "Dedicated one-on-one setup assistance",
+	},
+	{
+		icon: `<svg width="36" height="36" viewBox="0 0 640 640" fill="#ffffff" xmlns="http://www.w3.org/2000/svg"><path d="M320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM320 240C302.3 240 288 254.3 288 272C288 285.3 277.3 296 264 296C250.7 296 240 285.3 240 272C240 227.8 275.8 192 320 192C364.2 192 400 227.8 400 272C400 319.2 364 339.2 344 346.5L344 350.3C344 363.6 333.3 374.3 320 374.3C306.7 374.3 296 363.6 296 350.3L296 342.2C296 321.7 310.8 307 326.1 302C332.5 299.9 339.3 296.5 344.3 291.7C348.6 287.5 352 281.7 352 272.1C352 254.4 337.7 240.1 320 240.1zM288 432C288 414.3 302.3 400 320 400C337.7 400 352 414.3 352 432C352 449.7 337.7 464 320 464C302.3 464 288 449.7 288 432z"/></svg>`,
+		text: "Priority support throughout the programme",
+	},
+	{
+		icon: `<svg width="36" height="36" viewBox="0 0 640 640" fill="#ffffff" xmlns="http://www.w3.org/2000/svg"><path d="M584 352C597.3 352 608 362.7 608 376L608 480C608 515.3 579.3 544 544 544L96 544C60.7 544 32 515.3 32 480L32 376C32 362.7 42.7 352 56 352C69.3 352 80 362.7 80 376L80 480C80 488.8 87.2 496 96 496L544 496C552.8 496 560 488.8 560 480L560 376C560 362.7 570.7 352 584 352zM448 96C483.3 96 512 124.7 512 160L512 384C512 419.3 483.3 448 448 448L192 448C156.7 448 128 419.3 128 384L128 160C128 124.7 156.7 96 192 96L448 96zM410.9 180.6C400.2 172.8 385.2 175.2 377.4 185.9L291.8 303.6L265.3 276.2C256.1 266.7 240.9 266.4 231.4 275.6C221.9 284.8 221.6 300 230.8 309.5L277.2 357.5C282.1 362.6 289 365.3 296.1 364.8C303.2 364.3 309.7 360.7 313.9 355L416.2 214.1C424 203.4 421.6 188.4 410.9 180.6z"/></svg>`,
+		text: "A direct say in the features of our platform",
+	},
+];
+
+const steps = [
+	{
+		number: "1.",
+		title: "Quick Sign Up",
+		description: "Start by completing our simple online form. It only takes a few minutes and is the first step to simplifying all your future bookings.",
+	},
+	{
+		number: "2.",
+		title: "Personalised Setup",
+		description: "Our team works with you one-on-one to configure your Haveaspot account, set up your spaces, and tailor the platform to suit your venue's needs.",
+	},
+	{
+		number: "3.",
+		title: "Go Live & Give Feedback",
+		description: "Start taking bookings through your new platform and provide us with the valuable feedback needed to shape the product.",
+	},
+];
+---
+
+<section class="hiw-section">
+	<div class="hiw-container">
+
+		<!-- Outer frame -->
+		<div class="hiw-frame">
+
+			<!-- Dark green card -->
+			<div class="hiw-card">
+
+				<!-- Left: Headline & Benefits -->
+				<div class="hiw-left">
+					<div class="hiw-left-top">
+						<h2 class="hiw-heading">
+							Your Supported Journey<br />To Online Bookings
+						</h2>
+						<p class="hiw-benefits-label">What you get as a Beta partner:</p>
+					</div>
+
+					<ul class="hiw-benefits">
+						{benefits.map((b) => (
+							<li class="hiw-benefit">
+								<span class="hiw-benefit-icon">
+									<Fragment set:html={b.icon} />
+								</span>
+								<span class="hiw-benefit-text">{b.text}</span>
+							</li>
+						))}
+					</ul>
+
+				<div class="hiw-cta">
+						<a href="/beta#beta-cta" class="hiw-btn">Join Beta</a>
+					</div>
+				</div>
+
+				<!-- Right: Steps -->
+				<div class="hiw-right">
+					<div class="hiw-steps">
+						{steps.map((s) => (
+							<div class="hiw-step">
+								<h3 class="hiw-step-title">
+									<span class="hiw-step-number">{s.number}</span> {s.title}
+								</h3>
+								<p class="hiw-step-body">{s.description}</p>
+							</div>
+						))}
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</section>
+
+<style>
+	/* ─── Section ─────────────────────────────────── */
+	.hiw-section {
+		width: 100%;
+		padding: 4rem 0;
+		background-color: #ffffff;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 1024px) { .hiw-section { padding: 6rem 0; } }
+
+	/* ─── Container ──────────────────────────────── */
+	.hiw-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		padding: 0 1rem;
+		box-sizing: border-box;
+	}
+
+	/* ─── Outer frame ────────────────────────────── */
+	.hiw-frame {
+		border: 2px solid #021300;
+		border-radius: 12px;
+		padding: 2rem;
+		background-color: #ffffff;
+		box-sizing: border-box;
+	}
+
+	@media (min-width: 768px) { .hiw-frame { padding: 3rem; } }
+
+	/* ─── Inner dark card ────────────────────────── */
+	.hiw-card {
+		background-color: #0E491F;
+		border-radius: 12px;
+		padding: 2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+		box-sizing: border-box;
+	}
+
+	@media (min-width: 768px) { .hiw-card { padding: 3rem; } }
+
+	@media (min-width: 1024px) {
+		.hiw-card {
+			flex-direction: row;
+			align-items: stretch;
+			padding: 4rem;
+			gap: 5rem;
+		}
+	}
+
+	/* ─── Left column ────────────────────────────── */
+	.hiw-left {
+		display: flex;
+		flex-direction: column;
+		gap: 2.5rem;
+		flex: 1;
+	}
+
+	.hiw-left-top {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	/* ─── Heading ────────────────────────────────── */
+	.hiw-heading {
+		color: #D5FF00;
+		font-size: 2rem;
+		font-weight: 800;
+		line-height: 1.1;
+		letter-spacing: -0.02em;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 1024px) { .hiw-heading { font-size: 2.25rem; } }
+
+	/* ─── Benefits label ─────────────────────────── */
+	.hiw-benefits-label {
+		color: #ffffff;
+		font-size: 1rem;
+		font-weight: 700;
+		line-height: 1.4;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px) { .hiw-benefits-label { font-size: 1.125rem; } }
+
+	/* ─── Benefits list ──────────────────────────── */
+	.hiw-benefits {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.75rem;
+	}
+
+	.hiw-benefit {
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+	}
+
+	.hiw-benefit-icon {
+		width: 56px;
+		height: 56px;
+		flex-shrink: 0;
+		color: #ffffff;
+		border: 2px solid #ffffff;
+		border-radius: 8px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+
+	.hiw-benefit-text {
+		color: #ffffff;
+		font-size: 1rem;
+		font-weight: 700;
+		line-height: 1.4;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px) { .hiw-benefit-text { font-size: 1.125rem; } }
+
+	/* ─── Right column ───────────────────────────── */
+	.hiw-right {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+	}
+
+	/* ─── Steps ──────────────────────────────────── */
+	.hiw-steps {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+
+	@media (min-width: 1024px) {
+		.hiw-steps {
+			flex: 1;
+			justify-content: space-between;
+			gap: 0;
+		}
+	}
+
+	.hiw-step {
+		border: 2px solid rgba(255, 255, 255, 0.6);
+		border-radius: 12px;
+		padding: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		box-sizing: border-box;
+	}
+
+	@media (min-width: 768px) { .hiw-step { padding: 2rem; } }
+
+	.hiw-step-title {
+		color: #ffffff;
+		font-size: 1.25rem;
+		font-weight: 700;
+		line-height: 1.3;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px) { .hiw-step-title { font-size: 1.5rem; } }
+
+	.hiw-step-number {
+		color: #D5FF00;
+	}
+
+	.hiw-step-body {
+		color: rgba(255, 255, 255, 0.85);
+		font-size: 0.9375rem;
+		font-weight: 300;
+		line-height: 1.625;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px) { .hiw-step-body { font-size: 1rem; } }
+
+	/* ─── CTA ────────────────────────────────────── */
+	.hiw-cta {
+		display: flex;
+		justify-content: flex-start;
+	}
+
+	.hiw-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #ffffff;
+		color: #021300;
+		text-decoration: none;
+		border: none;
+		border-radius: 6px;
+		height: 44px;
+		width: 150px;
+		font-size: 16px;
+		font-weight: 600;
+		font-family: 'Poppins', system-ui, sans-serif;
+		transition: background-color 0.2s ease, color 0.2s ease;
+		box-sizing: border-box;
+	}
+
+	.hiw-btn:hover {
+		background-color: #D5FF00;
+		color: #021300;
+		text-decoration: none;
+	}
+</style>

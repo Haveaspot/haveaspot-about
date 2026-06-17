@@ -1,0 +1,676 @@
+---
+---
+
+<section class="mob-section">
+	<div class="mob-container">
+		<div class="mob-layout">
+
+			<!-- ── Left: Info ─────────────────────────────── -->
+			<div class="mob-left">
+				<div class="mob-intro">
+					<span class="mob-eyebrow">We've Got You!</span>
+					<h1 class="mob-heading">Managed Onboarding</h1>
+					<p class="mob-body">Let us do the heavy lifting. Our managed onboarding service takes care of your entire setup so you can focus on running your venue. Fill in the form and we'll get the ball rolling.</p>
+				</div>
+
+				<div class="mob-next">
+					<h2 class="mob-next-heading">What Happens Next?</h2>
+					<ol class="mob-steps">
+						<li class="mob-step">
+							<span class="mob-step-num">1</span>
+							<div class="mob-step-text">
+								<strong>Complete the form</strong>
+								<p>Fill in your details so we know who you are and which spot you represent.</p>
+							</div>
+						</li>
+						<li class="mob-step">
+							<span class="mob-step-num">2</span>
+							<div class="mob-step-text">
+								<strong>We'll be in touch</strong>
+								<p>A member of our team will contact you to arrange a time to kick off your implementation.</p>
+							</div>
+						</li>
+						<li class="mob-step">
+							<span class="mob-step-num">3</span>
+							<div class="mob-step-text">
+								<strong>Your online sessions</strong>
+								<p>We'll work through your setup with you in a series of online sessions — guided, straightforward, and at your own pace.</p>
+							</div>
+						</li>
+					</ol>
+
+					<div class="mob-image">
+						<img src="/HAS-ManagedOnboarding-Image.webp" alt="Online onboarding session" class="mob-img" />
+					</div>
+				</div>
+			</div>
+
+			<!-- ── Right: Form ────────────────────────────── -->
+			<div class="mob-right">
+				<div class="mob-form-card">
+
+					<!-- Success state -->
+					<div class="mob-success" id="mob-success" hidden>
+						<div class="mob-success-icon">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+								<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+								<polyline points="22 4 12 14.01 9 11.01"/>
+							</svg>
+						</div>
+						<h2 class="mob-success-heading">Enquiry Received!</h2>
+						<p class="mob-success-body">Thanks for getting in touch — we'll be in touch shortly to arrange your onboarding sessions.</p>
+					</div>
+
+					<!-- Form -->
+					<form class="mob-form" id="mob-form" novalidate>
+
+						<!-- Honeypot -->
+						<div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;overflow:hidden;pointer-events:none;">
+							<label for="mob_website">Website</label>
+							<input type="text" name="website" id="mob_website" tabindex="-1" autocomplete="off" />
+						</div>
+
+						<!-- Time trap -->
+						<input type="hidden" id="mob-load-time" name="load_time" value="0" />
+
+						<!-- Name row -->
+						<div class="mob-row">
+							<div class="mob-field">
+								<label class="mob-label" for="mob-forename">Forename</label>
+								<input class="mob-input" type="text" id="mob-forename" name="forename" placeholder="Jane" required />
+							</div>
+							<div class="mob-field">
+								<label class="mob-label" for="mob-surname">Surname</label>
+								<input class="mob-input" type="text" id="mob-surname" name="surname" placeholder="Smith" required />
+							</div>
+						</div>
+
+						<!-- Name of Spot -->
+						<div class="mob-field">
+							<label class="mob-label" for="mob-spot">Name of Spot</label>
+							<input class="mob-input" type="text" id="mob-spot" name="spot" placeholder="Forthay Village Hall" required />
+						</div>
+
+						<!-- Role at Venue -->
+						<div class="mob-field">
+							<label class="mob-label" for="mob-role">Role at Venue</label>
+							<select class="mob-input mob-select" id="mob-role" name="role" required>
+								<option value="" disabled selected>Select your role</option>
+								<option value="Director">Director</option>
+								<option value="Trustee">Trustee</option>
+								<option value="Committee Member">Committee Member</option>
+								<option value="Venue Manager">Venue Manager</option>
+							</select>
+						</div>
+
+						<!-- Email -->
+						<div class="mob-field">
+							<label class="mob-label" for="mob-email">Contact Email</label>
+							<input class="mob-input" type="email" id="mob-email" name="email" placeholder="hello@yourvenue.com" required />
+						</div>
+
+						<!-- CAPTCHA -->
+						<div class="mob-field">
+							<div class="mob-captcha-box">
+								<div class="mob-captcha-header">
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+										<rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+										<path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+									</svg>
+									<span>Security Check</span>
+								</div>
+								<p class="mob-captcha-question" id="mob-captcha-q">Loading…</p>
+								<input
+									class="mob-input mob-captcha-input"
+									type="text"
+									inputmode="numeric"
+									id="mob-captcha-answer"
+									placeholder="Enter your answer"
+									autocomplete="off"
+								/>
+							</div>
+						</div>
+
+						<!-- Consent fields -->
+						<div class="mob-checks">
+							<label class="mob-check">
+								<input type="checkbox" name="authorityConfirmed" required />
+								<span>I confirm that I am an appointed representative of the venue named above and that I have the authority to sign this spot up to the Haveaspot platform. <strong>(Required)</strong></span>
+							</label>
+							<label class="mob-check">
+								<input type="checkbox" name="gdprAgreed" required />
+								<span>I agree to my personal data being processed by Haveaspot Ltd in order to respond to my enquiry, in accordance with our <a href="/legal/privacy-policy" class="mob-link">Privacy Policy</a>. <strong>(Required)</strong></span>
+							</label>
+							<label class="mob-check">
+								<input type="checkbox" name="marketingOptIn" />
+								<span>I'd like to receive occasional updates and news from Haveaspot. I understand I can unsubscribe at any time. <strong>(Optional)</strong></span>
+							</label>
+						</div>
+
+						<!-- Error -->
+						<div class="mob-error-box" id="mob-error" hidden>
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+								<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+							</svg>
+							<span id="mob-error-msg"></span>
+						</div>
+
+						<!-- Submit -->
+						<div class="mob-submit-wrap">
+							<button type="submit" class="mob-btn" id="mob-submit">Submit Enquiry</button>
+						</div>
+
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<style>
+	[hidden] { display: none !important; }
+
+	.mob-section {
+		width: 100%;
+		padding: 4rem 0;
+		background-color: #ffffff;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 1024px) { .mob-section { padding: 6rem 0; } }
+
+	.mob-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		padding: 0 1rem;
+		box-sizing: border-box;
+	}
+
+	.mob-layout {
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+	}
+
+	@media (min-width: 1024px) {
+		.mob-layout {
+			flex-direction: row;
+			align-items: stretch;
+			gap: 5rem;
+		}
+	}
+
+	/* ─── Left column ────────────────────────────── */
+	.mob-left {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 2.5rem;
+	}
+
+	@media (min-width: 1024px) { .mob-left { width: 45%; padding-top: 0.5rem; } }
+
+	/* ─── Intro ──────────────────────────────────── */
+	.mob-intro {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.mob-eyebrow {
+		display: inline-block;
+		font-size: 0.875rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: #021300;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	.mob-heading {
+		color: #021300;
+		font-size: 2.5rem;
+		font-weight: 800;
+		line-height: 1.1;
+		letter-spacing: -0.02em;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px)  { .mob-heading { font-size: 3.5rem; } }
+	@media (min-width: 1024px) { .mob-heading { font-size: clamp(2rem, 2.75vw, 3rem); white-space: nowrap; } }
+
+	.mob-body {
+		color: #374151;
+		font-size: 1rem;
+		font-weight: 400;
+		line-height: 1.75;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	/* ─── What's Next green box ──────────────────── */
+	.mob-next {
+		background-color: #0E491F;
+		border-radius: 12px;
+		padding: 2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1.75rem;
+	}
+
+	@media (min-width: 768px) { .mob-next { padding: 2.5rem; } }
+	@media (min-width: 1024px) { .mob-next { flex: 1; } }
+
+	.mob-next-heading {
+		color: #ffffff;
+		font-size: 1.125rem;
+		font-weight: 700;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	.mob-steps {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.75rem;
+	}
+
+	.mob-step {
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+	}
+
+	.mob-step-num {
+		width: 56px;
+		height: 56px;
+		flex-shrink: 0;
+		border: 2px solid #ffffff;
+		border-radius: 8px;
+		color: #ffffff;
+		font-size: 1.25rem;
+		font-weight: 700;
+		font-family: 'Poppins', system-ui, sans-serif;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.mob-step-text {
+		display: flex;
+		flex-direction: column;
+		gap: 0.2rem;
+	}
+
+	.mob-step-text strong {
+		color: #D5FF00;
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	.mob-step-text p {
+		color: #ffffff;
+		font-size: 0.8125rem;
+		font-weight: 300;
+		line-height: 1.4;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	/* ─── Image container ───────────────────────── */
+	.mob-image {
+		border: 2px solid #ffffff;
+		border-radius: 8px;
+		overflow: hidden;
+		background-color: #d1d5db;
+		height: 200px;
+		position: relative;
+	}
+
+	@media (min-width: 768px) { .mob-image { height: 260px; } }
+	@media (min-width: 1024px) { .mob-image { height: auto; flex: 1; min-height: 160px; } }
+
+	.mob-img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center top;
+		display: block;
+		border-radius: 0;
+	}
+
+	/* ─── Right column ───────────────────────────── */
+	.mob-right {
+		width: 100%;
+	}
+
+	@media (min-width: 1024px) { .mob-right { width: 55%; } }
+
+	/* ─── Form card ──────────────────────────────── */
+	.mob-form-card {
+		border: 2px solid #021300;
+		border-radius: 12px;
+		padding: 2rem;
+		box-sizing: border-box;
+	}
+
+	@media (min-width: 768px) { .mob-form-card { padding: 2.5rem; } }
+
+	/* ─── Success ────────────────────────────────── */
+	.mob-success {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		gap: 1.25rem;
+		padding: 3rem 1rem;
+	}
+
+	.mob-success-icon {
+		width: 64px;
+		height: 64px;
+		border-radius: 50%;
+		background-color: #D5FF00;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #021300;
+	}
+
+	.mob-success-icon svg { width: 32px; height: 32px; }
+
+	.mob-success-heading {
+		color: #021300;
+		font-size: 1.75rem;
+		font-weight: 800;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	.mob-success-body {
+		color: #374151;
+		font-size: 1rem;
+		line-height: 1.625;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	/* ─── Form ───────────────────────────────────── */
+	.mob-form {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.mob-row {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+
+	@media (min-width: 480px) { .mob-row { grid-template-columns: 1fr 1fr; } }
+
+	.mob-field {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.mob-label {
+		color: #021300;
+		font-size: 0.9375rem;
+		font-weight: 500;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	.mob-input {
+		width: 100%;
+		height: 52px;
+		padding: 0 1.25rem;
+		border-radius: 8px;
+		border: 1px solid #6B7280;
+		background-color: #F9FAFB;
+		color: #021300;
+		font-size: 0.9375rem;
+		font-family: 'Poppins', system-ui, sans-serif;
+		box-sizing: border-box;
+		outline: none;
+		transition: border-color 0.2s ease;
+		appearance: none;
+	}
+
+	.mob-input::placeholder { color: #6B7280; }
+	.mob-input:focus { border-color: #021300; }
+
+	.mob-select {
+		padding: 0 1rem;
+		cursor: pointer;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23021300' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-position: right 1rem center;
+		padding-right: 2.5rem;
+	}
+
+	/* ─── CAPTCHA ────────────────────────────────── */
+	.mob-captcha-box {
+		border: 2px solid #021300;
+		border-radius: 8px;
+		padding: 1rem 1.25rem;
+		background-color: #EDF5FF;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.mob-captcha-header {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: #021300;
+		font-size: 0.8125rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	.mob-captcha-header svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+	.mob-captcha-question {
+		color: #021300;
+		font-size: 1rem;
+		font-weight: 600;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	.mob-captcha-input { background-color: #ffffff; }
+
+	/* ─── Checkboxes ─────────────────────────────── */
+	.mob-checks {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.mob-check {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.75rem;
+		cursor: pointer;
+	}
+
+	.mob-check input[type="checkbox"] {
+		margin-top: 3px;
+		width: 16px;
+		height: 16px;
+		flex-shrink: 0;
+		accent-color: #021300;
+		cursor: pointer;
+	}
+
+	.mob-check span {
+		color: #374151;
+		font-size: 0.875rem;
+		line-height: 1.5;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	.mob-check strong { color: #021300; }
+
+	.mob-link {
+		color: #021300;
+		font-weight: 700;
+		text-decoration: underline;
+	}
+
+	.mob-link:hover { color: #0AAD0A; }
+
+	/* ─── Error ──────────────────────────────────── */
+	.mob-error-box {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.625rem;
+		background-color: #fef2f2;
+		border: 1px solid #fca5a5;
+		border-radius: 8px;
+		padding: 0.75rem 1rem;
+		color: #991b1b;
+		font-size: 0.875rem;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	.mob-error-box svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px; }
+
+	/* ─── Submit ─────────────────────────────────── */
+	.mob-submit-wrap { padding-top: 0.5rem; }
+
+	.mob-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #021300;
+		color: #ffffff;
+		border: none;
+		border-radius: 6px;
+		height: 44px;
+		width: 100%;
+		font-size: 16px;
+		font-weight: 600;
+		font-family: 'Poppins', system-ui, sans-serif;
+		cursor: pointer;
+		transition: background-color 0.2s ease;
+		box-sizing: border-box;
+	}
+
+	@media (min-width: 640px) { .mob-btn { width: 160px; } }
+
+	.mob-btn:hover:not(:disabled) { background-color: #0AAD0A; }
+	.mob-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+</style>
+
+<script>
+	(function () {
+		const loadTimeEl = document.getElementById('mob-load-time') as HTMLInputElement;
+		if (loadTimeEl) loadTimeEl.value = String(Date.now());
+
+		const a = Math.floor(Math.random() * 9) + 1;
+		const b = Math.floor(Math.random() * 9) + 1;
+		const questionEl = document.getElementById('mob-captcha-q');
+		if (questionEl) questionEl.textContent = `What is ${a} + ${b}?`;
+
+		const form = document.getElementById('mob-form') as HTMLFormElement;
+		const submitBtn = document.getElementById('mob-submit') as HTMLButtonElement;
+		const errorBox = document.getElementById('mob-error') as HTMLElement;
+		const errorMsg = document.getElementById('mob-error-msg') as HTMLElement;
+		const successEl = document.getElementById('mob-success') as HTMLElement;
+
+		function showError(msg: string) {
+			errorMsg.textContent = msg;
+			errorBox.hidden = false;
+			submitBtn.disabled = false;
+			submitBtn.textContent = 'Submit Enquiry';
+		}
+
+		function hideError() {
+			errorBox.hidden = true;
+			errorMsg.textContent = '';
+		}
+
+		form?.addEventListener('submit', async (e) => {
+			e.preventDefault();
+			hideError();
+
+			const answerEl = document.getElementById('mob-captcha-answer') as HTMLInputElement;
+			const userAnswer = parseInt(answerEl.value.trim(), 10);
+			if (isNaN(userAnswer) || userAnswer !== a + b) {
+				showError('Incorrect answer to the security check. Please try again.');
+				answerEl.value = '';
+				return;
+			}
+
+			const authorityEl = form.querySelector('[name="authorityConfirmed"]') as HTMLInputElement;
+			if (!authorityEl.checked) {
+				showError('Please confirm you are an appointed representative with authority to sign up this venue.');
+				return;
+			}
+
+			const gdprEl = form.querySelector('[name="gdprAgreed"]') as HTMLInputElement;
+			if (!gdprEl.checked) {
+				showError('Please agree to the data processing terms before submitting.');
+				return;
+			}
+
+			const loadTime = parseInt((document.getElementById('mob-load-time') as HTMLInputElement).value, 10);
+			const elapsed = Date.now() - loadTime;
+			const marketingEl = form.querySelector('[name="marketingOptIn"]') as HTMLInputElement;
+
+			const payload = {
+				forename:          (document.getElementById('mob-forename') as HTMLInputElement).value.trim(),
+				surname:           (document.getElementById('mob-surname') as HTMLInputElement).value.trim(),
+				spot:              (document.getElementById('mob-spot') as HTMLInputElement).value.trim(),
+				role:              (document.getElementById('mob-role') as HTMLSelectElement).value,
+				email:             (document.getElementById('mob-email') as HTMLInputElement).value.trim(),
+				authorityConfirmed: authorityEl.checked,
+				marketingOptIn:    marketingEl.checked,
+				honeypot:          (document.getElementById('mob_website') as HTMLInputElement).value,
+				elapsed,
+				captchaA: a,
+				captchaB: b,
+				captchaAnswer: userAnswer,
+			};
+
+			submitBtn.disabled = true;
+			submitBtn.textContent = 'Sending…';
+
+			try {
+				const res = await fetch('/api/submit-onboarding', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(payload),
+				});
+
+				const json = await res.json();
+
+				if (res.ok && json.ok) {
+					form.hidden = true;
+					successEl.hidden = false;
+				} else {
+					showError(json.error ?? 'Something went wrong. Please try again.');
+				}
+			} catch {
+				showError('Network error. Please check your connection and try again.');
+			}
+		});
+	})();
+</script>

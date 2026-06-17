@@ -1,0 +1,203 @@
+---
+---
+
+<section class="gst-section">
+	<div class="gst-container">
+		<div class="gst-grid">
+
+			<!-- Text (all breakpoints: order 1 | desktop: cols 1-5) -->
+			<div class="gst-text">
+				<div class="gst-text-inner">
+					<h2 class="gst-heading">Need Help Getting Started?</h2>
+					<p class="gst-body">
+						Setting up a new platform can feel overwhelming, especially when you're busy managing your venue. That's why <strong>we offer our Managed Onboarding Service</strong> — a personalised, hands-on approach to getting your venue up and running on Haveaspot with minimal effort.
+					</p>
+				</div>
+				<a href="/managed-onboarding" class="gst-btn">Get Help</a>
+			</div>
+
+			<!-- Image 1 (desktop: cols 7-9) -->
+			<div class="gst-media gst-img1">
+				<img src="/HAS-GettingStarted-1.webp" alt="Venue manager getting onboarding support" class="gst-panel-img" />
+			</div>
+
+			<!-- Image 2 (desktop: cols 10-12) -->
+			<div class="gst-media gst-img2">
+				<img src="/HAS-GettingStarted-2.webp" alt="Haveaspot venue listing on mobile" class="gst-panel-img" />
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<style>
+	/* ─── Section ─────────────────────────────────── */
+	.gst-section {
+		width: 100%;
+		padding: 4rem 0;
+		background-color: #ffffff;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 1024px) { .gst-section { padding: 6rem 0; } }
+
+	/* ─── Container ──────────────────────────────── */
+	.gst-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		padding: 0 1rem;
+		box-sizing: border-box;
+	}
+
+	/* ─── Grid ───────────────────────────────────── */
+	/*
+	  Mobile:  1 col — text(1), img1(2), img2(3)
+	  Tablet:  2 cols — text spans 2 (top), img1 | img2 (below)
+	  Desktop: 12 cols — text(1-5) | gap(6) | img1(7-9) | img2(10-12)
+	*/
+	.gst-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+		align-items: stretch;
+	}
+
+	@media (min-width: 768px) {
+		.gst-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	}
+
+	@media (min-width: 1024px) {
+		.gst-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+	}
+
+	/* ─── Text block ─────────────────────────────── */
+	.gst-text {
+		order: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 2rem;
+	}
+
+	@media (min-width: 768px) { .gst-text { grid-column: 1 / -1; } }
+
+	@media (min-width: 1024px) {
+		.gst-text {
+			grid-column: 1 / 6;
+			grid-row: 1;
+			order: unset;
+			padding-right: 2rem;
+		}
+	}
+
+	.gst-text-inner {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.gst-heading {
+		color: #021300;
+		font-size: 2rem;
+		font-weight: 700;
+		line-height: 1.2;
+		letter-spacing: -0.02em;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 1024px) { .gst-heading { font-size: 2.25rem; } }
+
+	.gst-body {
+		color: #021300;
+		font-size: 1rem;
+		font-weight: 400;
+		line-height: 1.625;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	.gst-body strong { font-weight: 700; }
+
+	/* ─── Button ─────────────────────────────────── */
+	.gst-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #021300;
+		color: #ffffff;
+		text-decoration: none;
+		border: none;
+		border-radius: 6px;
+		height: 44px;
+		width: 100%;
+		font-size: 16px;
+		font-weight: 500;
+		font-family: 'Poppins', system-ui, sans-serif;
+		transition: background-color 0.2s ease;
+		box-sizing: border-box;
+	}
+
+	@media (min-width: 640px) { .gst-btn { width: 150px; } }
+
+	.gst-btn:hover {
+		background-color: #0AAD0A;
+		text-decoration: none;
+		color: #ffffff;
+	}
+
+	/* ─── Media panels ───────────────────────────── */
+	.gst-media {
+		border: 2px solid #021300;
+		border-radius: 12px;
+		overflow: hidden;
+		position: relative;
+		background-color: #e5e7eb;
+		height: 300px;
+	}
+
+	@media (min-width: 768px)  { .gst-media { height: 500px; } }
+	@media (min-width: 1024px) { .gst-media { height: auto; min-height: 500px; } }
+
+	.gst-placeholder {
+		position: absolute;
+		inset: 0;
+		background-color: #d1d5db;
+	}
+
+	.gst-panel-img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 0;
+		display: block;
+	}
+
+	/* ─── Image 1 (desktop cols 7-9) ────────────── */
+	.gst-img1 {
+		order: 2;
+	}
+
+	@media (min-width: 1024px) {
+		.gst-img1 {
+			grid-column: 7 / 10;
+			grid-row: 1;
+			order: unset;
+		}
+	}
+
+	/* ─── Image 2 (desktop cols 10-12) ──────────── */
+	.gst-img2 {
+		order: 3;
+	}
+
+	@media (min-width: 1024px) {
+		.gst-img2 {
+			grid-column: 10 / 13;
+			grid-row: 1;
+			order: unset;
+		}
+	}
+</style>

@@ -1,0 +1,411 @@
+---
+const faqs = [
+	{
+		question: "What types of venues can join?",
+		answer: "The Beta Programme is open to any community space looking to manage bookings more efficiently. This includes village halls, community centres, church halls, sports clubs, schools, arts spaces, and independent hire venues. If you have a space that can be booked by others, we would love to hear from you.",
+	},
+	{
+		question: "Is it really free?",
+		answer: "It is completely free. There are no setup fees, monthly subscriptions, or hidden costs for you to use the platform, both during the Beta Program and after. We want to remove cost as a barrier to helping your community space thrive.",
+	},
+	{
+		question: "Will being on Haveaspot help me get more bookings?",
+		answer: "Yes — and for many venues, significantly so. Listing on Haveaspot puts your space in front of people who are actively searching for somewhere to book, something a standalone website rarely achieves without significant investment in SEO or advertising. Booking platforms aggregate demand, meaning Bookers arrive already intending to book rather than just browsing. Add in real-time availability, instant online payments, and a professional booking experience, and venues consistently convert more enquiries than those relying on phone calls or email forms alone. For many community spaces, a well-optimised Haveaspot listing will do more for their bookings than a website ever could.",
+	},
+	{
+		question: "Can Haveaspot reduce the time we spend on admin?",
+		answer: "Significantly. Managing a community venue involves a surprising amount of administration — deciphering enquiry emails, maintaining a shared calendar, collecting payments, and chasing bank transfers can easily consume hours every week. Haveaspot replaces all of that with one streamlined system. Enquiries are captured and tracked automatically. Your calendar updates in real time as bookings are confirmed. Payments are collected securely at the point of booking, so there are no invoices to send and no transfers to chase. Booking confirmations and reminders go out automatically, keeping both you and your Bookers informed. For many venues, the time saved on administration alone makes Haveaspot invaluable.",
+	},
+	{
+		question: "Can more than one person manage our account?",
+		answer: "Yes. You can invite multiple team members to access and manage your venue account, each with their own permission level. This means day-to-day management is not dependent on a single person — committee members, volunteers, and staff can all be given appropriate access to keep things running smoothly. It gives committees and management teams broader oversight without everything falling on whoever set up the account.",
+	},
+	{
+		question: "How do you make money?",
+		answer: "We charge the Booker a small Booking Fee at checkout — the same model used by platforms like Ticketmaster, Airbnb, and Eventbrite that people book through every day. Bookers are already familiar with this and expect it. It means your income is never touched, you pay nothing, and Bookers get the reassurance of a secure, professional booking experience while supporting a local space they care about.",
+	},
+	{
+		question: "What's expected of me?",
+		answer: "Primarily, to use the platform for your bookings and provide us with honest feedback. We're looking for your insights on what you love and what could be improved. Your experience will directly shape the future of Haveaspot for all community spaces.",
+	},
+	{
+		question: "How will feedback be collected?",
+		answer: "We collect feedback in a few ways. You will receive occasional surveys to share your thoughts on specific features and your overall experience. We also welcome anecdotal feedback — simply tell us what's working and what isn't during our conversations. When you join the programme, we will also provide you with a dedicated feedback email address so you can reach us directly at any time.",
+	},
+	{
+		question: "How long is setup?",
+		answer: "The initial setup is very quick. After you sign up, we'll schedule a one-on-one session to get your page built, which usually takes less than an hour. We do all the heavy lifting to get your photos, details, and pricing online.",
+	},
+	{
+		question: "Is it exclusive?",
+		answer: "Not at all. There is no requirement for exclusivity. You are free to continue using any existing booking methods you have, like taking bookings over the phone or by email. You can simply add those bookings to your Haveaspot calendar manually to avoid clashes.",
+	},
+	{
+		question: "Can I leave the beta at any time?",
+		answer: "Yes, completely. There is no contract, minimum term, or exit penalty. If you decide the programme is not right for you, simply let us know and we will close your account. We hope you won't want to leave, but we believe in making it easy for you to make that choice freely.",
+	},
+	{
+		question: "How do payments work?",
+		answer: "The Booker pays the Hire Cost securely through Stripe — a globally trusted payment processor used by millions of businesses worldwide. Stripe handles all funds directly and pays your Hire Cost straight into your designated bank account. Haveaspot never touches your money. You don't have to chase a single invoice.",
+	},
+	{
+		question: "Can I block out dates?",
+		answer: "Absolutely. You have full control over your calendar. It's easy to block out any dates or times you need to reserve the hall for committee meetings, local fayres, maintenance, or any other reason.",
+	},
+	{
+		question: "What happens after the beta?",
+		answer: "You will be able to continue using the full Haveaspot platform for free, just as you were during the program. As one of our founding partners, you may also get early access to new features we develop in the future.",
+	},
+];
+---
+
+<section class="bf-section">
+	<div class="bf-container">
+		<div class="bf-card">
+
+			<!-- Header -->
+			<div class="bf-header">
+				<div class="bf-header-text">
+					<h2 class="bf-heading">Beta Questions</h2>
+					<p class="bf-subheading">
+						<strong>Everything you need to know about the Beta Program.</strong> Learn how it works, what to expect, and how we support you.
+					</p>
+				</div>
+
+				<div class="bf-btns">
+					<a href="https://support.haveaspot.com" class="bf-btn-outline">
+						<span class="bf-btn-label">Support</span>
+						<span class="bf-btn-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+								<path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/>
+							</svg>
+						</span>
+					</a>
+
+					<a href="/contact" class="bf-btn-lime">
+						<span class="bf-btn-label">Contact Us</span>
+						<span class="bf-btn-icon bf-btn-icon--dark">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M7 7h10v10"/><path d="M7 17 17 7"/>
+							</svg>
+						</span>
+					</a>
+				</div>
+			</div>
+
+			<!-- FAQ Grid -->
+			<div class="bf-grid">
+				{faqs.map((item, i) => (
+					<div class="bf-item" data-index={i}>
+						<button class="bf-trigger" aria-expanded="false">
+							<span class="bf-chevron" aria-hidden="true">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="m9 18 6-6-6-6"/>
+								</svg>
+							</span>
+							<span class="bf-question">{item.question}</span>
+						</button>
+						<div class="bf-answer-wrap">
+							<div class="bf-answer" set:html={item.answer} />
+						</div>
+					</div>
+				))}
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<style>
+	/* ─── Section ─────────────────────────────────── */
+	.bf-section {
+		width: 100%;
+		padding: 4rem 0;
+		background-color: #ffffff;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 1024px) { .bf-section { padding: 6rem 0; } }
+
+	/* ─── Container ──────────────────────────────── */
+	.bf-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		padding: 0 1rem;
+		box-sizing: border-box;
+	}
+
+	/* ─── Dark green card ────────────────────────── */
+	.bf-card {
+		background-color: #0E491F;
+		border-radius: 12px;
+		padding: 2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+	}
+
+	@media (min-width: 768px)  { .bf-card { padding: 3rem; } }
+	@media (min-width: 1024px) { .bf-card { padding: 4rem 5rem; } }
+
+	/* ─── Header ─────────────────────────────────── */
+	.bf-header {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		align-items: flex-start;
+	}
+
+	@media (min-width: 1024px) {
+		.bf-header {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: flex-start;
+			gap: 4rem;
+		}
+	}
+
+	.bf-header-text {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	/* ─── Heading ────────────────────────────────── */
+	.bf-heading {
+		color: #ffffff;
+		font-size: 2.5rem;
+		font-weight: 800;
+		line-height: 0.95;
+		letter-spacing: -0.02em;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px)  { .bf-heading { font-size: 3.5rem; } }
+	@media (min-width: 1024px) { .bf-heading { font-size: clamp(3rem, 4.5vw, 4.5rem); } }
+
+	/* ─── Subheading ─────────────────────────────── */
+	.bf-subheading {
+		color: rgba(255, 255, 255, 0.9);
+		font-size: 1rem;
+		font-weight: 300;
+		line-height: 1.625;
+		margin: 0;
+		max-width: 36rem;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	.bf-subheading strong { color: #ffffff; font-weight: 700; }
+
+	/* ─── Button group ───────────────────────────── */
+	.bf-btns {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		flex-shrink: 0;
+		width: 100%;
+	}
+
+	@media (min-width: 640px)  { .bf-btns { flex-direction: row; } }
+	@media (min-width: 1024px) { .bf-btns { flex-direction: column; width: auto; align-self: flex-start; } }
+
+	/* Shared button base */
+	.bf-btn-outline,
+	.bf-btn-lime {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-radius: 6px;
+		height: 44px;
+		padding: 0 4px 0 1.25rem;
+		width: 100%;
+		box-sizing: border-box;
+		text-decoration: none;
+		font-size: 15px;
+		font-weight: 500;
+		font-family: 'Poppins', system-ui, sans-serif;
+		transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+	}
+
+	@media (min-width: 640px) {
+		.bf-btn-outline,
+		.bf-btn-lime { width: 200px; }
+	}
+
+	/* Outline style — Support */
+	.bf-btn-outline {
+		border: 2px solid #ffffff;
+		color: #ffffff;
+	}
+
+	.bf-btn-outline:hover {
+		border-color: #D5FF00;
+		color: #D5FF00;
+		text-decoration: none;
+	}
+
+	/* Lime style — Contact Us */
+	.bf-btn-lime {
+		background-color: #D5FF00;
+		color: #021300;
+		border: none;
+	}
+
+	.bf-btn-lime:hover { background-color: #ffffff; text-decoration: none; }
+
+	.bf-btn-label { flex-grow: 1; }
+
+	.bf-btn-icon {
+		width: 36px;
+		height: 36px;
+		border-radius: 4px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		color: inherit;
+	}
+
+	.bf-btn-icon svg { color: inherit; }
+
+	.bf-btn-icon--dark {
+		background-color: #0E491F;
+		color: #D5FF00;
+	}
+
+	.bf-btn-lime:hover .bf-btn-icon--dark { color: #ffffff; }
+
+	/* ─── FAQ grid (2-col desktop) ───────────────── */
+	.bf-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		column-gap: 4rem;
+	}
+
+	@media (min-width: 1024px) {
+		.bf-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	}
+
+	/* ─── FAQ item ───────────────────────────────── */
+	.bf-item {
+		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	}
+
+	.bf-item:last-child { border-bottom: none; }
+
+	@media (min-width: 1024px) {
+		.bf-item:nth-last-child(2) { border-bottom: none; }
+	}
+
+	/* ─── Trigger button ─────────────────────────── */
+	.bf-trigger {
+		width: 100%;
+		padding: 1.75rem 0;
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+		text-align: left;
+		background: none;
+		border: none;
+		cursor: pointer;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	/* ─── Chevron icon box ───────────────────────── */
+	.bf-chevron {
+		flex-shrink: 0;
+		width: 40px;
+		height: 40px;
+		border-radius: 8px;
+		border: 2px solid #ffffff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #ffffff;
+		transition: border-color 0.2s ease, color 0.2s ease;
+		margin-top: 2px;
+	}
+
+	.bf-chevron svg { color: inherit; transition: transform 0.3s ease; }
+
+	.bf-trigger:hover .bf-chevron {
+		border-color: #D5FF00;
+		color: #D5FF00;
+	}
+
+	.bf-item.is-open .bf-chevron {
+		border-color: #D5FF00;
+		color: #D5FF00;
+	}
+
+	.bf-item.is-open .bf-chevron svg { transform: rotate(90deg); }
+
+	/* ─── Question text ──────────────────────────── */
+	.bf-question {
+		color: #ffffff;
+		font-size: 1.125rem;
+		font-weight: 700;
+		line-height: 1.4;
+		transition: color 0.2s ease;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 1024px) { .bf-question { font-size: 1.25rem; } }
+
+	.bf-trigger:hover .bf-question,
+	.bf-item.is-open .bf-question { color: #D5FF00; }
+
+	/* ─── Answer (collapse/expand) ───────────────── */
+	.bf-answer-wrap {
+		display: grid;
+		grid-template-rows: 0fr;
+		transition: grid-template-rows 0.3s ease;
+		padding-left: calc(40px + 1.25rem);
+	}
+
+	.bf-item.is-open .bf-answer-wrap { grid-template-rows: 1fr; }
+
+	.bf-answer {
+		overflow: hidden;
+		color: rgba(255, 255, 255, 0.9);
+		font-size: 1rem;
+		font-weight: 300;
+		line-height: 1.625;
+		font-family: 'Poppins', system-ui, sans-serif;
+		padding-bottom: 0;
+	}
+
+	.bf-item.is-open .bf-answer { padding-bottom: 1.75rem; }
+	:global(.bf-answer-link) {
+		color: #ffffff;
+		text-decoration: underline;
+		text-underline-offset: 3px;
+		transition: color 0.2s ease;
+	}
+
+	:global(.bf-answer-link:hover) { color: #D5FF00; }
+</style>
+
+<script>
+	(function () {
+		document.querySelectorAll<HTMLElement>('.bf-trigger').forEach((trigger) => {
+			trigger.addEventListener('click', () => {
+				const item = trigger.closest('.bf-item') as HTMLElement;
+				const isOpen = item.classList.contains('is-open');
+
+				// Close all
+				document.querySelectorAll('.bf-item.is-open').forEach((el) => {
+					el.classList.remove('is-open');
+					el.querySelector('.bf-trigger')?.setAttribute('aria-expanded', 'false');
+				});
+
+				// Open clicked if it was closed
+				if (!isOpen) {
+					item.classList.add('is-open');
+					trigger.setAttribute('aria-expanded', 'true');
+				}
+			});
+		});
+	})();
+</script>

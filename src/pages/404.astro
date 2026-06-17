@@ -1,0 +1,122 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import logo from "../assets/logo.webp";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title="Page not found — Haveaspot" description="This page could not be found." />
+		<style>
+			*, *::before, *::after { box-sizing: border-box; }
+			* { margin: 0; }
+			html { font-size: 16px; }
+			body {
+				background: #ffffff;
+				color: #021300;
+				display: grid;
+				font-family: "Poppins", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+				-webkit-font-smoothing: antialiased;
+				line-height: 1.5;
+				min-height: 100vh;
+				place-items: center;
+				text-rendering: optimizeLegibility;
+				-webkit-text-size-adjust: 100%;
+			}
+			main {
+				display: grid;
+				gap: 1.5rem;
+				padding: 2rem 1.25rem;
+				place-items: center;
+				text-align: center;
+				width: min(100%, 36rem);
+			}
+			.site-logo {
+				height: 40px;
+				width: auto;
+				display: block;
+				object-fit: contain;
+				object-position: center;
+				margin-bottom: 0.25rem;
+				overflow: visible;
+			}
+			.badge {
+				background: #edfeed;
+				border: 1px solid #d5fcd5;
+				border-radius: 999px;
+				color: #0a7a0d;
+				display: inline-block;
+				font-size: 0.75rem;
+				font-weight: 600;
+				letter-spacing: 0.05em;
+				padding: 0.25rem 0.75rem;
+				text-transform: uppercase;
+			}
+			h1 {
+				font-size: clamp(1.75rem, 5vw, 2.5rem);
+				font-weight: 700;
+				letter-spacing: -0.02em;
+				line-height: 1.15;
+				white-space: nowrap;
+			}
+			p {
+				color: #4b5563;
+				font-size: 1.0625rem;
+				max-width: 32rem;
+			}
+			.cta-row {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.75rem;
+				justify-content: center;
+				margin-top: 0.5rem;
+			}
+			.btn {
+				align-items: center;
+				border-radius: 0.625rem;
+				display: inline-flex;
+				font-family: "Poppins", ui-sans-serif, system-ui, sans-serif;
+				font-size: 1rem;
+				font-weight: 600;
+				gap: 0.4rem;
+				min-height: 2.75rem;
+				padding: 0.625rem 1.25rem;
+				text-decoration: none;
+				transition: background 0.15s ease;
+			}
+			.btn-primary { background: #0aad0a; color: #ffffff; }
+			.btn-primary:hover { background: #089208; }
+			.btn-secondary {
+				background: #ffffff;
+				border: 1px solid #d5fcd5;
+				color: #021300;
+			}
+			.btn-secondary:hover { background: #edfeed; }
+			footer {
+				border-top: 1px solid #e5e7eb;
+				color: #6b7280;
+				font-size: 0.8125rem;
+				margin-top: 1.5rem;
+				padding-top: 1.25rem;
+				width: 100%;
+			}
+			footer a { color: #0a7a0d; text-decoration: none; }
+			footer a:hover { text-decoration: underline; }
+		</style>
+	</head>
+	<body>
+		<main>
+			<img src={logo.src} alt="Haveaspot" class="site-logo" />
+			<span class="badge">404 &middot; Not found</span>
+			<h1>Looks like that spot isn&rsquo;t here.</h1>
+			<p>Maybe it moved, or maybe it never existed. Try heading back to our homepage or drop us a line if you think this is a mistake.</p>
+			<div class="cta-row">
+				<a class="btn btn-primary" href="/">&larr; Back to Haveaspot</a>
+				<a class="btn btn-secondary" href="mailto:hello@haveaspot.com">Email hello@haveaspot.com</a>
+			</div>
+			<footer>
+				&copy; 2026 Haveaspot Ltd. All Rights Reserved.
+			</footer>
+		</main>
+	</body>
+</html>

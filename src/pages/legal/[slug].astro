@@ -1,0 +1,239 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const docs = await getCollection("legal");
+  return docs.map((doc) => ({
+    params: { slug: doc.id },
+    props: { doc },
+  }));
+}
+
+const { doc } = Astro.props;
+const { Content } = await render(doc);
+const { title, description, effectiveDate, lastUpdated, version } = doc.data;
+---
+
+<Layout title={`${title} | Haveaspot`} description={description}>
+  <div class="legal-hero">
+    <div class="legal-hero-inner">
+      <p class="legal-eyebrow">Legal</p>
+      <h1 class="legal-title">{title}</h1>
+      <div class="legal-meta">
+        <span>Effective: {effectiveDate}</span>
+        {lastUpdated !== effectiveDate && <span>Last Updated: {lastUpdated}</span>}
+        {version && <span>Version {version}</span>}
+      </div>
+    </div>
+  </div>
+
+  <div class="legal-body">
+    <div class="legal-prose">
+      <Content />
+    </div>
+  </div>
+</Layout>
+
+<style>
+  /* Hero */
+  .legal-hero {
+    background-color: #021300;
+    padding: 5rem 1rem 4rem;
+  }
+
+  .legal-hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .legal-eyebrow {
+    font-family: "Poppins", system-ui, sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #d5ff00;
+    margin: 0 0 1rem;
+  }
+
+  .legal-title {
+    font-family: "Poppins", system-ui, sans-serif;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.15;
+    margin: 0 0 1.5rem;
+  }
+
+  .legal-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    font-family: "Poppins", system-ui, sans-serif;
+    font-size: 0.875rem;
+    color: #ffffff;
+  }
+
+  /* Body container */
+  .legal-body {
+    padding: 4rem 1rem 6rem;
+  }
+
+  .legal-prose {
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: "Poppins", system-ui, sans-serif;
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    color: #021300;
+  }
+
+  /* Headings */
+  .legal-prose :global(h1) {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin: 2.5rem 0 1rem;
+    line-height: 1.2;
+    color: #021300;
+  }
+
+  .legal-prose :global(h2) {
+    font-size: 1.375rem;
+    font-weight: 700;
+    margin: 3rem 0 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #021300;
+    color: #021300;
+    line-height: 1.3;
+  }
+
+  .legal-prose :global(h3) {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    margin: 2rem 0 0.5rem;
+    color: #021300;
+  }
+
+  /* Paragraphs */
+  .legal-prose :global(p) {
+    margin: 0 0 1rem;
+  }
+
+  /* Lists */
+  .legal-prose :global(ul),
+  .legal-prose :global(ol) {
+    margin: 0.5rem 0 1rem 1.5rem;
+    padding: 0;
+  }
+
+  .legal-prose :global(li) {
+    margin-bottom: 0.4rem;
+  }
+
+  .legal-prose :global(li > ul),
+  .legal-prose :global(li > ol) {
+    margin-top: 0.4rem;
+    margin-bottom: 0.25rem;
+  }
+
+  /* Strong / em */
+  .legal-prose :global(strong) {
+    font-weight: 600;
+    color: #021300;
+  }
+
+  .legal-prose :global(em) {
+    font-style: italic;
+  }
+
+  /* Links */
+  .legal-prose :global(a) {
+    color: #021300;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+  }
+
+  .legal-prose :global(a:hover) {
+    color: #0aad0a;
+  }
+
+  /* Horizontal rule */
+  .legal-prose :global(hr) {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 2.5rem 0;
+  }
+
+  /* Blockquote (used for notices) */
+  .legal-prose :global(blockquote) {
+    border-left: 4px solid #d5ff00;
+    margin: 1.5rem 0;
+    padding: 0.75rem 1.25rem;
+    background-color: #f9fafb;
+    color: #021300;
+  }
+
+  /* Tables — used in Privacy Policy */
+  .legal-prose :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0 2rem;
+    font-size: 0.875rem;
+    overflow-x: auto;
+    display: block;
+  }
+
+  .legal-prose :global(thead) {
+    background-color: #021300;
+    color: #ffffff;
+  }
+
+  .legal-prose :global(th) {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .legal-prose :global(td) {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: top;
+  }
+
+  .legal-prose :global(tbody tr:nth-child(even)) {
+    background-color: #f9fafb;
+  }
+
+  /* UPPERCASE disclaimer blocks (limitation of liability clauses) */
+  .legal-prose :global(h3 + p:not(:has(strong))),
+  .legal-prose :global(p:first-line) {
+    /* handled by content itself */
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .legal-hero {
+      padding: 3.5rem 1rem 3rem;
+    }
+
+    .legal-body {
+      padding: 2.5rem 1rem 4rem;
+    }
+
+    .legal-prose {
+      font-size: 0.9rem;
+    }
+
+    .legal-prose :global(h2) {
+      font-size: 1.2rem;
+      margin-top: 2.25rem;
+    }
+
+    .legal-prose :global(h3) {
+      font-size: 1rem;
+    }
+  }
+</style>

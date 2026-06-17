@@ -1,0 +1,153 @@
+---
+---
+
+<section class="mod-section">
+	<div class="mod-container">
+		<div class="mod-grid">
+
+			<!-- Text content -->
+			<div class="mod-text">
+				<h2 class="mod-heading">Free for You, Supported by Bookers</h2>
+				<p class="mod-body">
+					We believe cost shouldn't be a barrier to having the best tools. That's why Haveaspot is <strong>totally free for spots to use</strong>. We do this by charging the Booker a small Booking Fee. It's a model that allows us to support you, while bookers get to support a local spot they care about. We call it: <strong>Book a spot, support a spot.</strong>
+				</p>
+			</div>
+
+			<!-- Image 1 -->
+			<div class="mod-image mod-image--1">
+				<img src="/HAS-Model-Image1.webp" alt="Community venue space" class="mod-img" />
+			</div>
+
+			<!-- Image 2 -->
+			<div class="mod-image mod-image--2">
+				<img src="/HAS-Model-Image2.webp" alt="Venue booking in action" class="mod-img" />
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<style>
+	/* ─── Section ─────────────────────────────────── */
+	.mod-section {
+		width: 100%;
+		padding: 4rem 0;
+		background-color: #ffffff;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 1024px) { .mod-section { padding: 6rem 0; } }
+
+	/* ─── Container ──────────────────────────────── */
+	.mod-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		padding: 0 1rem;
+		box-sizing: border-box;
+	}
+
+	/* ─── Grid ───────────────────────────────────── */
+	.mod-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+		align-items: stretch;
+	}
+
+	@media (min-width: 768px) {
+		.mod-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.mod-grid {
+			grid-template-columns: repeat(12, minmax(0, 1fr));
+		}
+	}
+
+	/* ─── Text ───────────────────────────────────── */
+	.mod-text {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 1.5rem;
+		order: 1;
+	}
+
+	@media (min-width: 768px) {
+		.mod-text { grid-column: span 2; order: 1; }
+	}
+
+	@media (min-width: 1024px) {
+		.mod-text {
+			grid-column: 7 / span 6;
+			order: 3;
+			padding-left: 2rem;
+		}
+	}
+
+	/* ─── Heading ────────────────────────────────── */
+	.mod-heading {
+		color: #021300;
+		font-size: 2rem;
+		font-weight: 800;
+		line-height: 1.2;
+		letter-spacing: -0.02em;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px) { .mod-heading { font-size: 2.25rem; } }
+
+	/* ─── Body ───────────────────────────────────── */
+	.mod-body {
+		color: #021300;
+		font-size: 1rem;
+		font-weight: 400;
+		line-height: 1.625;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px) { .mod-body { font-size: 1.0625rem; } }
+
+	.mod-body strong { font-weight: 700; }
+
+	/* ─── Image containers ───────────────────────── */
+	.mod-image {
+		border: 2px solid #021300;
+		border-radius: 12px;
+		overflow: hidden;
+		background-color: #d1d5db;
+		position: relative;
+		height: 300px;
+	}
+
+	@media (min-width: 768px) { .mod-image { height: 500px; } }
+
+	.mod-image--1 { order: 2; }
+	.mod-image--2 { order: 3; }
+
+	@media (min-width: 1024px) {
+		.mod-image--1 {
+			grid-column: 1 / span 3;
+			order: 1;
+		}
+		.mod-image--2 {
+			grid-column: 4 / span 3;
+			order: 2;
+		}
+	}
+
+	/* ─── Image ──────────────────────────────────── */
+	.mod-img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		border-radius: 0;
+	}
+</style>

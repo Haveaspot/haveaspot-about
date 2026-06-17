@@ -1,0 +1,182 @@
+---
+---
+
+<section class="ctas-section">
+	<div class="ctas-container">
+		<div class="ctas-card">
+
+			<!-- Left: Text + Button -->
+			<div class="ctas-left">
+				<div class="ctas-text">
+					<h2 class="ctas-heading">
+						Unlock The Power Of Online Booking For Your Spot
+					</h2>
+					<p class="ctas-body">
+						<strong>See exactly how our platform helps local venues thrive.</strong> Book a one-on-one demo with our team to explore features designed to help you manage less and earn more.
+					</p>
+				</div>
+				<div class="ctas-actions">
+					<a href="/book-a-demo" class="ctas-btn">Book A Demo</a>
+				</div>
+			</div>
+
+			<!-- Right: Image -->
+			<div class="ctas-right">
+				<div class="ctas-image">
+					<img src="/HAS-CTAForSpots-Image.webp" alt="A modern community venue surrounded by gardens" />
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<style>
+	/* ─── Section ─────────────────────────────────── */
+	.ctas-section {
+		width: 100%;
+		padding: 4rem 0;
+		background-color: #ffffff;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 1024px) { .ctas-section { padding: 6rem 0; } }
+
+	/* ─── Container ──────────────────────────────── */
+	.ctas-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		padding: 0 1rem;
+		box-sizing: border-box;
+	}
+
+	/* ─── Card ───────────────────────────────────── */
+	.ctas-card {
+		border: 2px solid #021300;
+		border-radius: 12px;
+		padding: 2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+		align-items: center;
+	}
+
+	@media (min-width: 768px)  { .ctas-card { padding: 3rem; } }
+	@media (min-width: 1024px) {
+		.ctas-card {
+			flex-direction: row;
+			align-items: stretch;
+			padding: 4rem 5rem;
+			gap: 5rem;
+		}
+	}
+
+	/* ─── Left column ────────────────────────────── */
+	.ctas-left {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	@media (min-width: 1024px) { .ctas-left { width: 50%; } }
+
+	.ctas-text {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	/* ─── Heading ────────────────────────────────── */
+	.ctas-heading {
+		color: #021300;
+		font-size: 2.5rem;
+		font-weight: 800;
+		line-height: 0.95;
+		letter-spacing: -0.02em;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px)  { .ctas-heading { font-size: 3.5rem; } }
+	@media (min-width: 1024px) { .ctas-heading { font-size: clamp(3rem, 4.5vw, 4.5rem); } }
+
+	/* ─── Body copy ──────────────────────────────── */
+	.ctas-body {
+		color: #021300;
+		font-size: 1rem;
+		line-height: 1.625;
+		font-weight: 300;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	.ctas-body strong { font-weight: 700; color: #021300; }
+
+	/* ─── Button ─────────────────────────────────── */
+	.ctas-actions { margin-top: auto; }
+
+	.ctas-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #021300;
+		color: #ffffff;
+		text-decoration: none;
+		border: none;
+		border-radius: 6px;
+		height: 44px;
+		width: 100%;
+		font-size: 16px;
+		font-weight: 500;
+		font-family: 'Poppins', system-ui, sans-serif;
+		transition: background-color 0.2s ease;
+		box-sizing: border-box;
+	}
+
+	@media (min-width: 640px) { .ctas-btn { width: 150px; } }
+
+	.ctas-btn:hover {
+		background-color: #0AAD0A;
+		text-decoration: none;
+		color: #ffffff;
+	}
+
+	/* ─── Right column: image ────────────────────── */
+	.ctas-right {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	@media (min-width: 1024px) { .ctas-right { width: 50%; } }
+
+	.ctas-image {
+		width: 100%;
+		border: 2px solid #021300;
+		border-radius: 12px;
+		overflow: hidden;
+		background-color: #e5e7eb;
+		height: 300px;
+		position: relative;
+	}
+
+	@media (min-width: 768px)  { .ctas-image { height: 400px; } }
+	@media (min-width: 1024px) { .ctas-image { height: 100%; min-height: 400px; } }
+
+	.ctas-placeholder {
+		position: absolute;
+		inset: 0;
+		background-color: #d1d5db;
+	}
+
+	.ctas-image img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 0;
+		display: block;
+	}
+</style>

@@ -1,0 +1,391 @@
+---
+const faqs = [
+	{
+		question: "How do you support community Venues?",
+		answer: "We are passionate about these spaces! We built Haveaspot to bridge the gap between community venues and the people who need them. Most importantly, we don't take any commission from the venue's hire fee. Every penny you pay for the venue goes directly to them, helping them cover costs and keep their doors open.",
+	},
+	{
+		question: "How does Haveaspot make money?",
+		answer: "We charge a small Booking Fee on top of the Hire Cost. This allows us to offer our platform for free to community venues, ensuring they have access to the digital tools they need to thrive without eating into their income.",
+	},
+	{
+		question: "Is my booking confirmed straight away?",
+		answer: "Not automatically. When you submit a Booking Request, you are asking the Venue to confirm your reservation. A Booking is only created once the Venue accepts your request through the Platform. Until then, your date is not guaranteed. If the Venue rejects your request or it expires without a response, any hold on your payment is automatically released.",
+	},
+	{
+		question: "When does payment actually leave my account?",
+		answer: "When you submit a Booking Request, we place a pre-authorisation hold on your payment method for the Total Fee. This reserves the funds but does not charge you. Payment is only captured once the Venue confirms your Booking. If your request is rejected or expires, the hold is released — though the time it takes to clear depends on your bank or card provider.",
+	},
+	{
+		question: "Is my payment secure?",
+		answer: "Absolutely. To ensure transactions are processed safely and securely, we use Stripe, the global leader in payment processing. We do not store your card details directly.",
+	},
+	{
+		question: "Are you responsible for my booking?",
+		answer: "Think of Haveaspot as the matchmaker. We connect you with the venue and handle the secure payment, but your actual booking agreement is directly with the Venue itself. They are responsible for the condition of the space, honoring the date, and following safety laws.",
+	},
+	{
+		question: "Do you provide insurance?",
+		answer: "No, Haveaspot does not provide general liability insurance for bookings. It is the sole responsibility of the venue owner or operator to maintain appropriate liability insurance for their space.",
+	},
+	{
+		question: "Can I cancel or amend my booking?",
+		answer: "Yes. If you cancel within 48 hours of your Booking being confirmed (and the event is more than 14 days away), you receive a full refund of the Total Fee minus a small Cancellation Administration Fee of 3% + £0.30 to cover payment processing costs. Outside of that grace period: cancellations more than 14 days before the event receive a 100% refund of the Hire Cost; 7–14 days receives a 50% refund; less than 7 days is non-refundable. The Haveaspot Booking Fee is non-refundable outside the grace period. To amend a booking, you can submit a reschedule request up to 14 days before the scheduled start time.",
+	},
+	{
+		question: "What if the Venue cancels my booking?",
+		answer: "If a Venue cancels your confirmed Booking at any time, you will receive a full 100% refund of the Total Fee — including both the Hire Cost and the Haveaspot Booking Fee. We will also do our best to help you find alternative premises, though we are not obligated to do so.",
+	},
+	{
+		question: "Are there specific rules for using a spot?",
+		answer: "Yes! Each venue has its own 'House Rules' which you will see during the booking process. Generally, we ask you to treat the venue with care, leave it tidy, be considerate of neighbours, and follow standard laws. Being a 'good guest' helps these community spaces thrive!",
+	},
+	{
+		question: "Am I responsible if my guests cause damage?",
+		answer: "Yes. As the Booker, you are responsible for the conduct of all guests, attendees, and anyone else you bring to the Listed Premises during your Booking. If you or your guests cause damage beyond normal wear and tear, you are liable for the cost of repairs. It is worth keeping this in mind when planning events with large numbers of attendees.",
+	},
+];
+---
+
+<section class="faq-section">
+	<div class="faq-container">
+		<div class="faq-card">
+
+			<!-- Header -->
+			<div class="faq-header">
+				<div class="faq-header-text">
+					<h2 class="faq-heading">Common Questions</h2>
+					<p class="faq-subheading"><strong>Learn the ins and outs of booking on Haveaspot.</strong> Find answers to common questions or contact us for help anytime.</p>
+				</div>
+
+				<div class="faq-btns">
+					<a href="https://support.haveaspot.com" class="faq-btn-outline">
+						<span class="faq-btn-label">Support</span>
+						<span class="faq-btn-icon">
+							<!-- handshake icon -->
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+								<path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/>
+							</svg>
+						</span>
+					</a>
+
+					<a href="/contact" class="faq-btn-lime">
+						<span class="faq-btn-label">Contact Us</span>
+						<span class="faq-btn-icon faq-btn-icon--dark">
+							<!-- arrow up right -->
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M7 7h10v10"/><path d="M7 17 17 7"/>
+							</svg>
+						</span>
+					</a>
+				</div>
+			</div>
+
+			<!-- FAQ Grid -->
+			<div class="faq-grid">
+				{faqs.map((item, i) => (
+					<div class="faq-item" data-index={i}>
+						<button class="faq-trigger" aria-expanded="false">
+							<span class="faq-chevron" aria-hidden="true">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="m9 18 6-6-6-6"/>
+								</svg>
+							</span>
+							<span class="faq-question">{item.question}</span>
+						</button>
+						<div class="faq-answer-wrap">
+							<div class="faq-answer">{item.answer}</div>
+						</div>
+					</div>
+				))}
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<style>
+	/* ─── Section ─────────────────────────────────── */
+	.faq-section {
+		width: 100%;
+		padding: 4rem 0;
+		background-color: #ffffff;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 1024px) { .faq-section { padding: 6rem 0; } }
+
+	/* ─── Container ──────────────────────────────── */
+	.faq-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		padding: 0 1rem;
+		box-sizing: border-box;
+	}
+
+	/* ─── Dark green card ────────────────────────── */
+	.faq-card {
+		background-color: #0E491F;
+		border-radius: 12px;
+		padding: 2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+	}
+
+	@media (min-width: 768px)  { .faq-card { padding: 3rem; } }
+	@media (min-width: 1024px) { .faq-card { padding: 4rem 5rem; } }
+
+	/* ─── Header ─────────────────────────────────── */
+	.faq-header {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		align-items: flex-start;
+	}
+
+	@media (min-width: 1024px) {
+		.faq-header {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: flex-start;
+			gap: 4rem;
+		}
+	}
+
+	.faq-header-text {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.faq-heading {
+		color: #ffffff;
+		font-size: 2.5rem;
+		font-weight: 800;
+		line-height: 0.95;
+		letter-spacing: -0.02em;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px)  { .faq-heading { font-size: 3.5rem; } }
+	@media (min-width: 1024px) { .faq-heading { font-size: clamp(3rem, 4.5vw, 4.5rem); } }
+
+	.faq-subheading {
+		color: rgba(255, 255, 255, 0.9);
+		font-size: 1rem;
+		font-weight: 300;
+		line-height: 1.625;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 1024px) {
+		.faq-subheading { white-space: nowrap; }
+	}
+
+	.faq-subheading strong { color: #ffffff; font-weight: 700; }
+
+	/* ─── Button group ───────────────────────────── */
+	.faq-btns {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		flex-shrink: 0;
+		width: 100%;
+	}
+
+	@media (min-width: 640px) { .faq-btns { flex-direction: row; } }
+	@media (min-width: 1024px) { .faq-btns { flex-direction: column; width: auto; align-self: flex-start; } }
+
+	/* Shared button base */
+	.faq-btn-outline,
+	.faq-btn-lime {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-radius: 6px;
+		height: 44px;
+		padding: 0 4px 0 1.25rem;
+		width: 100%;
+		box-sizing: border-box;
+		text-decoration: none;
+		font-size: 15px;
+		font-weight: 500;
+		font-family: 'Poppins', system-ui, sans-serif;
+		transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+	}
+
+	@media (min-width: 640px) {
+		.faq-btn-outline,
+		.faq-btn-lime { width: 200px; }
+	}
+
+	/* Outline style — Support */
+	.faq-btn-outline {
+		border: 2px solid #ffffff;
+		color: #ffffff;
+	}
+
+	.faq-btn-outline:hover {
+		border-color: #D5FF00;
+		color: #D5FF00;
+		text-decoration: none;
+	}
+
+	/* Lime style — Contact Us */
+	.faq-btn-lime {
+		background-color: #D5FF00;
+		color: #021300;
+		border: none;
+	}
+
+	.faq-btn-lime:hover { background-color: #ffffff; text-decoration: none; }
+
+	.faq-btn-icon {
+		width: 36px;
+		height: 36px;
+		border-radius: 4px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		color: inherit;
+	}
+
+	.faq-btn-icon svg { color: inherit; }
+
+	.faq-btn-icon--dark {
+		background-color: #0E491F;
+		color: #D5FF00;
+	}
+
+	.faq-btn-lime:hover .faq-btn-icon--dark { color: #ffffff; }
+
+	/* ─── FAQ grid (2-col desktop) ───────────────── */
+	.faq-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		column-gap: 4rem;
+	}
+
+	@media (min-width: 1024px) {
+		.faq-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	}
+
+	/* ─── FAQ item ───────────────────────────────── */
+	.faq-item {
+		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	}
+
+	/* Remove bottom border from last item, and last two on desktop */
+	.faq-item:last-child { border-bottom: none; }
+
+	@media (min-width: 1024px) {
+		.faq-item:nth-last-child(2) { border-bottom: none; }
+	}
+
+	/* ─── Trigger button ─────────────────────────── */
+	.faq-trigger {
+		width: 100%;
+		padding: 1.75rem 0;
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+		text-align: left;
+		background: none;
+		border: none;
+		cursor: pointer;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	/* ─── Chevron icon box ───────────────────────── */
+	.faq-chevron {
+		flex-shrink: 0;
+		width: 40px;
+		height: 40px;
+		border-radius: 8px;
+		border: 2px solid #ffffff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #ffffff;
+		transition: border-color 0.2s ease, color 0.2s ease, transform 0.3s ease;
+		margin-top: 2px;
+	}
+
+	.faq-chevron svg { color: inherit; transition: transform 0.3s ease; }
+
+	.faq-trigger:hover .faq-chevron {
+		border-color: #D5FF00;
+		color: #D5FF00;
+	}
+
+	.faq-item.is-open .faq-chevron {
+		border-color: #D5FF00;
+		color: #D5FF00;
+	}
+
+	.faq-item.is-open .faq-chevron svg { transform: rotate(90deg); }
+
+	/* ─── Question text ──────────────────────────── */
+	.faq-question {
+		color: #ffffff;
+		font-size: 1.125rem;
+		font-weight: 700;
+		line-height: 1.4;
+		transition: color 0.2s ease;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 1024px) { .faq-question { font-size: 1.25rem; } }
+
+	.faq-trigger:hover .faq-question,
+	.faq-item.is-open .faq-question { color: #D5FF00; }
+
+	/* ─── Answer (collapse/expand) ───────────────── */
+	.faq-answer-wrap {
+		display: grid;
+		grid-template-rows: 0fr;
+		transition: grid-template-rows 0.3s ease;
+		padding-left: calc(40px + 1.25rem); /* indent to align with question text */
+	}
+
+	.faq-item.is-open .faq-answer-wrap { grid-template-rows: 1fr; }
+
+	.faq-answer {
+		overflow: hidden;
+		color: rgba(255, 255, 255, 0.9);
+		font-size: 1rem;
+		font-weight: 300;
+		line-height: 1.625;
+		font-family: 'Poppins', system-ui, sans-serif;
+		padding-bottom: 0;
+	}
+
+	.faq-item.is-open .faq-answer { padding-bottom: 1.75rem; }
+</style>
+
+<script>
+	(function () {
+		document.querySelectorAll<HTMLElement>('.faq-trigger').forEach((trigger) => {
+			trigger.addEventListener('click', () => {
+				const item = trigger.closest('.faq-item') as HTMLElement;
+				const isOpen = item.classList.contains('is-open');
+
+				// Close all
+				document.querySelectorAll('.faq-item.is-open').forEach((el) => {
+					el.classList.remove('is-open');
+					el.querySelector('.faq-trigger')?.setAttribute('aria-expanded', 'false');
+				});
+
+				// Open clicked if it was closed
+				if (!isOpen) {
+					item.classList.add('is-open');
+					trigger.setAttribute('aria-expanded', 'true');
+				}
+			});
+		});
+	})();
+</script>

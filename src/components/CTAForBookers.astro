@@ -1,0 +1,176 @@
+---
+---
+
+<section class="ctab-section">
+	<div class="ctab-container">
+		<div class="ctab-card">
+
+			<!-- Left: Text + Button -->
+			<div class="ctab-left">
+				<div class="ctab-text">
+					<h2 class="ctab-heading">
+						Find High Quality Local Spaces That Support Your Community
+					</h2>
+					<p class="ctab-body">
+						<strong>See exactly how your bookings help community spots grow.</strong> Access high-quality venues at fair rates designed to help you host better and give back locally.
+					</p>
+				</div>
+				<div class="ctab-actions">
+					<a href="https://haveaspot.com" class="ctab-btn">Find A Spot</a>
+				</div>
+			</div>
+
+			<!-- Right: Image -->
+			<div class="ctab-right">
+				<div class="ctab-image">
+					<img src="/HAS-CTAForBookers-Image.webp" alt="A beautiful community venue surrounded by gardens" />
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<style>
+	/* ─── Section ─────────────────────────────────── */
+	.ctab-section {
+		width: 100%;
+		padding: 4rem 0;
+		background-color: #ffffff;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 1024px) { .ctab-section { padding: 6rem 0; } }
+
+	/* ─── Container ──────────────────────────────── */
+	.ctab-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		padding: 0 1rem;
+		box-sizing: border-box;
+	}
+
+	/* ─── Card ───────────────────────────────────── */
+	.ctab-card {
+		border: 2px solid #021300;
+		border-radius: 12px;
+		padding: 2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+		align-items: center;
+	}
+
+	@media (min-width: 768px)  { .ctab-card { padding: 3rem; } }
+	@media (min-width: 1024px) {
+		.ctab-card {
+			flex-direction: row;
+			align-items: stretch;
+			padding: 4rem 5rem;
+			gap: 5rem;
+		}
+	}
+
+	/* ─── Left column ────────────────────────────── */
+	.ctab-left {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	@media (min-width: 1024px) { .ctab-left { width: 50%; } }
+
+	.ctab-text {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	/* ─── Heading ────────────────────────────────── */
+	.ctab-heading {
+		color: #021300;
+		font-size: 2.5rem;
+		font-weight: 800;
+		line-height: 0.95;
+		letter-spacing: -0.02em;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px)  { .ctab-heading { font-size: 3.5rem; } }
+	@media (min-width: 1024px) { .ctab-heading { font-size: clamp(3rem, 4.5vw, 4.5rem); } }
+
+	/* ─── Body copy ──────────────────────────────── */
+	.ctab-body {
+		color: #021300;
+		font-size: 1rem;
+		line-height: 1.625;
+		font-weight: 300;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	.ctab-body strong { font-weight: 700; color: #021300; }
+
+	/* ─── Button ─────────────────────────────────── */
+	.ctab-actions { margin-top: auto; }
+
+	.ctab-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #021300;
+		color: #ffffff;
+		text-decoration: none;
+		border: none;
+		border-radius: 6px;
+		height: 44px;
+		width: 100%;
+		font-size: 16px;
+		font-weight: 500;
+		font-family: 'Poppins', system-ui, sans-serif;
+		transition: background-color 0.2s ease;
+		box-sizing: border-box;
+	}
+
+	@media (min-width: 640px) { .ctab-btn { width: 150px; } }
+
+	.ctab-btn:hover {
+		background-color: #0AAD0A;
+		text-decoration: none;
+		color: #ffffff;
+	}
+
+	/* ─── Right column: image ────────────────────── */
+	.ctab-right {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	@media (min-width: 1024px) { .ctab-right { width: 50%; } }
+
+	.ctab-image {
+		width: 100%;
+		border: 2px solid #021300;
+		border-radius: 12px;
+		overflow: hidden;
+		background-color: #e5e7eb;
+		height: 300px;
+		position: relative;
+	}
+
+	@media (min-width: 768px)  { .ctab-image { height: 400px; } }
+	@media (min-width: 1024px) { .ctab-image { height: 100%; min-height: 400px; } }
+
+.ctab-image img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 0;
+		display: block;
+	}
+</style>

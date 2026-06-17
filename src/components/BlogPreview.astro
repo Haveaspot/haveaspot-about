@@ -1,0 +1,432 @@
+---
+const RSS_URL    = 'https://blog.haveaspot.com/rss.xml';
+const BLOG_BASE  = 'https://blog.haveaspot.com';
+const PREVIEW_COUNT = 4;
+
+const KNOWN_CATEGORIES = [
+	'Articles',
+	'Company News',
+	'Guides for Bookers',
+	'Guides for Venues',
+];
+
+interface BlogPost {
+	title: string;
+	link: string;
+	description: string;
+	pubDate: string;
+	category: string;
+	heroImage: string;
+}
+
+// ── Helpers ──────────────────────────────────────────────
+function decodeHtmlEntities(str: string): string {
+	return str
+		.replace(/&apos;/g, "'")
+		.replace(/&#39;/g, "'")
+		.replace(/&quot;/g, '"')
+		.replace(/&#34;/g, '"')
+		.replace(/&amp;/g, '&')
+		.replace(/&lt;/g, '<')
+		.replace(/&gt;/g, '>')
+		.replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)));
+}
+
+function extractTag(xml: string, tag: string): string {
+	const m = xml.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`, 'i'));
+	return m ? m[1].replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1').trim() : '';
+}
+
+function extractMeta(html: string, property: string): string {
+	const m = html.match(new RegExp(`<meta[^>]+property="${property}"[^>]+content="([^"]+)"`, 'i'))
+		?? html.match(new RegExp(`<meta[^>]+content="([^"]+)"[^>]+property="${property}"`, 'i'));
+	return m ? m[1].trim() : '';
+}
+
+function extractCategory(html: string): string {
+	for (const cat of KNOWN_CATEGORIES) {
+		if (html.includes(cat)) return cat;
+	}
+	return '';
+}
+
+// ── Parse RSS ─────────────────────────────────────────────
+async function fetchRssPosts(): Promise<Pick<BlogPost, 'title' | 'link' | 'description' | 'pubDate'>[]> {
+	const res = await fetch(RSS_URL, { signal: AbortSignal.timeout(8000) });
+	if (!res.ok) throw new Error(`RSS ${res.status}`);
+	const xml = await res.text();
+	const items = xml.match(/<item>[\s\S]*?<\/item>/g) ?? [];
+	// Sort by pubDate descending (newest first)
+	const parsed = items.map((item) => ({
+		title:       decodeHtmlEntities(extractTag(item, 'title')),
+		link:        extractTag(item, 'link'),
+		description: extractTag(item, 'description'),
+		pubDate:     extractTag(item, 'pubDate'),
+	}));
+	parsed.sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
+	return parsed.slice(0, PREVIEW_COUNT);
+}
+
+// ── Fetch OG image + category from each post page ────────
+async function enrichPost(post: Pick<BlogPost, 'title' | 'link' | 'description' | 'pubDate'>): Promise<BlogPost> {
+	try {
+		const res = await fetch(post.link, { signal: AbortSignal.timeout(8000) });
+		if (!res.ok) return { ...post, heroImage: '', category: '' };
+		const html = await res.text();
+		return {
+			...post,
+			heroImage: extractMeta(html, 'og:image'),
+			category:  extractCategory(html),
+		};
+	} catch {
+		return { ...post, heroImage: '', category: '' };
+	}
+}
+
+// ── Build ─────────────────────────────────────────────────
+let posts: BlogPost[] = [];
+
+try {
+	const rssPosts = await fetchRssPosts();
+	posts = await Promise.all(rssPosts.map(enrichPost));
+} catch {
+	// Blog unreachable at build time — empty state renders
+}
+---
+
+<section class="blog-preview">
+	<div class="bp-container">
+		<div class="bp-card">
+
+			<!-- Header -->
+			<div class="bp-header">
+				<div class="bp-header-text">
+					<h2 class="bp-heading">
+						Tips, Tricks &amp;<br />Community Insights
+					</h2>
+					<p class="bp-subtext">
+						<strong>Discover practical advice</strong> on how to manage your space, attract more hirers, and simplify your admin.
+					</p>
+				</div>
+
+				<a href={BLOG_BASE} class="bp-cta" target="_blank" rel="noopener noreferrer">
+					<span class="bp-cta-label">Go To Insights</span>
+					<span class="bp-cta-icon">
+						<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M7 7h10v10"/><path d="M7 17 17 7"/>
+						</svg>
+					</span>
+				</a>
+			</div>
+
+			<!-- Grid -->
+			{posts.length > 0 ? (
+				<div class="bp-grid">
+					{posts.map((post) => (
+						<a href={post.link} class="bp-post" target="_blank" rel="noopener noreferrer">
+
+							<!-- Image -->
+							<div class="bp-image">
+								{post.category && (
+									<span class="bp-badge">{post.category}</span>
+								)}
+								{post.heroImage ? (
+									<img src={post.heroImage} alt={post.title} loading="lazy" />
+								) : (
+									<div class="bp-image-placeholder"></div>
+								)}
+							</div>
+
+							<!-- Text -->
+							<div class="bp-post-body">
+								<h3 class="bp-post-title">{post.title}</h3>
+
+								<div class="bp-read-btn">
+									<span class="bp-read-label">Read Article</span>
+									<span class="bp-read-icon">
+										<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+											<path d="M7 7h10v10"/><path d="M7 17 17 7"/>
+										</svg>
+									</span>
+								</div>
+							</div>
+
+						</a>
+					))}
+				</div>
+			) : (
+				<div class="bp-empty">
+					<p>Visit our blog for tips, tricks and community insights.</p>
+					<a href={BLOG_BASE} class="bp-empty-link">Go to blog →</a>
+				</div>
+			)}
+
+		</div>
+	</div>
+</section>
+
+<style>
+	/* ─── Section ─────────────────────────────────── */
+	.blog-preview {
+		width: 100%;
+		padding: 4rem 0;
+		background-color: #ffffff;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 1024px) { .blog-preview { padding: 6rem 0; } }
+
+	/* ─── Container ──────────────────────────────── */
+	.bp-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		padding: 0 1rem;
+		box-sizing: border-box;
+	}
+
+	/* ─── Dark green card ────────────────────────── */
+	.bp-card {
+		background-color: #0E491F;
+		border-radius: 12px;
+		padding: 2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+		overflow: hidden;
+	}
+
+	@media (min-width: 768px)  { .bp-card { padding: 3rem; } }
+	@media (min-width: 1024px) { .bp-card { padding: 4rem 5rem; } }
+
+	/* ─── Header ─────────────────────────────────── */
+	.bp-header {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		align-items: flex-start;
+	}
+
+	@media (min-width: 1024px) {
+		.bp-header {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: flex-start;
+		}
+	}
+
+	.bp-header-text {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.bp-heading {
+		color: #ffffff;
+		font-size: 2.5rem;
+		font-weight: 800;
+		line-height: 0.95;
+		letter-spacing: -0.02em;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px)  { .bp-heading { font-size: 3.5rem; } }
+	@media (min-width: 1024px) { .bp-heading { font-size: clamp(3rem, 4.5vw, 4.5rem); } }
+
+	.bp-subtext {
+		color: rgba(255, 255, 255, 0.9);
+		font-size: 1rem;
+		font-weight: 300;
+		line-height: 1.625;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 1024px) {
+		.bp-subtext { white-space: nowrap; }
+	}
+
+	.bp-subtext strong { color: #ffffff; font-weight: 700; }
+
+	/* ─── CTA button (lime, on dark background) ── */
+	.bp-cta {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		background-color: #D5FF00;
+		color: #021300;
+		text-decoration: none;
+		border-radius: 6px;
+		height: 44px;
+		padding: 0 4px 0 1.25rem;
+		width: 100%;
+		flex-shrink: 0;
+		box-sizing: border-box;
+		transition: opacity 0.2s ease;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 640px)  { .bp-cta { width: 200px; } }
+	@media (min-width: 1024px) { .bp-cta { width: 200px; align-self: flex-start; margin-top: 0.5rem; } }
+
+	.bp-cta:hover { background-color: #ffffff; text-decoration: none; }
+
+	.bp-cta-label {
+		font-weight: 500;
+		font-size: 15px;
+		white-space: nowrap;
+	}
+
+	.bp-cta-icon {
+		width: 36px;
+		height: 36px;
+		background-color: #0E491F;
+		border-radius: 4px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+	}
+
+	.bp-cta-icon svg { color: #D5FF00; }
+	.bp-cta:hover .bp-cta-icon svg { color: #ffffff; }
+
+	/* ─── Grid ───────────────────────────────────── */
+	.bp-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+		align-items: stretch;
+	}
+
+	@media (min-width: 768px)  { .bp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+	@media (min-width: 1230px) { .bp-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+	/* ─── Post card ──────────────────────────────── */
+	.bp-post {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	.bp-post:hover { text-decoration: none; }
+
+	/* ─── Image ──────────────────────────────────── */
+	.bp-image {
+		position: relative;
+		aspect-ratio: 16 / 10;
+		border-radius: 12px;
+		overflow: hidden;
+		background-color: #0a3015;
+	}
+
+	.bp-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 0;
+		display: block;
+		transition: transform 0.5s ease;
+	}
+
+	.bp-post:hover .bp-image img { transform: scale(1.05); }
+
+	.bp-image-placeholder {
+		width: 100%;
+		height: 100%;
+		background-color: #0a3015;
+	}
+
+	/* ─── Category badge ─────────────────────────── */
+	.bp-badge {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 10;
+		background-color: #D5FF00;
+		color: #021300;
+		font-size: 0.75rem;
+		font-weight: 700;
+		padding: 0.4rem 1rem;
+		border-radius: 0 0 12px 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+		letter-spacing: 0.02em;
+		white-space: nowrap;
+	}
+
+	/* ─── Post body ──────────────────────────────── */
+	.bp-post-body {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		flex-grow: 1;
+		gap: 1.5rem;
+	}
+
+	.bp-post-title {
+		color: #ffffff;
+		font-size: 1.125rem;
+		font-weight: 700;
+		line-height: 1.35;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	/* ─── Read Article button (outline on dark) ── */
+	.bp-read-btn {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border: 2px solid #ffffff;
+		border-radius: 6px;
+		height: 44px;
+		padding: 0 4px 0 1.25rem;
+		box-sizing: border-box;
+		color: #ffffff;
+		transition: border-color 0.3s ease, color 0.3s ease;
+	}
+
+	.bp-post:hover .bp-read-btn {
+		border-color: #D5FF00;
+		color: #D5FF00;
+	}
+
+	.bp-read-label {
+		font-size: 14px;
+		font-weight: 500;
+		font-family: 'Poppins', system-ui, sans-serif;
+		white-space: nowrap;
+	}
+
+	.bp-read-icon {
+		width: 36px;
+		height: 36px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+	}
+
+	.bp-read-icon svg { color: #ffffff; }
+	.bp-post:hover .bp-read-icon svg { color: #D5FF00; }
+
+	/* ─── Empty state ────────────────────────────── */
+	.bp-empty {
+		text-align: center;
+		color: rgba(255, 255, 255, 0.7);
+		padding: 2rem 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	.bp-empty p { margin: 0 0 1rem; }
+
+	.bp-empty-link {
+		color: #D5FF00;
+		font-weight: 600;
+		text-decoration: none;
+	}
+
+	.bp-empty-link:hover { text-decoration: underline; }
+</style>

@@ -1,0 +1,313 @@
+---
+const features = [
+	{
+		icon: "/icons/SolutionFeature1.webp",
+		titleBold: "Automated",
+		titleLight: "Enquiries",
+		description: "Say goodbye to messy inbox threads. All enquiries are captured, tracked, and managed in one central place.",
+	},
+	{
+		icon: "/icons/SolutionFeature2.webp",
+		titleBold: "Instant",
+		titleLight: "Online Payments",
+		description: "Collect fees upfront and securely. No more chasing bank transfers or handling cash envelopes.",
+	},
+	{
+		icon: "/icons/SolutionFeature3.webp",
+		titleBold: "Synchronised",
+		titleLight: "Digital Calendars",
+		description: "Keep your availability up to date automatically. Prevent double bookings and save hours of manual entry.",
+	},
+	{
+		icon: "/icons/SolutionFeature4.webp",
+		titleBold: "Simplified",
+		titleLight: "Communication",
+		description: "Automate booking confirmations and reminders. Give your bookers a professional experience from start to finish.",
+	},
+	{
+		icon: "/icons/SolutionFeature5.webp",
+		titleBold: "Free",
+		titleLight: "Professional Tools",
+		description: "Access premium management features at no cost to your venue. We believe in supporting community spaces, not taxing them.",
+	},
+];
+---
+
+<section class="sol-section">
+	<div class="sol-container">
+
+		<!-- Header -->
+		<div class="sol-header">
+			<div class="sol-header-text">
+				<h2 class="sol-heading">A Complete Solution For Your Spot</h2>
+				<p class="sol-subheading"><strong>We've built Haveaspot to solve the real-world problems venues face.</strong></p>
+				<p class="sol-subheading">Our platform provides everything you need to manage your space efficiently and professionally:</p>
+			</div>
+		</div>
+
+		<!-- 6-card grid (3+3 on desktop) -->
+		<div class="sol-grid">
+			{features.map((f) => (
+				<div class="sol-card">
+					<div class="sol-icon-wrap">
+						<img src={f.icon} alt={`${f.titleBold} ${f.titleLight}`} class="sol-icon" />
+					</div>
+					<div class="sol-card-text">
+						<h3 class="sol-card-title">
+							<strong>{f.titleBold}</strong> {f.titleLight}
+						</h3>
+						<p class="sol-card-body">{f.description}</p>
+					</div>
+				</div>
+			))}
+
+			<!-- CTA card -->
+			<div class="sol-card sol-card--cta">
+				<div class="sol-cta-text">
+					<h3 class="sol-cta-heading">Want To See It In Action?</h3>
+					<p class="sol-cta-body">
+						Our platform is purpose-built for community venues. Get in touch and we'll walk you through everything Haveaspot has to offer — from automated bookings to instant payments and beyond.
+					</p>
+				</div>
+				<a href="/contact" class="sol-cta-btn">Contact Us</a>
+			</div>
+		</div>
+
+	</div>
+</section>
+
+<style>
+	/* ─── Section ─────────────────────────────────── */
+	.sol-section {
+		width: 100%;
+		padding: 4rem 0;
+		background-color: #ffffff;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 1024px) { .sol-section { padding: 6rem 0; } }
+
+	/* ─── Container ──────────────────────────────── */
+	.sol-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		padding: 0 1rem;
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+	}
+
+	/* ─── Header ─────────────────────────────────── */
+	.sol-header {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	@media (min-width: 1024px) {
+		/* Mirror the card grid so the text right-edge aligns with card 2 */
+		.sol-header {
+			display: grid;
+			grid-template-columns: repeat(6, minmax(0, 1fr));
+			gap: 1.5rem;
+		}
+	}
+
+	.sol-header-text {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	@media (min-width: 1024px) {
+		/* Span cols 1-4 = same footprint as cards 1 + 2 */
+		.sol-header-text { grid-column: span 4; }
+		.sol-heading { white-space: nowrap; }
+		.sol-subheading { white-space: nowrap; }
+	}
+
+	.sol-heading {
+		color: #021300;
+		font-size: 2.5rem;
+		font-weight: 800;
+		line-height: 1.1;
+		letter-spacing: -0.02em;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px)  { .sol-heading { font-size: 3.5rem; } }
+	@media (min-width: 1024px) { .sol-heading { font-size: clamp(3rem, 4.5vw, 4.5rem); } }
+
+	.sol-subheading {
+		color: #021300;
+		font-size: 1rem;
+		font-weight: 300;
+		line-height: 1.625;
+		margin: 0;
+		max-width: 48rem;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px) { .sol-subheading { font-size: 1.125rem; } }
+
+	.sol-subheading strong { font-weight: 700; }
+
+	/* ─── CTA card ───────────────────────────────── */
+	.sol-card--cta {
+		background-color: #021300;
+		border-color: #021300;
+		justify-content: space-between;
+	}
+
+	.sol-cta-text {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.sol-cta-heading {
+		color: #ffffff;
+		font-size: 1.25rem;
+		font-weight: 700;
+		line-height: 1.3;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px) { .sol-cta-heading { font-size: 1.5rem; } }
+
+	.sol-cta-body {
+		color: rgba(255, 255, 255, 0.85);
+		font-size: 0.9375rem;
+		font-weight: 300;
+		line-height: 1.625;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px) { .sol-cta-body { font-size: 1rem; } }
+
+	.sol-cta-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #ffffff;
+		color: #021300;
+		text-decoration: none;
+		border: none;
+		border-radius: 6px;
+		height: 44px;
+		width: 100%;
+		font-size: 16px;
+		font-weight: 600;
+		font-family: 'Poppins', system-ui, sans-serif;
+		transition: background-color 0.2s ease, color 0.2s ease;
+		box-sizing: border-box;
+		margin-top: auto;
+	}
+
+	@media (min-width: 640px) { .sol-cta-btn { width: 150px; } }
+
+	.sol-cta-btn:hover {
+		background-color: #0AAD0A;
+		color: #ffffff;
+		text-decoration: none;
+	}
+
+	/* ─── Grid ───────────────────────────────────── */
+	/*
+	  Mobile:  1 col
+	  Tablet:  2 col
+	  Desktop: 6-col — row 1: cards 1-3 (span 2 each)
+	                    row 2: cards 4-5 centred (card 4 starts at col 2)
+	*/
+	.sol-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+		align-items: stretch;
+	}
+
+	@media (min-width: 768px) {
+		.sol-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	}
+
+	@media (min-width: 1024px) {
+		.sol-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+	}
+
+	/* ─── Card ───────────────────────────────────── */
+	.sol-card {
+		border: 2px solid #021300;
+		border-radius: 12px;
+		padding: 2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		transition: box-shadow 0.3s ease;
+	}
+
+	.sol-card:hover { box-shadow: 0 10px 30px rgba(2, 19, 0, 0.12); }
+
+	@media (min-width: 1024px) {
+		.sol-card { grid-column: span 2; padding: 2.5rem; }
+	}
+
+	/* ─── Icon ───────────────────────────────────── */
+	.sol-icon-wrap {
+		width: 80px;
+		height: 80px;
+		background-color: #ffffff;
+		border-radius: 12px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		overflow: hidden;
+	}
+
+	@media (min-width: 768px) { .sol-icon-wrap { width: 100px; height: 100px; } }
+
+	.sol-icon {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		display: block;
+		border-radius: 0;
+	}
+
+	/* ─── Card text ──────────────────────────────── */
+	.sol-card-text {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		flex-grow: 1;
+	}
+
+	.sol-card-title {
+		color: #021300;
+		font-size: 1.25rem;
+		font-weight: 400;
+		line-height: 1.3;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px) { .sol-card-title { font-size: 1.5rem; } }
+
+	.sol-card-title strong { font-weight: 700; }
+
+	.sol-card-body {
+		color: #021300;
+		font-size: 0.9375rem;
+		font-weight: 400;
+		line-height: 1.625;
+		margin: 0;
+		opacity: 0.9;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px) { .sol-card-body { font-size: 1rem; } }
+</style>

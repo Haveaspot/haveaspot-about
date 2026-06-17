@@ -1,0 +1,186 @@
+---
+---
+
+<section class="vts-section">
+	<div class="vts-container">
+		<div class="vts-grid">
+
+			<!-- Text -->
+			<div class="vts-text">
+				<div class="vts-text-inner">
+					<h2 class="vts-heading">Built For Every Kind Of Community Venue</h2>
+					<p class="vts-body">
+						Whether you manage a village hall, community centre, school facility, sports club, or an independent commercial space — <strong>Haveaspot gives every kind of venue the tools to manage bookings, get paid, and grow.</strong>
+					</p>
+				</div>
+				<a href="/beta" class="vts-btn">Join Beta</a>
+			</div>
+
+			<!-- 2×2 image grid -->
+			<div class="vts-images">
+				<div class="vts-media">
+					<img src="/HAS-VenueTypes-1.png" alt="Community venue" class="vts-panel-img" />
+				</div>
+				<div class="vts-media">
+					<img src="/HAS-VenueTypes-2.png" alt="Village hall" class="vts-panel-img" />
+				</div>
+				<div class="vts-media">
+					<img src="/HAS-VenueTypes-3.png" alt="School facility" class="vts-panel-img" />
+				</div>
+				<div class="vts-media">
+					<img src="/HAS-VenueTypes-4.png" alt="Sports and leisure space" class="vts-panel-img" />
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<style>
+	/* ─── Section ─────────────────────────────────── */
+	.vts-section {
+		width: 100%;
+		padding: 4rem 0;
+		background-color: #ffffff;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 1024px) { .vts-section { padding: 6rem 0; } }
+
+	/* ─── Container ──────────────────────────────── */
+	.vts-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		padding: 0 1rem;
+		box-sizing: border-box;
+	}
+
+	/* ─── Outer grid ─────────────────────────────── */
+	/*
+	  Mobile:  1 col — text, then images
+	  Tablet:  1 col — same
+	  Desktop: 12 cols — text(1-5) | images(6-12)
+	*/
+	.vts-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+		align-items: stretch;
+	}
+
+	@media (min-width: 1024px) {
+		.vts-grid {
+			grid-template-columns: repeat(12, minmax(0, 1fr));
+		}
+	}
+
+	/* ─── Text block ─────────────────────────────── */
+	.vts-text {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 2rem;
+	}
+
+	@media (min-width: 1024px) {
+		.vts-text {
+			grid-column: 1 / 6;
+			grid-row: 1;
+			padding-right: 2rem;
+		}
+	}
+
+	.vts-text-inner {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.vts-heading {
+		color: #021300;
+		font-size: 2rem;
+		font-weight: 700;
+		line-height: 1.2;
+		letter-spacing: -0.02em;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 1024px) { .vts-heading { font-size: 2.25rem; } }
+
+	.vts-body {
+		color: #021300;
+		font-size: 1rem;
+		font-weight: 400;
+		line-height: 1.625;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	.vts-body strong { font-weight: 700; }
+
+	/* ─── Button ─────────────────────────────────── */
+	.vts-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #021300;
+		color: #ffffff;
+		text-decoration: none;
+		border: none;
+		border-radius: 6px;
+		height: 44px;
+		width: 100%;
+		font-size: 16px;
+		font-weight: 500;
+		font-family: 'Poppins', system-ui, sans-serif;
+		transition: background-color 0.2s ease;
+		box-sizing: border-box;
+	}
+
+	@media (min-width: 640px) { .vts-btn { width: 150px; } }
+
+	.vts-btn:hover {
+		background-color: #0AAD0A;
+		text-decoration: none;
+		color: #ffffff;
+	}
+
+	/* ─── 2×2 images container ───────────────────── */
+	.vts-images {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+	}
+
+	@media (min-width: 1024px) {
+		.vts-images {
+			grid-column: 7 / 13;
+			grid-row: 1;
+			gap: 1.5rem;
+		}
+	}
+
+	/* ─── Individual image panel ─────────────────── */
+	.vts-media {
+		border: 2px solid #021300;
+		border-radius: 12px;
+		overflow: hidden;
+		position: relative;
+		background-color: #e5e7eb;
+		height: 160px;
+	}
+
+	@media (min-width: 768px)  { .vts-media { height: 220px; } }
+	@media (min-width: 1024px) { .vts-media { height: 240px; } }
+
+	.vts-panel-img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 0;
+		display: block;
+	}
+</style>

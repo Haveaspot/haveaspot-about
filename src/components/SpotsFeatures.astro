@@ -1,0 +1,250 @@
+---
+const features = [
+	{
+		icon: "/icons/SpotFeatureEasy.webp",
+		title: "Easily Get Going With Haveaspot",
+		description: "Launch without the legwork. We manage your onboarding and optimise your profile for immediate success.",
+	},
+	{
+		icon: "/icons/SpotFeatureSmart.webp",
+		title: "Smarter Tools For Better Experiences",
+		description: "Create memorable visits. Our smart tech removes friction, ensuring a seamless experience for every guest.",
+	},
+	{
+		icon: "/icons/SpotFeatureSimple.webp",
+		title: "Simply Manage Your Bookings",
+		description: "Master your schedule. Handle requests, sync availability, and organise every booking in one simple dashboard.",
+	},
+	{
+		icon: "/icons/SpotFeaturePromo.webp",
+		title: "Better Promotion Of Your Spot",
+		description: "Get discovered effortlessly. We make it simple for bookers to find your listing and reserve a spot instantly.",
+	},
+];
+---
+
+<section class="sf-section">
+	<div class="sf-container">
+
+		<!-- Header -->
+		<div class="sf-header">
+			<div class="sf-header-text">
+				<h2 class="sf-heading">Easily Smarter, Simply Better</h2>
+				<p class="sf-body">
+					<strong>Propel your spot forward.</strong> We've built a dynamic booking engine designed around your needs, giving you the power to thrive.
+				</p>
+			</div>
+
+			<a href="https://haveaspot.com/users/sign_up" class="sf-btn">List Your Spot</a>
+		</div>
+
+		<!-- Grid -->
+		<div class="sf-grid">
+			{features.map((feature) => {
+				const words = feature.title.split(' ');
+				const bold = words[0];
+				const regular = words.slice(1).join(' ');
+				return (
+					<div class="sf-card">
+						<div class="sf-icon">
+							<img src={feature.icon} alt={feature.title} width="100" height="100" />
+						</div>
+						<div class="sf-text">
+							<h3 class="sf-card-title">
+								<strong>{bold}</strong>{regular ? ` ${regular}` : ''}
+							</h3>
+							<p class="sf-card-body">{feature.description}</p>
+						</div>
+					</div>
+				);
+			})}
+		</div>
+
+	</div>
+</section>
+
+<style>
+	/* ─── Section ─────────────────────────────────── */
+	.sf-section {
+		width: 100%;
+		padding: 4rem 0;
+		background-color: #ffffff;
+		font-family: 'Poppins', system-ui, sans-serif;
+		overflow: hidden;
+	}
+
+	@media (min-width: 1024px) { .sf-section { padding: 6rem 0; } }
+
+	/* ─── Container ──────────────────────────────── */
+	.sf-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		padding: 0 1rem;
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+	}
+
+	/* ─── Header ─────────────────────────────────── */
+	.sf-header {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		align-items: flex-start;
+	}
+
+	@media (min-width: 768px) {
+		.sf-header {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: flex-start;
+		}
+	}
+
+	/* At 4-col breakpoint, mirror the card grid so text aligns to 3rd card's right edge */
+	@media (min-width: 1230px) {
+		.sf-header {
+			display: grid;
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+			gap: 2rem;
+			align-items: start;
+		}
+	}
+
+	.sf-header-text {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	@media (min-width: 1230px) {
+		.sf-header-text { grid-column: 1 / 4; }
+	}
+
+	.sf-heading {
+		color: #021300;
+		font-size: 2rem;
+		font-weight: 700;
+		line-height: 1.1;
+		letter-spacing: -0.02em;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 1024px) { .sf-heading { font-size: 2.25rem; } }
+
+	.sf-body {
+		color: #021300;
+		font-size: 1rem;
+		font-weight: 400;
+		line-height: 1.625;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	.sf-body strong { font-weight: 700; }
+
+	/* ─── Button ─────────────────────────────────── */
+	.sf-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #021300;
+		color: #ffffff;
+		text-decoration: none;
+		border: none;
+		border-radius: 6px;
+		height: 44px;
+		width: 100%;
+		font-size: 16px;
+		font-weight: 500;
+		font-family: 'Poppins', system-ui, sans-serif;
+		transition: background-color 0.2s ease;
+		box-sizing: border-box;
+		flex-shrink: 0;
+	}
+
+	@media (min-width: 640px)  { .sf-btn { width: 150px; } }
+	@media (min-width: 1230px) { .sf-btn { justify-self: end; align-self: start; } }
+
+	.sf-btn:hover {
+		background-color: #0AAD0A;
+		text-decoration: none;
+		color: #ffffff;
+	}
+
+	/* ─── Grid ───────────────────────────────────── */
+	.sf-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+		align-items: stretch;
+	}
+
+	@media (min-width: 768px)  { .sf-grid { gap: 2rem; } }
+	@media (min-width: 1230px) { .sf-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+	/* ─── Card ───────────────────────────────────── */
+	.sf-card {
+		background-color: #ffffff;
+		border: 2px solid #021300;
+		border-radius: 12px;
+		padding: 1rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		transition: box-shadow 0.3s ease;
+	}
+
+	@media (min-width: 768px) { .sf-card { padding: 2rem; gap: 1.5rem; } }
+
+	.sf-card:hover { box-shadow: 0 10px 30px rgba(2, 19, 0, 0.12); }
+
+	/* ─── Icon ───────────────────────────────────── */
+	.sf-icon {
+		width: 60px;
+		height: 60px;
+		flex-shrink: 0;
+	}
+
+	@media (min-width: 768px) { .sf-icon { width: 100px; height: 100px; } }
+
+	.sf-icon img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		border-radius: 0;
+	}
+
+	/* ─── Card text ──────────────────────────────── */
+	.sf-text {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.sf-card-title {
+		color: #021300;
+		font-size: 1rem;
+		font-weight: 400;
+		line-height: 1.2;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px) { .sf-card-title { font-size: 1.5rem; } }
+
+	.sf-card-title strong { font-weight: 700; }
+
+	.sf-card-body {
+		color: #021300;
+		font-size: 0.875rem;
+		font-weight: 400;
+		line-height: 1.5;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px) { .sf-card-body { font-size: 1rem; line-height: 1.625; } }
+</style>

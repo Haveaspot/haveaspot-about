@@ -1,0 +1,410 @@
+---
+const faqs = [
+	{
+		question: "Is It Really Free?",
+		answer: "It is completely free. There are no setup fees, monthly subscriptions, or hidden costs for you to use the platform, both during the Beta Program and after.",
+	},
+	{
+		question: "Do You Charge A Commission?",
+		answer: "No. We do not charge the Venue any commission whatsoever. Every penny of your Hire Cost goes directly to you. Instead, we charge the Booker a small Booking Fee on top of your Hire Cost at the time of booking. This means your income is never touched, and the platform remains completely free for community spots.",
+	},
+	{
+		question: "What Do You Do To Make Payments Secure?",
+		answer: "We use Stripe, a globally trusted payment processor, to handle all transactions. This ensures that your income is processed securely and deposited directly into your account.",
+	},
+	{
+		question: "What Is Stripe And Why Do I Need It?",
+		answer: "Stripe is the payment processor we use to handle all transactions on the Platform. To list your space and receive payments, you must create a free Stripe Connect Account and complete their identity verification process. Stripe pays your Hire Cost directly into your nominated bank account after each booking — Haveaspot never holds your funds. You will be guided through setting up your Stripe account as part of the onboarding process.",
+	},
+	{
+		question: "When Will I Receive My Money?",
+		answer: "Your Hire Cost is paid out directly to your bank account by Stripe once payment is processed at the time of booking confirmation. The first payout from a new Stripe Connect account typically takes around 7 days; subsequent payouts are usually made within 2–7 days of payment being captured. Payout timings are managed entirely by Stripe and may vary. Haveaspot does not hold or process your funds at any point.",
+	},
+	{
+		question: "How Do I Set My Hire Cost?",
+		answer: "You have full control over your Hire Cost — you set your own rates and can update them at any time. If you are VAT registered, your Hire Cost must include the applicable VAT. If you are not VAT registered, simply set your rate without it. Our system handles the calculation and collection automatically at the time of booking.",
+	},
+	{
+		question: "Do You Provide Insurance?",
+		answer: "While we provide the platform for bookings, venues are responsible for their own public liability and building insurance. We recommend checking with your provider to ensure you are covered for third-party hires.",
+	},
+	{
+		question: "How Do You Support Spots?",
+		answer: "We offer a suite of free tools to manage bookings, payments, and promotion. Additionally, our support team is available to help with onboarding and any technical queries you may have.",
+	},
+	{
+		question: "How Do I Add A Spot?",
+		answer: "Adding a spot is simple. Click the 'Add A Spot' button, follow the step-by-step onboarding wizard to input your venue details, upload photos, and set your availability.",
+	},
+	{
+		question: "Do I Have To Accept Every Booking Request?",
+		answer: "No. When a Booker submits a request for your Listed Premises, you are responsible for reviewing it and deciding whether to confirm or decline. A Booking is only created once you accept the request. This gives you full control over who uses your space.",
+	},
+	{
+		question: "Can I Set My Own Rules For My Space?",
+		answer: "Yes. You can publish your own House Rules and Venue Terms as part of your listing, which Bookers must acknowledge before completing a Booking. Please be aware that in the event of any conflict between your rules and our Venue Service Agreement — including our Cancellation Policy — our terms take precedence. For full details, please refer to our Venue Service Agreement.",
+	},
+	{
+		question: "Why Have I Already Received An Enquiry?",
+		answer: "We may have pre-listed your venue using publicly available information to help bookers find you. You can claim your listing at any time to take full control of your profile. If you would prefer your venue is not listed, simply contact us and we will remove it promptly.",
+	},
+	{
+		question: "Can I Block Out Dates For My Own Use?",
+		answer: "Absolutely. You have a 'Block Date' feature in your dashboard that instantly removes availability from the public calendar, ensuring you never get double-booked.",
+	},
+	{
+		question: "What Happens If I Need To Cancel A Confirmed Booking?",
+		answer: "You can cancel a confirmed Booking, but please be aware of the financial consequences. If you cancel, the Booker is entitled to a full 100% refund of the Total Fee — including the Hire Cost and the Haveaspot Booking Fee. Because Stripe's payment processing costs are non-refundable, you will be liable to reimburse Haveaspot the Booking Fee for the cancelled booking. We strongly recommend only accepting bookings you are confident you can honour. For full details, please refer to our <a href='/legal/venue-service-agreement' class='vf-answer-link'>Venue Service Agreement</a>.",
+	},
+];
+---
+
+<section class="vf-section">
+	<div class="vf-container">
+		<div class="vf-card">
+
+			<!-- Header -->
+			<div class="vf-header">
+				<div class="vf-header-text">
+					<h2 class="vf-heading">Common Questions</h2>
+					<p class="vf-subheading">
+						<strong>Learn the ins and outs of listing on Haveaspot.</strong> Find answers to common questions or contact us for help anytime.
+					</p>
+				</div>
+
+				<div class="vf-btns">
+					<a href="https://support.haveaspot.com" class="vf-btn-outline">
+						<span class="vf-btn-label">Support</span>
+						<span class="vf-btn-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+								<path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/>
+							</svg>
+						</span>
+					</a>
+
+					<a href="/contact" class="vf-btn-lime">
+						<span class="vf-btn-label">Contact Us</span>
+						<span class="vf-btn-icon vf-btn-icon--dark">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M7 7h10v10"/><path d="M7 17 17 7"/>
+							</svg>
+						</span>
+					</a>
+				</div>
+			</div>
+
+			<!-- FAQ Grid -->
+			<div class="vf-grid">
+				{faqs.map((item, i) => (
+					<div class="vf-item" data-index={i}>
+						<button class="vf-trigger" aria-expanded="false">
+							<span class="vf-chevron" aria-hidden="true">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="m9 18 6-6-6-6"/>
+								</svg>
+							</span>
+							<span class="vf-question">{item.question}</span>
+						</button>
+						<div class="vf-answer-wrap">
+							<div class="vf-answer" set:html={item.answer} />
+						</div>
+					</div>
+				))}
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<style>
+	/* ─── Section ─────────────────────────────────── */
+	.vf-section {
+		width: 100%;
+		padding: 4rem 0;
+		background-color: #ffffff;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 1024px) { .vf-section { padding: 6rem 0; } }
+
+	/* ─── Container ──────────────────────────────── */
+	.vf-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		padding: 0 1rem;
+		box-sizing: border-box;
+	}
+
+	/* ─── Dark green card ────────────────────────── */
+	.vf-card {
+		background-color: #0E491F;
+		border-radius: 12px;
+		padding: 2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+	}
+
+	@media (min-width: 768px)  { .vf-card { padding: 3rem; } }
+	@media (min-width: 1024px) { .vf-card { padding: 4rem 5rem; } }
+
+	/* ─── Header ─────────────────────────────────── */
+	.vf-header {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		align-items: flex-start;
+	}
+
+	@media (min-width: 1024px) {
+		.vf-header {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: flex-start;
+			gap: 4rem;
+		}
+	}
+
+	.vf-header-text {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.vf-heading {
+		color: #ffffff;
+		font-size: 2.5rem;
+		font-weight: 800;
+		line-height: 0.95;
+		letter-spacing: -0.02em;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 768px)  { .vf-heading { font-size: 3.5rem; } }
+	@media (min-width: 1024px) { .vf-heading { font-size: clamp(3rem, 4.5vw, 4.5rem); } }
+
+	.vf-subheading {
+		color: rgba(255, 255, 255, 0.9);
+		font-size: 1rem;
+		font-weight: 300;
+		line-height: 1.625;
+		margin: 0;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	.vf-subheading strong { color: #ffffff; font-weight: 700; }
+
+	@media (min-width: 1024px) {
+		.vf-subheading { white-space: nowrap; }
+	}
+
+	/* ─── Button group ───────────────────────────── */
+	.vf-btns {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		flex-shrink: 0;
+		width: 100%;
+	}
+
+	@media (min-width: 640px)  { .vf-btns { flex-direction: row; } }
+	@media (min-width: 1024px) { .vf-btns { flex-direction: column; width: auto; align-self: flex-start; } }
+
+	/* Shared button base */
+	.vf-btn-outline,
+	.vf-btn-lime {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-radius: 6px;
+		height: 44px;
+		padding: 0 4px 0 1.25rem;
+		width: 100%;
+		box-sizing: border-box;
+		text-decoration: none;
+		font-size: 15px;
+		font-weight: 500;
+		font-family: 'Poppins', system-ui, sans-serif;
+		transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+	}
+
+	@media (min-width: 640px) {
+		.vf-btn-outline,
+		.vf-btn-lime { width: 200px; }
+	}
+
+	/* Outline style — Support */
+	.vf-btn-outline {
+		border: 2px solid #ffffff;
+		color: #ffffff;
+	}
+
+	.vf-btn-outline:hover {
+		border-color: #D5FF00;
+		color: #D5FF00;
+		text-decoration: none;
+	}
+
+	/* Lime style — Contact Us */
+	.vf-btn-lime {
+		background-color: #D5FF00;
+		color: #021300;
+		border: none;
+	}
+
+	.vf-btn-lime:hover { background-color: #ffffff; text-decoration: none; }
+
+	.vf-btn-icon {
+		width: 36px;
+		height: 36px;
+		border-radius: 4px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		color: inherit;
+	}
+
+	.vf-btn-icon svg { color: inherit; }
+
+	.vf-btn-icon--dark {
+		background-color: #0E491F;
+		color: #D5FF00;
+	}
+
+	.vf-btn-lime:hover .vf-btn-icon--dark { color: #ffffff; }
+
+	/* ─── FAQ grid (2-col desktop) ───────────────── */
+	.vf-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		column-gap: 4rem;
+	}
+
+	@media (min-width: 1024px) {
+		.vf-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	}
+
+	/* ─── FAQ item ───────────────────────────────── */
+	.vf-item {
+		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	}
+
+	.vf-item:last-child { border-bottom: none; }
+
+	@media (min-width: 1024px) {
+		.vf-item:nth-last-child(2) { border-bottom: none; }
+	}
+
+	/* ─── Trigger button ─────────────────────────── */
+	.vf-trigger {
+		width: 100%;
+		padding: 1.75rem 0;
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+		text-align: left;
+		background: none;
+		border: none;
+		cursor: pointer;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	/* ─── Chevron icon box ───────────────────────── */
+	.vf-chevron {
+		flex-shrink: 0;
+		width: 40px;
+		height: 40px;
+		border-radius: 8px;
+		border: 2px solid #ffffff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #ffffff;
+		transition: border-color 0.2s ease, color 0.2s ease;
+	}
+
+	.vf-chevron svg { color: inherit; transition: transform 0.3s ease; }
+
+	.vf-trigger:hover .vf-chevron {
+		border-color: #D5FF00;
+		color: #D5FF00;
+	}
+
+	.vf-item.is-open .vf-chevron {
+		border-color: #D5FF00;
+		color: #D5FF00;
+	}
+
+	.vf-item.is-open .vf-chevron svg { transform: rotate(90deg); }
+
+	/* ─── Question text ──────────────────────────── */
+	.vf-question {
+		color: #ffffff;
+		font-size: 1.125rem;
+		font-weight: 700;
+		line-height: 1.4;
+		transition: color 0.2s ease;
+		font-family: 'Poppins', system-ui, sans-serif;
+	}
+
+	@media (min-width: 1024px) { .vf-question { font-size: 1.25rem; } }
+
+	.vf-trigger:hover .vf-question,
+	.vf-item.is-open .vf-question { color: #D5FF00; }
+
+	/* ─── Answer (collapse/expand) ───────────────── */
+	.vf-answer-wrap {
+		display: grid;
+		grid-template-rows: 0fr;
+		transition: grid-template-rows 0.3s ease;
+		padding-left: calc(40px + 1.25rem);
+	}
+
+	.vf-item.is-open .vf-answer-wrap { grid-template-rows: 1fr; }
+
+	.vf-answer {
+		overflow: hidden;
+		color: rgba(255, 255, 255, 0.9);
+		font-size: 1rem;
+		font-weight: 300;
+		line-height: 1.625;
+		font-family: 'Poppins', system-ui, sans-serif;
+		padding-bottom: 0;
+	}
+
+	.vf-item.is-open .vf-answer { padding-bottom: 1.75rem; }
+
+	:global(.vf-answer-link) {
+		color: #ffffff;
+		text-decoration: underline;
+		text-underline-offset: 3px;
+		transition: color 0.2s ease;
+	}
+
+	:global(.vf-answer-link:hover) { color: #D5FF00; }
+</style>
+
+<script>
+	(function () {
+		document.querySelectorAll<HTMLElement>('.vf-trigger').forEach((trigger) => {
+			trigger.addEventListener('click', () => {
+				const item = trigger.closest('.vf-item') as HTMLElement;
+				const isOpen = item.classList.contains('is-open');
+
+				// Close all
+				document.querySelectorAll('.vf-item.is-open').forEach((el) => {
+					el.classList.remove('is-open');
+					el.querySelector('.vf-trigger')?.setAttribute('aria-expanded', 'false');
+				});
+
+				// Open clicked if it was closed
+				if (!isOpen) {
+					item.classList.add('is-open');
+					trigger.setAttribute('aria-expanded', 'true');
+				}
+			});
+		});
+	})();
+</script>
