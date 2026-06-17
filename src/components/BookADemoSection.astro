@@ -455,18 +455,22 @@ const details = [
 		border-radius: 12px;
 		padding: 2rem;
 		box-sizing: border-box;
+		position: relative;
 	}
 
 	@media (min-width: 768px) { .dem-form-card { padding: 2.5rem; } }
 
 	/* ─── Success ────────────────────────────────── */
 	.dem-success {
+		position: absolute;
+		inset: 0;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		justify-content: center;
 		text-align: center;
 		gap: 1.25rem;
-		padding: 3rem 1rem;
+		padding: 2rem;
 	}
 
 	.dem-success-icon {
@@ -756,6 +760,8 @@ const details = [
 				const json = await res.json();
 
 				if (res.ok && json.ok) {
+					const card = form.closest('.dem-form-card') as HTMLElement;
+					if (card) card.style.minHeight = card.offsetHeight + 'px';
 					form.hidden = true;
 					successEl.hidden = false;
 				} else {

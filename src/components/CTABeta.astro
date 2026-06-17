@@ -281,6 +281,7 @@ const roles = ["Director", "Manager", "Administrator", "Volunteer", "Owner", "Ot
 		padding: 2rem;
 		height: 100%;
 		box-sizing: border-box;
+		position: relative;
 	}
 
 	@media (min-width: 768px) { .ctab-form-card { padding: 2.5rem; } }
@@ -290,14 +291,15 @@ const roles = ["Director", "Manager", "Administrator", "Volunteer", "Owner", "Ot
 
 	/* ─── Success state ──────────────────────────── */
 	.ctab-success {
+		position: absolute;
+		inset: 0;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		text-align: center;
 		gap: 1.25rem;
-		padding: 3rem 1rem;
-		height: 100%;
+		padding: 2rem;
 	}
 
 	.ctab-success-icon {
@@ -615,6 +617,8 @@ const roles = ["Director", "Manager", "Administrator", "Volunteer", "Owner", "Ot
 				const json = await res.json();
 
 				if (res.ok && json.ok) {
+					const card = form.closest('.ctab-form-card') as HTMLElement;
+					if (card) card.style.minHeight = card.offsetHeight + 'px';
 					form.hidden = true;
 					successEl.hidden = false;
 				} else {
