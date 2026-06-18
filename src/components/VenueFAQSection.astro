@@ -386,31 +386,23 @@ const faqs = [
 	:global(.vf-answer-link:hover) { color: #D5FF00; }
 </style>
 
-<script>
-	function initVenueFAQ() {
-		document.querySelectorAll<HTMLElement>('.vf-trigger').forEach((trigger) => {
-			trigger.addEventListener('click', () => {
-				const item = trigger.closest('.vf-item') as HTMLElement;
-				const isOpen = item.classList.contains('is-open');
+<script is:inline>
+	(function () {
+		document.querySelectorAll('.vf-trigger').forEach(function (trigger) {
+			trigger.addEventListener('click', function () {
+				var item = trigger.closest('.vf-item');
+				var isOpen = item.classList.contains('is-open');
 
-				// Close all
-				document.querySelectorAll('.vf-item.is-open').forEach((el) => {
+				document.querySelectorAll('.vf-item.is-open').forEach(function (el) {
 					el.classList.remove('is-open');
-					el.querySelector('.vf-trigger')?.setAttribute('aria-expanded', 'false');
+					el.querySelector('.vf-trigger').setAttribute('aria-expanded', 'false');
 				});
 
-				// Open clicked if it was closed
 				if (!isOpen) {
 					item.classList.add('is-open');
 					trigger.setAttribute('aria-expanded', 'true');
 				}
 			});
 		});
-	}
-
-	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', initVenueFAQ);
-	} else {
-		initVenueFAQ();
-	}
+	})();
 </script>

@@ -367,31 +367,23 @@ const faqs = [
 	.faq-item.is-open .faq-answer { padding-bottom: 1.75rem; }
 </style>
 
-<script>
-	function initFAQ() {
-		document.querySelectorAll<HTMLElement>('.faq-trigger').forEach((trigger) => {
-			trigger.addEventListener('click', () => {
-				const item = trigger.closest('.faq-item') as HTMLElement;
-				const isOpen = item.classList.contains('is-open');
+<script is:inline>
+	(function () {
+		document.querySelectorAll('.faq-trigger').forEach(function (trigger) {
+			trigger.addEventListener('click', function () {
+				var item = trigger.closest('.faq-item');
+				var isOpen = item.classList.contains('is-open');
 
-				// Close all
-				document.querySelectorAll('.faq-item.is-open').forEach((el) => {
+				document.querySelectorAll('.faq-item.is-open').forEach(function (el) {
 					el.classList.remove('is-open');
-					el.querySelector('.faq-trigger')?.setAttribute('aria-expanded', 'false');
+					el.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
 				});
 
-				// Open clicked if it was closed
 				if (!isOpen) {
 					item.classList.add('is-open');
 					trigger.setAttribute('aria-expanded', 'true');
 				}
 			});
 		});
-	}
-
-	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', initFAQ);
-	} else {
-		initFAQ();
-	}
+	})();
 </script>

@@ -387,31 +387,23 @@ const faqs = [
 	:global(.bf-answer-link:hover) { color: #D5FF00; }
 </style>
 
-<script>
-	function initBetaFAQ() {
-		document.querySelectorAll<HTMLElement>('.bf-trigger').forEach((trigger) => {
-			trigger.addEventListener('click', () => {
-				const item = trigger.closest('.bf-item') as HTMLElement;
-				const isOpen = item.classList.contains('is-open');
+<script is:inline>
+	(function () {
+		document.querySelectorAll('.bf-trigger').forEach(function (trigger) {
+			trigger.addEventListener('click', function () {
+				var item = trigger.closest('.bf-item');
+				var isOpen = item.classList.contains('is-open');
 
-				// Close all
-				document.querySelectorAll('.bf-item.is-open').forEach((el) => {
+				document.querySelectorAll('.bf-item.is-open').forEach(function (el) {
 					el.classList.remove('is-open');
-					el.querySelector('.bf-trigger')?.setAttribute('aria-expanded', 'false');
+					el.querySelector('.bf-trigger').setAttribute('aria-expanded', 'false');
 				});
 
-				// Open clicked if it was closed
 				if (!isOpen) {
 					item.classList.add('is-open');
 					trigger.setAttribute('aria-expanded', 'true');
 				}
 			});
 		});
-	}
-
-	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', initBetaFAQ);
-	} else {
-		initBetaFAQ();
-	}
+	})();
 </script>
