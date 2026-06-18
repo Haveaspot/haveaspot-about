@@ -389,21 +389,26 @@ const faqs = [
 
 <script is:inline>
 	(function () {
-		document.querySelectorAll('.bf-trigger').forEach(function (trigger) {
-			trigger.addEventListener('click', function () {
-				var item = trigger.closest('.bf-item');
-				var isOpen = item.classList.contains('is-open');
+		if (window.__hasBetaFaqInit) return;
+		window.__hasBetaFaqInit = true;
+		function initFAQ() {
+			document.querySelectorAll('.bf-trigger').forEach(function (trigger) {
+				trigger.addEventListener('click', function () {
+					var item = trigger.closest('.bf-item');
+					var isOpen = item.classList.contains('is-open');
 
-				document.querySelectorAll('.bf-item.is-open').forEach(function (el) {
-					el.classList.remove('is-open');
-					el.querySelector('.bf-trigger').setAttribute('aria-expanded', 'false');
+					document.querySelectorAll('.bf-item.is-open').forEach(function (el) {
+						el.classList.remove('is-open');
+						el.querySelector('.bf-trigger').setAttribute('aria-expanded', 'false');
+					});
+
+					if (!isOpen) {
+						item.classList.add('is-open');
+						trigger.setAttribute('aria-expanded', 'true');
+					}
 				});
-
-				if (!isOpen) {
-					item.classList.add('is-open');
-					trigger.setAttribute('aria-expanded', 'true');
-				}
 			});
-		});
+		}
+		document.addEventListener('astro:page-load', initFAQ);
 	})();
 </script>

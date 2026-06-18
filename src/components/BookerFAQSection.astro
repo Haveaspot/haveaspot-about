@@ -369,21 +369,26 @@ const faqs = [
 
 <script is:inline>
 	(function () {
-		document.querySelectorAll('.faq-trigger').forEach(function (trigger) {
-			trigger.addEventListener('click', function () {
-				var item = trigger.closest('.faq-item');
-				var isOpen = item.classList.contains('is-open');
+		if (window.__hasBookerFaqInit) return;
+		window.__hasBookerFaqInit = true;
+		function initFAQ() {
+			document.querySelectorAll('.faq-trigger').forEach(function (trigger) {
+				trigger.addEventListener('click', function () {
+					var item = trigger.closest('.faq-item');
+					var isOpen = item.classList.contains('is-open');
 
-				document.querySelectorAll('.faq-item.is-open').forEach(function (el) {
-					el.classList.remove('is-open');
-					el.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
+					document.querySelectorAll('.faq-item.is-open').forEach(function (el) {
+						el.classList.remove('is-open');
+						el.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
+					});
+
+					if (!isOpen) {
+						item.classList.add('is-open');
+						trigger.setAttribute('aria-expanded', 'true');
+					}
 				});
-
-				if (!isOpen) {
-					item.classList.add('is-open');
-					trigger.setAttribute('aria-expanded', 'true');
-				}
 			});
-		});
+		}
+		document.addEventListener('astro:page-load', initFAQ);
 	})();
 </script>
