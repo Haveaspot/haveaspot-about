@@ -19,14 +19,15 @@ import gst2Img from '../assets/images/HAS-GettingStarted-2.webp';
 				<a href="/managed-onboarding" class="gst-btn">Get Help</a>
 			</div>
 
-			<!-- Image 1 (desktop: cols 7-9) -->
-			<div class="gst-media gst-img1">
-				<Image src={gst1Img} alt="Venue manager getting onboarding support" class="gst-panel-img" />
-			</div>
+			<!-- Images side-by-side on mobile; unwrap into 12-col grid on desktop -->
+			<div class="gst-images">
+				<div class="gst-media gst-img1">
+					<Image src={gst1Img} alt="Venue manager getting onboarding support" class="gst-panel-img" />
+				</div>
 
-			<!-- Image 2 (desktop: cols 10-12) -->
-			<div class="gst-media gst-img2">
-				<Image src={gst2Img} alt="Haveaspot venue listing on mobile" class="gst-panel-img" />
+				<div class="gst-media gst-img2">
+					<Image src={gst2Img} alt="Haveaspot venue listing on mobile" class="gst-panel-img" />
+				</div>
 			</div>
 
 		</div>
@@ -149,22 +150,34 @@ import gst2Img from '../assets/images/HAS-GettingStarted-2.webp';
 		color: #ffffff;
 	}
 
+	/* ─── Images wrapper — side-by-side on mobile ── */
+	.gst-images {
+		order: 2;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+	}
+
+	@media (min-width: 768px) {
+		.gst-images { grid-column: 1 / -1; }
+	}
+
+	@media (min-width: 1024px) {
+		/* Unwrap: children join the parent 12-col grid directly */
+		.gst-images { display: contents; }
+	}
+
 	/* ─── Media panels ───────────────────────────── */
 	.gst-media {
 		border: 2px solid #021300;
 		border-radius: 12px;
 		overflow: hidden;
 		position: relative;
-		height: 300px;
+		height: 200px;
 	}
 
 	@media (min-width: 768px)  { .gst-media { height: 500px; } }
 	@media (min-width: 1024px) { .gst-media { height: auto; min-height: 500px; } }
-
-	.gst-placeholder {
-		position: absolute;
-		inset: 0;
-	}
 
 	.gst-panel-img {
 		position: absolute;
@@ -177,28 +190,18 @@ import gst2Img from '../assets/images/HAS-GettingStarted-2.webp';
 	}
 
 	/* ─── Image 1 (desktop cols 7-9) ────────────── */
-	.gst-img1 {
-		order: 2;
-	}
-
 	@media (min-width: 1024px) {
 		.gst-img1 {
 			grid-column: 7 / 10;
 			grid-row: 1;
-			order: unset;
 		}
 	}
 
 	/* ─── Image 2 (desktop cols 10-12) ──────────── */
-	.gst-img2 {
-		order: 3;
-	}
-
 	@media (min-width: 1024px) {
 		.gst-img2 {
 			grid-column: 10 / 13;
 			grid-row: 1;
-			order: unset;
 		}
 	}
 </style>
