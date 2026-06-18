@@ -3,12 +3,6 @@ const RSS_URL    = 'https://blog.haveaspot.com/rss.xml';
 const BLOG_BASE  = 'https://blog.haveaspot.com';
 const PREVIEW_COUNT = 4;
 
-const KNOWN_CATEGORIES = [
-	'Articles',
-	'Company News',
-	'Guides for Bookers',
-	'Guides for Venues',
-];
 
 interface BlogPost {
 	title: string;
@@ -37,58 +31,30 @@ function extractTag(xml: string, tag: string): string {
 	return m ? m[1].replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1').trim() : '';
 }
 
-function extractMeta(html: string, property: string): string {
-	const m = html.match(new RegExp(`<meta[^>]+property="${property}"[^>]+content="([^"]+)"`, 'i'))
-		?? html.match(new RegExp(`<meta[^>]+content="([^"]+)"[^>]+property="${property}"`, 'i'));
-	return m ? m[1].trim() : '';
-}
-
-function extractCategory(html: string): string {
-	for (const cat of KNOWN_CATEGORIES) {
-		if (html.includes(cat)) return cat;
-	}
-	return '';
-}
 
 // ── Parse RSS ─────────────────────────────────────────────
-async function fetchRssPosts(): Promise<Pick<BlogPost, 'title' | 'link' | 'description' | 'pubDate'>[]> {
+async function fetchRssPosts(): Promise<BlogPost[]> {
 	const res = await fetch(RSS_URL, { signal: AbortSignal.timeout(8000) });
 	if (!res.ok) throw new Error(`RSS ${res.status}`);
 	const xml = await res.text();
 	const items = xml.match(/<item>[\s\S]*?<\/item>/g) ?? [];
-	// Sort by pubDate descending (newest first)
 	const parsed = items.map((item) => ({
 		title:       decodeHtmlEntities(extractTag(item, 'title')),
 		link:        extractTag(item, 'link'),
 		description: extractTag(item, 'description'),
 		pubDate:     extractTag(item, 'pubDate'),
+		heroImage:   extractTag(item, 'hasHeroImage'),
+		category:    extractTag(item, 'hasCategory'),
 	}));
 	parsed.sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
 	return parsed.slice(0, PREVIEW_COUNT);
-}
-
-// ── Fetch OG image + category from each post page ────────
-async function enrichPost(post: Pick<BlogPost, 'title' | 'link' | 'description' | 'pubDate'>): Promise<BlogPost> {
-	try {
-		const res = await fetch(post.link, { signal: AbortSignal.timeout(8000) });
-		if (!res.ok) return { ...post, heroImage: '', category: '' };
-		const html = await res.text();
-		return {
-			...post,
-			heroImage: extractMeta(html, 'og:image'),
-			category:  extractCategory(html),
-		};
-	} catch {
-		return { ...post, heroImage: '', category: '' };
-	}
 }
 
 // ── Build ─────────────────────────────────────────────────
 let posts: BlogPost[] = [];
 
 try {
-	const rssPosts = await fetchRssPosts();
-	posts = await Promise.all(rssPosts.map(enrichPost));
+	posts = await fetchRssPosts();
 } catch {
 	// Blog unreachable at build time — empty state renders
 }
