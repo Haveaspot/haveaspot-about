@@ -297,13 +297,15 @@ const steps = [
 		border: none;
 		border-radius: 6px;
 		height: 44px;
-		width: 150px;
+		width: 100%;
 		font-size: 16px;
 		font-weight: 600;
 		font-family: 'Poppins', system-ui, sans-serif;
 		transition: background-color 0.2s ease, color 0.2s ease;
 		box-sizing: border-box;
 	}
+
+	@media (min-width: 640px) { .hiw-btn { width: 150px; } }
 
 	.hiw-btn:hover {
 		background-color: #D5FF00;
