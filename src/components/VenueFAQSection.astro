@@ -387,7 +387,7 @@ const faqs = [
 </style>
 
 <script>
-	(function () {
+	function initVenueFAQ() {
 		document.querySelectorAll<HTMLElement>('.vf-trigger').forEach((trigger) => {
 			trigger.addEventListener('click', () => {
 				const item = trigger.closest('.vf-item') as HTMLElement;
@@ -406,5 +406,11 @@ const faqs = [
 				}
 			});
 		});
-	})();
+	}
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initVenueFAQ);
+	} else {
+		initVenueFAQ();
+	}
 </script>
