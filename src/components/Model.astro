@@ -16,14 +16,15 @@ import modImg2 from '../assets/images/HAS-Model-Image2.webp';
 				</p>
 			</div>
 
-			<!-- Image 1 -->
-			<div class="mod-image mod-image--1">
-				<Image src={modImg1} alt="Community venue space" class="mod-img" />
-			</div>
+			<!-- Images side-by-side on mobile; unwrap into 12-col grid on desktop -->
+			<div class="mod-images">
+				<div class="mod-image mod-image--1">
+					<Image src={modImg1} alt="Community venue space" class="mod-img" />
+				</div>
 
-			<!-- Image 2 -->
-			<div class="mod-image mod-image--2">
-				<Image src={modImg2} alt="Venue booking in action" class="mod-img" />
+				<div class="mod-image mod-image--2">
+					<Image src={modImg2} alt="Venue booking in action" class="mod-img" />
+				</div>
 			</div>
 
 		</div>
@@ -117,19 +118,33 @@ import modImg2 from '../assets/images/HAS-Model-Image2.webp';
 
 	.mod-body strong { font-weight: 700; }
 
+	/* ─── Images wrapper — side-by-side on mobile ── */
+	.mod-images {
+		order: 2;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+	}
+
+	@media (min-width: 768px) {
+		.mod-images { grid-column: 1 / -1; }
+	}
+
+	@media (min-width: 1024px) {
+		.mod-images { display: contents; }
+	}
+
 	/* ─── Image containers ───────────────────────── */
 	.mod-image {
 		border: 2px solid #021300;
 		border-radius: 12px;
 		overflow: hidden;
 		position: relative;
-		height: 300px;
+		height: 200px;
 	}
 
 	@media (min-width: 768px) { .mod-image { height: 500px; } }
-
-	.mod-image--1 { order: 2; }
-	.mod-image--2 { order: 3; }
+	@media (min-width: 1024px) { .mod-image { height: auto; min-height: 500px; } }
 
 	@media (min-width: 1024px) {
 		.mod-image--1 {
