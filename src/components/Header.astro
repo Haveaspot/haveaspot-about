@@ -295,6 +295,10 @@ const urls = {
        MOBILE OVERRIDES
        ========================================== */
 	@media (max-width: 1024px) {
+		.has-header-inner {
+			justify-content: flex-start !important;
+		}
+
 		.mobile-toggle {
 			display: flex !important;
 			background: transparent !important;
@@ -302,6 +306,7 @@ const urls = {
 			color: #021300 !important;
 			cursor: pointer !important;
 			padding: 0.5rem 0 !important;
+			margin-right: 0.75rem !important;
 		}
 
 		.mobile-login-link {
@@ -311,12 +316,13 @@ const urls = {
 			color: #021300 !important;
 			text-decoration: none !important;
 			padding: 0.5rem 0 !important;
+			margin-left: auto !important;
 		}
 
 		.has-logo-link {
-			position: absolute !important;
-			left: 50% !important;
-			transform: translateX(-50%) !important;
+			position: static !important;
+			left: auto !important;
+			transform: none !important;
 		}
 
 		.has-divider {
