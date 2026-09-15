@@ -182,7 +182,7 @@ const links = {
 		border-top: 1px solid #021300 !important;
 		font-family: "Poppins", system-ui, sans-serif !important;
 		color: #021300 !important;
-		padding-top: 4rem !important;
+		padding-top: 3rem !important;
 		margin-top: 4rem !important;
 		display: block !important;
 		/* NEW: Prevents the footer from squishing if the page gets crowded */
@@ -200,6 +200,8 @@ const links = {
 		margin: 0 auto !important;
 		padding: 0 1rem 3rem 1rem !important;
 		box-sizing: border-box !important;
+		/* Matches platform footer: 48px padding either side of 189.58px content */
+		min-height: calc(189.58px + 3rem) !important;
 	}
 
 	/* RIGHT COLUMN CONTAINER: Enforces true side-by-side alignment */
@@ -304,15 +306,16 @@ const links = {
 		border-top: 1px solid #e5e7eb !important;
 		width: 100% !important;
 		margin: 0 !important;
-		padding: 2rem 0 !important;
+		padding: 0 !important;
 		box-sizing: border-box !important;
 		font-size: 0.85rem !important;
+		line-height: 1.5 !important;
 		color: #021300 !important;
 		display: flex !important;
 		flex-direction: column !important;
 		justify-content: flex-start !important;
 		align-items: flex-start !important;
-		gap: 1.5rem !important;
+		gap: 0 !important;
 	}
 
 	/* Positioned menu links at the top of the stack and left-aligned */
@@ -324,7 +327,7 @@ const links = {
 		gap: 0.75rem !important;
 		width: 100% !important;
 		flex-wrap: wrap !important;
-		padding-bottom: 2rem !important;
+		padding-block: 1.5rem !important;
 		border-bottom: 1px solid #e5e7eb !important;
 	}
 
@@ -350,6 +353,9 @@ const links = {
 		flex-direction: column !important;
 		gap: 0.5rem !important;
 		width: 100% !important;
+		padding-block: 1.25rem !important;
+		/* Matches platform copyright band height (87.58px including divider) */
+		min-height: 86.58px !important;
 	}
 
 	/* Dividing lines run full screen width; text stays aligned with the 1536px content column */
@@ -386,6 +392,7 @@ const links = {
 			flex-direction: column !important;
 			gap: 2.5rem !important;
 			padding: 0 1rem 2rem 1rem !important;
+			min-height: 0 !important;
 		}
 
 		.footer-right-group {
@@ -402,6 +409,12 @@ const links = {
 		.footer-bottom {
 			padding: 1.5rem 0 !important;
 			gap: 1.25rem !important;
+			line-height: normal !important;
+		}
+
+		.footer-bottom-content {
+			padding-block: 0 !important;
+			min-height: 0 !important;
 		}
 
 		.footer-legal-links {
@@ -409,6 +422,7 @@ const links = {
 			align-items: flex-start !important;
 			gap: 0.85rem !important;
 			width: 100% !important;
+			padding-top: 0 !important;
 			padding-bottom: 1.25rem !important;
 		}
 
