@@ -303,9 +303,8 @@ const links = {
 	.footer-bottom {
 		border-top: 1px solid #e5e7eb !important;
 		width: 100% !important;
-		max-width: 1536px !important;
-		margin: 0 auto !important;
-		padding: 2rem 1rem !important;
+		margin: 0 !important;
+		padding: 2rem 0 !important;
 		box-sizing: border-box !important;
 		font-size: 0.85rem !important;
 		color: #021300 !important;
@@ -353,6 +352,13 @@ const links = {
 		width: 100% !important;
 	}
 
+	/* Dividing lines run full screen width; text stays aligned with the 1536px content column */
+	.footer-legal-links,
+	.footer-bottom-content {
+		box-sizing: border-box !important;
+		padding-inline: max(1rem, calc((100% - 1536px) / 2 + 1rem)) !important;
+	}
+
 	.copyright-text {
 		font-weight: 600 !important;
 	}
@@ -394,7 +400,7 @@ const links = {
 		}
 
 		.footer-bottom {
-			padding: 1.5rem 1rem !important;
+			padding: 1.5rem 0 !important;
 			gap: 1.25rem !important;
 		}
 
