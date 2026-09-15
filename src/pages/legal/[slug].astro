@@ -90,6 +90,11 @@ const { title, description, effectiveDate, lastUpdated, version } = doc.data;
   }
 
   /* Headings */
+  /* Keeps anchor-linked headings (e.g. #102-adr-for-consumer-disputes) clear of the sticky header + subnav */
+  .legal-prose :global(:is(h1, h2, h3, h4)) {
+    scroll-margin-top: 7.5rem;
+  }
+
   .legal-prose :global(h1) {
     font-size: 1.875rem;
     font-weight: 700;
