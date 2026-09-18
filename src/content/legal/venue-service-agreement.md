@@ -2,7 +2,7 @@
 title: "Venue Service Agreement"
 description: "Agreement governing the relationship between Haveaspot and Venue owners/operators regarding the use of the Platform."
 effectiveDate: "05 June 2026"
-lastUpdated: "05 June 2026"
+lastUpdated: "18 September 2026"
 version: "1.0"
 ---
 
@@ -184,7 +184,7 @@ You may provide specific rules, requirements, and venue-specific terms and condi
 
 **(b) Debit Authorisation:** You irrevocably authorise Haveaspot to instruct Stripe to automatically debit the Haveaspot Booking Fee (including any VAT charged on that fee) from your Stripe Connect Account immediately after the funds for a Booking are settled into it.
 
-**(c) Payouts:** Stripe will automatically initiate payouts of the remaining Hire Cost (Total Fee minus Haveaspot Booking Fee and its VAT) to your nominated bank account linked to your Stripe Connect Account. Payout timings are determined by Stripe; typically, the first payout may take around 7 days, with subsequent payouts taking 2–7 days from when the payment is processed and captured, but these are estimates only.
+**(c) Payouts:** Funds typically become available in your Stripe Connect Account within approximately 7 days of a Booking being confirmed. Haveaspot's standard practice is to initiate payouts of the remaining Hire Cost (Total Fee minus Haveaspot Booking Fee and its VAT) from your Stripe Connect Account to your nominated bank account every 30 days. You may, if you wish, manually initiate an earlier payout of your available balance directly from your Stripe Dashboard at any time once funds become available; while Haveaspot encourages Venues to leave payouts to this standard cycle to help manage refund liquidity on your account, the choice to do so remains yours. Payout timings are determined by Stripe and Haveaspot's payout schedule settings; these are estimates only and may vary.
 
 **(d) Payout Liability:** Haveaspot accepts no liability for the timing, success, or failure of payouts from your Stripe Connect Account to your bank account. This process is managed entirely by Stripe.
 
