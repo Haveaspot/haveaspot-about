@@ -2,8 +2,8 @@
 title: "Cookie Policy"
 description: "How Haveaspot uses cookies and similar tracking technologies across our digital presence, including the Platform, About site, Blog, and Support portal."
 effectiveDate: "23 June 2026"
-lastUpdated: "23 June 2026"
-version: "1.0"
+lastUpdated: "5 October 2026"
+version: "1.1"
 ---
 
 ## 1. Introduction
@@ -24,9 +24,35 @@ At present, Haveaspot takes a privacy-first approach to how we operate our platf
 
 These cookies are essential for our Platform to function securely and correctly. They allow you to log in to your account, manage your booking sessions, and protect against malicious activity. Because the site cannot function securely without them, these cannot be switched off, and UK law does not require us to obtain your prior consent to use them.
 
-### Our Privacy-Friendly Analytics (Umami)
+### Our Privacy-Friendly Analytics
 
-We want to understand how users navigate our sites so we can improve our services, but we want to do it while respecting your privacy. To achieve this, our site analytics are powered by **Umami**. Umami is a privacy-focused analytics tool that does not use cookies to track you and does not collect or store any personal data that could identify you across the internet.
+We want to understand how users navigate our sites so we can improve our services, but we want to do it while respecting your privacy. We use two analytics tools, neither of which uses cookies. Which one applies depends on where you are.
+
+#### The booking Platform (Umami)
+
+Analytics on our main booking Platform are powered by **Umami**. Umami is a privacy-focused analytics tool that does not use cookies to track you and does not collect or store any personal data that could identify you across the internet.
+
+#### Our About, Blog and Support websites (our own tool)
+
+On our marketing and information websites, about.haveaspot.com, blog.haveaspot.com and support.haveaspot.com, we use a small analytics tool of our own instead. It does not use a third-party analytics provider, and it lets us see which of our adverts bring visitors.
+
+**It does not use cookies and does not store anything on your device.** There are no cookies, local storage or similar identifiers, which is why it does not need a consent banner.
+
+When you view a page, your browser tells us:
+
+- the page you viewed (its address and title) and the time;
+- the website that sent you to us, if any (its name and page, never the full address);
+- if you used a link with campaign tags (for example, from one of our adverts), the campaign details in that link;
+- when you send a form on our sites, which form it was, but never what you typed into it; and
+- your country, and the general type of device, browser and operating system you use.
+
+**How we recognise a visit without cookies.** To tell visits apart, our server combines your IP address and browser details with a secret code that changes every day, and turns the result into a short scrambled code (a "hash"). We store that code, but not your IP address or your browser details. The daily secret is deleted after two days, so the code cannot be recreated afterwards. This means we cannot recognise you from one day to the next, and we do not link this information to your Haveaspot account, your bookings or any other information about you.
+
+We keep this information for 14 months. We do not sell it or use it to build advertising profiles. If your browser sends a **Do Not Track** or **Global Privacy Control** signal, we do not record your visit at all.
+
+Our lawful basis is our legitimate interest in understanding and improving our websites and measuring our advertising. Because your IP address is briefly used to create the scrambled code, we treat this as personal data under UK data protection law. If you would like to object, you can do so at any time by contacting us at [support@haveaspot.com](mailto:support@haveaspot.com), or by using one of the browser signals above.
+
+This tool is separate from the advertising cookies described in section 5, which we have not yet introduced, and it is not used on the booking Platform.
 
 ## 4. The Specific Cookies We Use
 

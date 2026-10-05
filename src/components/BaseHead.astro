@@ -42,3 +42,7 @@ const {
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
 <ClientRouter />
+
+{/* First-party, cookieless analytics (CRM: /analytics). Stores nothing in the browser. */}
+<script is:inline defer src="https://api.haveaspot.com/v1/hs.js"></script>
+
