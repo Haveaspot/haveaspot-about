@@ -1,10 +1,16 @@
 export const prerender = false;
 
 import type { APIRoute } from 'astro';
+import { logToCrm, sendFallbackEmail } from '../../lib/crm-contact';
 
 export const POST: APIRoute = async ({ request }) => {
-	const body = await request.json();
-	const { name, email, spotName, role, honeypot, elapsed } = body;
+	let body: Record<string, unknown>;
+	try {
+		body = await request.json();
+	} catch {
+		return new Response(JSON.stringify({ error: 'Invalid request.' }), { status: 400 });
+	}
+	const { name, email, spotName, role, honeypot, elapsed } = body as Record<string, string>;
 
 	if (honeypot) return new Response(JSON.stringify({ ok: true }), { status: 200 });
 	if (!elapsed || Number(elapsed) < 3000) {
@@ -15,33 +21,27 @@ export const POST: APIRoute = async ({ request }) => {
 		return new Response(JSON.stringify({ error: 'Missing required fields.' }), { status: 400 });
 	}
 
-	const apiKey = import.meta.env.BREVO_API_KEY;
-	const res = await fetch('https://api.brevo.com/v3/smtp/email', {
-		method: 'POST',
-		headers: {
-			'api-key': apiKey,
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify({
-			sender: { name: 'Haveaspot About', email: 'hello@haveaspot.com' },
-			to: [{ email: 'hello@haveaspot.com', name: 'Haveaspot' }],
-			replyTo: { email, name },
-			subject: `Beta signup: ${name} — ${spotName}`,
-			htmlContent: `
-				<h2>New Beta Signup</h2>
-				<p><strong>Name:</strong> ${name}</p>
-				<p><strong>Email:</strong> ${email}</p>
-				<p><strong>Venue:</strong> ${spotName}</p>
-				<p><strong>Role:</strong> ${role || 'Not specified'}</p>
-			`,
-		}),
+	const logged = await logToCrm({
+		kind: 'beta',
+		name,
+		email,
+		spotName,
+		role,
+		submissionId: crypto.randomUUID(),
 	});
+	if (logged) return new Response(JSON.stringify({ ok: true }), { status: 200 });
 
-	if (!res.ok) {
-		const err = await res.text();
-		console.error('Brevo error (beta):', res.status, err);
-		return new Response(JSON.stringify({ error: 'Failed to send email.' }), { status: 500 });
-	}
-
+	const sent = await sendFallbackEmail({
+		subject: `Beta signup: ${name} — ${spotName}`,
+		heading: 'New Beta Signup',
+		replyTo: { email, name },
+		rows: [
+			['Name', name],
+			['Email', email],
+			['Venue', spotName],
+			['Role', role || 'Not specified'],
+		],
+	});
+	if (!sent) return new Response(JSON.stringify({ error: 'Failed to send.' }), { status: 500 });
 	return new Response(JSON.stringify({ ok: true }), { status: 200 });
 };

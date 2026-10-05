@@ -1,10 +1,16 @@
 export const prerender = false;
 
 import type { APIRoute } from 'astro';
+import { logToCrm, sendFallbackEmail } from '../../lib/crm-contact';
 
 export const POST: APIRoute = async ({ request }) => {
-	const body = await request.json();
-	const { forename, surname, email, message, marketingOptIn, honeypot, elapsed } = body;
+	let body: Record<string, unknown>;
+	try {
+		body = await request.json();
+	} catch {
+		return new Response(JSON.stringify({ error: 'Invalid request.' }), { status: 400 });
+	}
+	const { forename, surname, email, message, marketingOptIn, honeypot, elapsed } = body as Record<string, string>;
 
 	// Honeypot / timing bot protection
 	if (honeypot) return new Response(JSON.stringify({ ok: true }), { status: 200 });
@@ -16,35 +22,30 @@ export const POST: APIRoute = async ({ request }) => {
 		return new Response(JSON.stringify({ error: 'Missing required fields.' }), { status: 400 });
 	}
 
-	const apiKey = import.meta.env.BREVO_API_KEY;
-	const res = await fetch('https://api.brevo.com/v3/smtp/email', {
-		method: 'POST',
-		headers: {
-			'api-key': apiKey,
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify({
-			sender: { name: 'Haveaspot About', email: 'hello@haveaspot.com' },
-			to: [{ email: 'hello@haveaspot.com', name: 'Haveaspot' }],
-			replyTo: { email, name: `${forename} ${surname}` },
-			subject: `Contact form: ${forename} ${surname}`,
-			htmlContent: `
-				<h2>New Contact Message</h2>
-				<p><strong>Name:</strong> ${forename} ${surname}</p>
-				<p><strong>Email:</strong> ${email}</p>
-				<p><strong>Message:</strong></p>
-				<p>${message.replace(/\n/g, '<br>')}</p>
-				<hr>
-				<p><small>Marketing opt-in: ${marketingOptIn ? 'yes' : 'no'}</small></p>
-			`,
-		}),
+	// The CRM is where these are read and replied to. The email below is only the
+	// safety net for when it does not take the submission.
+	const logged = await logToCrm({
+		kind: 'contact',
+		forename,
+		surname,
+		email,
+		message,
+		marketingOptIn: Boolean(marketingOptIn),
+		submissionId: crypto.randomUUID(),
 	});
+	if (logged) return new Response(JSON.stringify({ ok: true }), { status: 200 });
 
-	if (!res.ok) {
-		const err = await res.text();
-		console.error('Brevo error (contact):', res.status, err);
-		return new Response(JSON.stringify({ error: 'Failed to send email.' }), { status: 500 });
-	}
-
+	const sent = await sendFallbackEmail({
+		subject: `Contact form: ${forename} ${surname}`,
+		heading: 'New Contact Message',
+		replyTo: { email, name: `${forename} ${surname}` },
+		rows: [
+			['Name', `${forename} ${surname}`],
+			['Email', email],
+			['Message', message],
+		],
+		footnote: `Marketing opt-in: ${marketingOptIn ? 'yes' : 'no'}`,
+	});
+	if (!sent) return new Response(JSON.stringify({ error: 'Failed to send.' }), { status: 500 });
 	return new Response(JSON.stringify({ ok: true }), { status: 200 });
 };
