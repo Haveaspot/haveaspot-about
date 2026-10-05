@@ -59,6 +59,12 @@ Our lawful basis is our legitimate interest in understanding and improving our w
 
 This tool is separate from the advertising cookies described in section 5, which we have not yet introduced, and it is not used on the booking Platform.
 
+### Live chat on our About and Support websites
+
+When our team is available, a chat button appears on some of our websites. It only stores anything on your device if you **start a chat**: your browser then keeps a single random reference (a "chat reference", in your browser's local storage) so that refreshing the page or moving between pages does not lose your conversation. It is used only to continue that chat, it does not identify you across the internet, and it is removed when the chat ends. If you never start a chat, nothing is stored. This is necessary to provide the chat you asked for, so it does not need a consent banner.
+
+When you start a chat, we ask for your name and email address and keep the conversation with them so that we can follow up, as described in our [Privacy Policy](/legal/privacy-policy).
+
 ## 4. The Specific Cookies We Use
 
 Below is a detailed list of the specific strictly necessary cookies currently deployed across the Haveaspot domains:
