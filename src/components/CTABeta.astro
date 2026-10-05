@@ -116,6 +116,10 @@ const roles = ["Director", "Manager", "Administrator", "Volunteer", "Owner", "Ot
 								<input type="checkbox" name="repConfirmed" required />
 								<span>I confirm that I am an authorised representative of the above-named venue and have the necessary permission to sign it up for this service. <strong>(Required)</strong></span>
 							</label>
+							<label class="ctab-check">
+								<input type="checkbox" name="marketingOptIn" />
+								<span>Yes, keep me posted: I'd like occasional news and updates from Haveaspot. I understand I can unsubscribe at any time. <strong>(Optional)</strong></span>
+							</label>
 							</div>
 
 						<p class="ctab-feedback-notice">As a Beta partner, we may contact you from time to time for feedback to help shape the platform.</p>
@@ -569,6 +573,7 @@ const roles = ["Director", "Manager", "Administrator", "Volunteer", "Owner", "Ot
 				email:    (document.getElementById('ctab-email') as HTMLInputElement).value.trim(),
 				spotName: (document.getElementById('ctab-spot') as HTMLInputElement).value.trim(),
 				role:     (document.getElementById('ctab-role') as HTMLSelectElement).value,
+				marketingOptIn: (form.querySelector('[name="marketingOptIn"]') as HTMLInputElement).checked,
 				honeypot: (document.getElementById('company_website') as HTMLInputElement).value,
 				elapsed,
 				captchaA: a,

@@ -10,6 +10,7 @@ export default async function handler(req, res) {
 		email,
 		spotName,
 		role,
+		marketingOptIn,
 		honeypot,
 		elapsed,
 		captchaA,
@@ -53,7 +54,7 @@ export default async function handler(req, res) {
 	}
 
 	// ── The CRM first ────────────────────────────────────────────────────────
-	if (await postToCrm({ kind: 'beta', name, email, spotName, role })) {
+	if (await postToCrm({ kind: 'beta', name, email, spotName, role, marketingOptIn: Boolean(marketingOptIn) })) {
 		return res.status(200).json({ ok: true });
 	}
 
@@ -79,6 +80,10 @@ export default async function handler(req, res) {
 				<tr>
 					<td style="padding: 0.6rem 0; font-weight: bold; vertical-align: top;">Role</td>
 					<td style="padding: 0.6rem 0;">${esc(role)}</td>
+				</tr>
+				<tr>
+					<td style="padding: 0.6rem 0; font-weight: bold; vertical-align: top;">Marketing opt-in</td>
+					<td style="padding: 0.6rem 0;">${marketingOptIn ? 'Yes' : 'No'}</td>
 				</tr>
 			</table>
 			<p style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; font-size: 13px; color: #6b7280;">
