@@ -7,7 +7,7 @@ export default async function handler(req, res) {
 
 	const {
 		forename, surname, email, spot, preferredDate, preferredTime,
-		marketingOptIn, honeypot, elapsed,
+		marketingOptIn, visit, honeypot, elapsed,
 		captchaA, captchaB, captchaAnswer,
 	} = req.body;
 
@@ -45,6 +45,7 @@ export default async function handler(req, res) {
 			preferredDate,
 			preferredTime,
 			marketingOptIn: Boolean(marketingOptIn),
+			visit,
 		})
 	) {
 		return res.status(200).json({ ok: true });

@@ -11,6 +11,7 @@ export default async function handler(req, res) {
 		spotName,
 		role,
 		marketingOptIn,
+		visit,
 		honeypot,
 		elapsed,
 		captchaA,
@@ -54,7 +55,7 @@ export default async function handler(req, res) {
 	}
 
 	// ── The CRM first ────────────────────────────────────────────────────────
-	if (await postToCrm({ kind: 'beta', name, email, spotName, role, marketingOptIn: Boolean(marketingOptIn) })) {
+	if (await postToCrm({ kind: 'beta', name, email, spotName, role, marketingOptIn: Boolean(marketingOptIn), visit })) {
 		return res.status(200).json({ ok: true });
 	}
 

@@ -36,17 +36,22 @@ Analytics on our main booking Platform are powered by **Umami**. Umami is a priv
 
 On our marketing and information websites, about.haveaspot.com, blog.haveaspot.com and support.haveaspot.com, we use a small analytics tool of our own instead. It does not use a third-party analytics provider, and it lets us see which of our adverts bring visitors.
 
-**It does not use cookies and does not store anything on your device.** There are no cookies, local storage or similar identifiers, which is why it does not need a consent banner.
+**It does not use cookies and does not store anything on your device.** There are no cookies, local storage or similar identifiers, which is why it does not need a consent banner. (The only exception is a small setting that our own team switches on in their own browsers so that their testing is left out of our figures. It is never set for visitors.)
 
 When you view a page, your browser tells us:
 
 - the page you viewed (its address and title) and the time;
 - the website that sent you to us, if any (its name and page, never the full address);
 - if you used a link with campaign tags (for example, from one of our adverts), the campaign details in that link;
-- when you send a form on our sites, which form it was, but never what you typed into it; and
+- when you start filling in a form on our sites, and when you send it, which form it was, but never what you typed into it;
+- when you click a link that takes you away from the page, where it was heading (for example the booking Platform or another of our sites), but not the full address; and
 - your country, and the general type of device, browser and operating system you use.
 
-**How we recognise a visit without cookies.** To tell visits apart, our server combines your IP address and browser details with a secret code that changes every day, and turns the result into a short scrambled code (a "hash"). We store that code, but not your IP address or your browser details. The daily secret is deleted after two days, so the code cannot be recreated afterwards. This means we cannot recognise you from one day to the next, and we do not link this information to your Haveaspot account, your bookings or any other information about you.
+**How we recognise a visit without cookies.** To tell visits apart, our server combines your IP address and browser details with a secret code that changes every day, and turns the result into a short scrambled code (a "hash"). We store that code, but not your IP address or your browser details. The daily secret is deleted after two days, so the code cannot be recreated afterwards. This means we cannot recognise you from one day to the next, and we do not link this information to your Haveaspot account or your bookings. The one exception is when you send us a form, described next.
+
+**When you send us a form.** If you send us a contact, beta sign-up, demo or onboarding form, your browser passes our site the reference of your current visit along with the form (it is held in the page's memory only, never stored on your device). We then keep a summary of that visit with your enquiry: the advert, email or website that brought you, the pages you viewed and the links you clicked. This helps us understand what people were looking for and reply helpfully. It is kept for as long as we keep your enquiry, and it is not done if your browser sends a Do Not Track or Global Privacy Control signal.
+
+**Links in our emails.** Links to our own websites in emails we send carry the name of the campaign, so we can tell which email a visit came from. This tells us which email brought a visit, not who clicked it.
 
 We keep this information for 14 months. We do not sell it or use it to build advertising profiles. If your browser sends a **Do Not Track** or **Global Privacy Control** signal, we do not record your visit at all.
 

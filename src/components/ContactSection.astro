@@ -594,6 +594,8 @@ const details = [
 				email:       (document.getElementById('con-email') as HTMLInputElement).value.trim(),
 				message:     (document.getElementById('con-message') as HTMLTextAreaElement).value.trim(),
 				marketingOptIn: marketingEl.checked,
+				// Which visit this was, held in memory by the analytics script; empty if it is not running or tracking is declined.
+				visit: (window as unknown as { haveaspotVisit?: () => string }).haveaspotVisit?.() ?? '',
 				honeypot:    (document.getElementById('con_website') as HTMLInputElement).value,
 				elapsed,
 				captchaA: a,

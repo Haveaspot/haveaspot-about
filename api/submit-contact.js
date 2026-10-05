@@ -11,6 +11,7 @@ export default async function handler(req, res) {
 		email,
 		message,
 		marketingOptIn,
+		visit,
 		honeypot,
 		elapsed,
 		captchaA,
@@ -62,6 +63,7 @@ export default async function handler(req, res) {
 			email,
 			message,
 			marketingOptIn: Boolean(marketingOptIn),
+			visit,
 		})
 	) {
 		return res.status(200).json({ ok: true });

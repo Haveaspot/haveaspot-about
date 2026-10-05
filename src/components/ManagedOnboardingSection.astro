@@ -615,6 +615,8 @@ import mobImg from '../assets/images/HAS-ManagedOnboarding-Image.webp';
 				email:             (document.getElementById('mob-email') as HTMLInputElement).value.trim(),
 				authorityConfirmed: authorityEl.checked,
 				marketingOptIn:    marketingEl.checked,
+				// Which visit this was, held in memory by the analytics script; empty if it is not running or tracking is declined.
+				visit: (window as unknown as { haveaspotVisit?: () => string }).haveaspotVisit?.() ?? '',
 				honeypot:          (document.getElementById('mob_website') as HTMLInputElement).value,
 				elapsed,
 				captchaA: a,

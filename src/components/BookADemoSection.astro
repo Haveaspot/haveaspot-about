@@ -713,6 +713,8 @@ const details = [
 				preferredDate:  (document.getElementById('dem-preferred-date') as HTMLInputElement).value,
 				preferredTime:  (document.getElementById('dem-preferred-time') as HTMLSelectElement).value,
 				marketingOptIn: marketingEl.checked,
+				// Which visit this was, held in memory by the analytics script; empty if it is not running or tracking is declined.
+				visit: (window as unknown as { haveaspotVisit?: () => string }).haveaspotVisit?.() ?? '',
 				honeypot:      (document.getElementById('dem_website') as HTMLInputElement).value,
 				elapsed,
 				captchaA: a,

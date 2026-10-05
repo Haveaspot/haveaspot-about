@@ -574,6 +574,8 @@ const roles = ["Director", "Manager", "Administrator", "Volunteer", "Owner", "Ot
 				spotName: (document.getElementById('ctab-spot') as HTMLInputElement).value.trim(),
 				role:     (document.getElementById('ctab-role') as HTMLSelectElement).value,
 				marketingOptIn: (form.querySelector('[name="marketingOptIn"]') as HTMLInputElement).checked,
+				// Which visit this was, held in memory by the analytics script; empty if it is not running or tracking is declined.
+				visit: (window as unknown as { haveaspotVisit?: () => string }).haveaspotVisit?.() ?? '',
 				honeypot: (document.getElementById('company_website') as HTMLInputElement).value,
 				elapsed,
 				captchaA: a,

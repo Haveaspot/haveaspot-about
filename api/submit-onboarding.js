@@ -7,7 +7,7 @@ export default async function handler(req, res) {
 
 	const {
 		forename, surname, spot, role, email,
-		authorityConfirmed, marketingOptIn,
+		authorityConfirmed, marketingOptIn, visit,
 		honeypot, elapsed, captchaA, captchaB, captchaAnswer,
 	} = req.body;
 
@@ -36,6 +36,7 @@ export default async function handler(req, res) {
 			role: role || 'Not given',
 			authorityConfirmed: Boolean(authorityConfirmed),
 			marketingOptIn: Boolean(marketingOptIn),
+			visit,
 		})
 	) {
 		return res.status(200).json({ ok: true });
