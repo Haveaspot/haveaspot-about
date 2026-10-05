@@ -28,11 +28,11 @@ These cookies are essential for our Platform to function securely and correctly.
 
 We want to understand how users navigate our sites so we can improve our services, but we want to do it while respecting your privacy. We use two analytics tools, neither of which uses cookies. Which one applies depends on where you are.
 
-#### The booking Platform (Umami)
+### The booking Platform (Umami)
 
 Analytics on our main booking Platform are powered by **Umami**. Umami is a privacy-focused analytics tool that does not use cookies to track you and does not collect or store any personal data that could identify you across the internet.
 
-#### Our About, Blog and Support websites (our own tool)
+### Our About, Blog and Support websites (our own tool)
 
 On our marketing and information websites, about.haveaspot.com, blog.haveaspot.com and support.haveaspot.com, we use a small analytics tool of our own instead. It does not use a third-party analytics provider, and it lets us see which of our adverts bring visitors.
 
