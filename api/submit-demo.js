@@ -1,3 +1,5 @@
+import { postToCrm, NOT_IN_CRM_NOTE } from './_crm.js';
+
 export default async function handler(req, res) {
 	if (req.method !== 'POST') {
 		return res.status(405).json({ ok: false, error: 'Method not allowed' });
@@ -31,18 +33,37 @@ export default async function handler(req, res) {
 		return res.status(400).json({ ok: false, error: 'Please fill in all required fields.' });
 	}
 
+	// The CRM first: Website contacts is where this is read and replied to. The
+	// email below is only the safety net for when the CRM does not take it.
+	if (
+		await postToCrm({
+			kind: 'demo',
+			forename,
+			surname,
+			email,
+			spot,
+			preferredDate,
+			preferredTime,
+			marketingOptIn: Boolean(marketingOptIn),
+		})
+	) {
+		return res.status(200).json({ ok: true });
+	}
+
 	const formattedDate = preferredDate
 		? new Date(preferredDate).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
 		: 'Not specified';
 
 	const htmlContent = `
 		<h2>New Demo Request</h2>
-		<p><strong>Name:</strong> ${forename} ${surname}</p>
-		<p><strong>Email:</strong> ${email}</p>
-		<p><strong>Spot:</strong> ${spot}</p>
-		<p><strong>Preferred Date:</strong> ${formattedDate}</p>
-		<p><strong>Preferred Time:</strong> ${preferredTime}</p>
+		<p><strong>Name:</strong> ${esc(forename)} ${esc(surname)}</p>
+		<p><strong>Email:</strong> ${esc(email)}</p>
+		<p><strong>Spot:</strong> ${esc(spot)}</p>
+		<p><strong>Preferred Date:</strong> ${esc(formattedDate)}</p>
+		<p><strong>Preferred Time:</strong> ${esc(preferredTime)}</p>
 		<p><strong>Marketing Opt-in:</strong> ${marketingOptIn ? 'Yes' : 'No'}</p>
+		<hr>
+		<p><small>${NOT_IN_CRM_NOTE}</small></p>
 	`;
 
 	try {
@@ -72,4 +93,13 @@ export default async function handler(req, res) {
 		console.error('Submit demo error:', err);
 		return res.status(500).json({ ok: false, error: 'Server error. Please try again.' });
 	}
+}
+
+function esc(str) {
+	return String(str ?? '')
+		.replace(/&/g, '&amp;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
+		.replace(/"/g, '&quot;')
+		.replace(/'/g, '&#039;');
 }

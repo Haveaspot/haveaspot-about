@@ -1,3 +1,5 @@
+import { postToCrm, NOT_IN_CRM_NOTE } from './_crm.js';
+
 export default async function handler(req, res) {
 	if (req.method !== 'POST') {
 		return res.status(405).json({ ok: false, error: 'Method not allowed' });
@@ -22,14 +24,33 @@ export default async function handler(req, res) {
 		return res.status(400).json({ ok: false, error: 'Please fill in all required fields.' });
 	}
 
+	// The CRM first: Website contacts is where this is read and replied to. The
+	// email below is only the safety net for when the CRM does not take it.
+	if (
+		await postToCrm({
+			kind: 'onboarding',
+			forename,
+			surname,
+			email,
+			spot,
+			role: role || 'Not given',
+			authorityConfirmed: Boolean(authorityConfirmed),
+			marketingOptIn: Boolean(marketingOptIn),
+		})
+	) {
+		return res.status(200).json({ ok: true });
+	}
+
 	const htmlContent = `
 		<h2>New Managed Onboarding Enquiry</h2>
-		<p><strong>Name:</strong> ${forename} ${surname}</p>
-		<p><strong>Spot:</strong> ${spot}</p>
-		<p><strong>Role at Venue:</strong> ${role}</p>
-		<p><strong>Email:</strong> ${email}</p>
+		<p><strong>Name:</strong> ${esc(forename)} ${esc(surname)}</p>
+		<p><strong>Spot:</strong> ${esc(spot)}</p>
+		<p><strong>Role at Venue:</strong> ${esc(role)}</p>
+		<p><strong>Email:</strong> ${esc(email)}</p>
 		<p><strong>Authority Confirmed:</strong> Yes</p>
 		<p><strong>Marketing Opt-in:</strong> ${marketingOptIn ? 'Yes' : 'No'}</p>
+		<hr>
+		<p><small>${NOT_IN_CRM_NOTE}</small></p>
 	`;
 
 	try {
@@ -59,4 +80,13 @@ export default async function handler(req, res) {
 		console.error('Submit onboarding error:', err);
 		return res.status(500).json({ ok: false, error: 'Server error. Please try again.' });
 	}
+}
+
+function esc(str) {
+	return String(str ?? '')
+		.replace(/&/g, '&amp;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
+		.replace(/"/g, '&quot;')
+		.replace(/'/g, '&#039;');
 }

@@ -1,3 +1,5 @@
+import { postToCrm, NOT_IN_CRM_NOTE } from './_crm.js';
+
 export default async function handler(req, res) {
 	if (req.method !== 'POST') {
 		return res.status(405).json({ error: 'Method not allowed' });
@@ -50,6 +52,11 @@ export default async function handler(req, res) {
 		return res.status(400).json({ error: 'Please fill in all required fields.' });
 	}
 
+	// ── The CRM first ────────────────────────────────────────────────────────
+	if (await postToCrm({ kind: 'beta', name, email, spotName, role })) {
+		return res.status(200).json({ ok: true });
+	}
+
 	// ── Send via Brevo ───────────────────────────────────────────────────────
 	const htmlContent = `
 		<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #021300;">
@@ -75,7 +82,7 @@ export default async function handler(req, res) {
 				</tr>
 			</table>
 			<p style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; font-size: 13px; color: #6b7280;">
-				Submitted via the Haveaspot Beta Application Form
+				Submitted via the Haveaspot Beta Application Form<br>${NOT_IN_CRM_NOTE}
 			</p>
 		</div>
 	`;
