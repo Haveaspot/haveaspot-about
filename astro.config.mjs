@@ -8,7 +8,7 @@ export default defineConfig({
 	site: 'https://about.haveaspot.com',
 	output: 'static',
 	adapter: vercel(),
-	integrations: [sitemap()],
+	integrations: [sitemap({ filter: (page) => !page.includes('/404') })],
 	fonts: [
 		{
 			provider: fontProviders.local(),

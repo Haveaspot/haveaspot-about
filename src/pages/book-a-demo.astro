@@ -1,11 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import BookADemoSection from "../components/BookADemoSection.astro";
+import { webPageSchema, breadcrumbSchema } from "../lib/seo";
+
+const title = "Book a Free Demo | Haveaspot";
+const description = "Book a free demo of Haveaspot and see how online bookings and payments can help your village hall or community venue thrive.";
+const schema = [
+	webPageSchema({ path: "/book-a-demo", title, description, type: "WebPage" }),
+	breadcrumbSchema([{"name": "Book a Demo", "path": "/book-a-demo"}]),
+];
 ---
 
 <Layout
-	title="Book A Demo | Haveaspot"
-	description="Book a free demo with the Haveaspot team and discover how we can help your community venue thrive."
+	title={title}
+	description={description}
+	schema={schema}
 >
 	<BookADemoSection />
 </Layout>

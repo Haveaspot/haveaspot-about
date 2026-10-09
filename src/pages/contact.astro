@@ -1,11 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ContactSection from "../components/ContactSection.astro";
+import { webPageSchema, breadcrumbSchema } from "../lib/seo";
+
+const title = "Contact Haveaspot | Community Venue Booking Support";
+const description = "Get in touch with the Haveaspot team about listing your venue, booking a space or anything else. We usually reply quickly.";
+const schema = [
+	webPageSchema({ path: "/contact", title, description, type: "ContactPage" }),
+	breadcrumbSchema([{"name": "Contact", "path": "/contact"}]),
+];
 ---
 
 <Layout
-	title="Contact | Haveaspot"
-	description="Get in touch with the Haveaspot team. We'd love to hear from you."
+	title={title}
+	description={description}
+	schema={schema}
 >
 	<ContactSection />
 </Layout>

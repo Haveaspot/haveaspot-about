@@ -1,11 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ManagedOnboardingSection from "../components/ManagedOnboardingSection.astro";
+import { webPageSchema, breadcrumbSchema } from "../lib/seo";
+
+const title = "Managed Venue Onboarding | Haveaspot";
+const description = "Let the Haveaspot team set up your venue listing for you. Guided, online managed onboarding for village halls and community spaces, at your pace.";
+const schema = [
+	webPageSchema({ path: "/managed-onboarding", title, description, type: "WebPage" }),
+	breadcrumbSchema([{"name": "Managed Onboarding", "path": "/managed-onboarding"}]),
+];
 ---
 
 <Layout
-	title="Managed Onboarding | Haveaspot"
-	description="Let the Haveaspot team handle your setup with our managed onboarding service — guided, online, and at your pace."
+	title={title}
+	description={description}
+	schema={schema}
 >
 	<ManagedOnboardingSection />
 </Layout>

@@ -7,11 +7,22 @@ import HowItWorks from "../components/HowItWorks.astro";
 import Model from "../components/Model.astro";
 import BetaFAQ from "../components/BetaFAQ.astro";
 import CTABeta from "../components/CTABeta.astro";
+import { webPageSchema, breadcrumbSchema, faqSchema } from "../lib/seo";
+import { betaFaqs } from "../data/faqs";
+
+const title = "Beta Programme: Free Venue Booking System | Haveaspot";
+const description = "Join the Haveaspot beta for community venues. Free online booking, payments and calendar management for village halls and spaces, with no commission on your hire fee.";
+const schema = [
+	webPageSchema({ path: "/beta", title, description, type: "WebPage" }),
+	breadcrumbSchema([{"name": "Beta", "path": "/beta"}]),
+	faqSchema(betaFaqs),
+];
 ---
 
 <Layout
-	title="Beta | Haveaspot"
-	description="Join the Haveaspot beta programme and help shape the future of community space booking."
+	title={title}
+	description={description}
+	schema={schema}
 >
 	<HeroBeta />
 	<Challenges />

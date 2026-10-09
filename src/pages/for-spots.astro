@@ -7,11 +7,22 @@ import EasySetup from "../components/EasySetup.astro";
 import GettingStarted from "../components/GettingStarted.astro";
 import VenueFAQSection from "../components/VenueFAQSection.astro";
 import CTAForSpots from "../components/CTAForSpots.astro";
+import { webPageSchema, breadcrumbSchema, faqSchema } from "../lib/seo";
+import { venueFaqs } from "../data/faqs";
+
+const title = "Free Village Hall & Venue Booking Software | Haveaspot";
+const description = "List your village hall or community venue on Haveaspot for free. Take online bookings and payments, block dates and keep 100% of your hire fee. No commission.";
+const schema = [
+	webPageSchema({ path: "/for-spots", title, description, type: "WebPage" }),
+	breadcrumbSchema([{"name": "For Spots", "path": "/for-spots"}]),
+	faqSchema(venueFaqs),
+];
 ---
 
 <Layout
-	title="For Spots | Haveaspot"
-	description="List your community venue on Haveaspot and start earning revenue while supporting your local community."
+	title={title}
+	description={description}
+	schema={schema}
 >
 	<HeroSpots />
 	<SpotsFeatures />

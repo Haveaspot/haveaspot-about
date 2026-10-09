@@ -5,11 +5,22 @@ import BookerFeatures from "../components/BookerFeatures.astro";
 import GreatSpots from "../components/GreatSpots.astro";
 import BookerFAQSection from "../components/BookerFAQSection.astro";
 import CTAForBookers from "../components/CTAForBookers.astro";
+import { webPageSchema, breadcrumbSchema, faqSchema } from "../lib/seo";
+import { bookerFaqs } from "../data/faqs";
+
+const title = "Hire Village Halls & Community Venues | Haveaspot";
+const description = "Find and book village halls, school spaces, sports venues and community rooms for your event, class or party. Secure online payment and a small booking fee.";
+const schema = [
+	webPageSchema({ path: "/for-bookers", title, description, type: "WebPage" }),
+	breadcrumbSchema([{"name": "For Bookers", "path": "/for-bookers"}]),
+	faqSchema(bookerFaqs),
+];
 ---
 
 <Layout
-	title="For Bookers | Haveaspot"
-	description="Find and book unique community spaces for your next event or activity."
+	title={title}
+	description={description}
+	schema={schema}
 >
 	<HeroBookers />
 	<BookerFeatures />

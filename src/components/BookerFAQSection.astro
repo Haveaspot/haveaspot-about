@@ -1,50 +1,7 @@
 ---
-const faqs = [
-	{
-		question: "How do you support community Venues?",
-		answer: "We are passionate about these spaces! We built Haveaspot to bridge the gap between community venues and the people who need them. Most importantly, we don't take any commission from the venue's hire fee. Every penny you pay for the venue goes directly to them, helping them cover costs and keep their doors open.",
-	},
-	{
-		question: "How does Haveaspot make money?",
-		answer: "We charge a small Booking Fee on top of the Hire Cost. This allows us to offer our platform for free to community venues, ensuring they have access to the digital tools they need to thrive without eating into their income.",
-	},
-	{
-		question: "Is my booking confirmed straight away?",
-		answer: "Not automatically. When you submit a Booking Request, you are asking the Venue to confirm your reservation. A Booking is only created once the Venue accepts your request through the Platform. Until then, your date is not guaranteed. If the Venue rejects your request or it expires without a response, any hold on your payment is automatically released.",
-	},
-	{
-		question: "When does payment actually leave my account?",
-		answer: "When you submit a Booking Request, we place a pre-authorisation hold on your payment method for the Total Fee. This reserves the funds but does not charge you. Payment is only captured once the Venue confirms your Booking. If your request is rejected or expires, the hold is released — though the time it takes to clear depends on your bank or card provider.",
-	},
-	{
-		question: "Is my payment secure?",
-		answer: "Absolutely. To ensure transactions are processed safely and securely, we use Stripe, the global leader in payment processing. We do not store your card details directly.",
-	},
-	{
-		question: "Are you responsible for my booking?",
-		answer: "Think of Haveaspot as the matchmaker. We connect you with the venue and handle the secure payment, but your actual booking agreement is directly with the Venue itself. They are responsible for the condition of the space, honoring the date, and following safety laws.",
-	},
-	{
-		question: "Do you provide insurance?",
-		answer: "No, Haveaspot does not provide general liability insurance for bookings. It is the sole responsibility of the venue owner or operator to maintain appropriate liability insurance for their space.",
-	},
-	{
-		question: "Can I cancel or amend my booking?",
-		answer: "Yes. If you cancel within 48 hours of your Booking being confirmed (and the event is more than 14 days away), you receive a full refund of the Total Fee minus a small Cancellation Administration Fee of 3% + £0.30 to cover payment processing costs. Outside of that grace period: cancellations more than 14 days before the event receive a 100% refund of the Hire Cost; 7–14 days receives a 50% refund; less than 7 days is non-refundable. The Haveaspot Booking Fee is non-refundable outside the grace period. To amend a booking, you can submit a reschedule request up to 14 days before the scheduled start time.",
-	},
-	{
-		question: "What if the Venue cancels my booking?",
-		answer: "If a Venue cancels your confirmed Booking at any time, you will receive a full 100% refund of the Total Fee — including both the Hire Cost and the Haveaspot Booking Fee. We will also do our best to help you find alternative premises, though we are not obligated to do so.",
-	},
-	{
-		question: "Are there specific rules for using a spot?",
-		answer: "Yes! Each venue has its own 'House Rules' which you will see during the booking process. Generally, we ask you to treat the venue with care, leave it tidy, be considerate of neighbours, and follow standard laws. Being a 'good guest' helps these community spaces thrive!",
-	},
-	{
-		question: "Am I responsible if my guests cause damage?",
-		answer: "Yes. As the Booker, you are responsible for the conduct of all guests, attendees, and anyone else you bring to the Listed Premises during your Booking. If you or your guests cause damage beyond normal wear and tear, you are liable for the cost of repairs. It is worth keeping this in mind when planning events with large numbers of attendees.",
-	},
-];
+import { bookerFaqs } from "../data/faqs";
+
+const faqs = bookerFaqs;
 ---
 
 <section class="faq-section">

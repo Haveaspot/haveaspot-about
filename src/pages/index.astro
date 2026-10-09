@@ -19,11 +19,19 @@ import carousel8 from "../assets/images/HAS-Carsouel-Image8.webp";
 import overlayImg from "../assets/images/Hero-Image1.png";
 
 const carouselImages = [carousel1, carousel2, carousel3, carousel4, carousel5, carousel6, carousel7, carousel8];
+import { webPageSchema, breadcrumbSchema } from "../lib/seo";
+
+const title = "Community Venue Booking Platform | Haveaspot";
+const description = "Haveaspot is a UK booking platform for village halls, schools, sports clubs and community spaces. Free for venues, no commission. Book a spot, support a spot.";
+const schema = [
+	webPageSchema({ path: "/", title, description, type: "WebPage" }),
+];
 ---
 
 <Layout
-	title="About | Haveaspot"
-	description="Haveaspot is a booking platform on a mission to support community spaces. Book a spot, support a spot."
+	title={title}
+	description={description}
+	schema={schema}
 >
 	<section class="hero">
 		<div class="hero-container">
