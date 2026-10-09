@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
+import { Font } from "astro:assets";
 import { SITE_NAME, DEFAULT_IMAGE_ALT } from "../consts";
 import { organizationSchema, websiteSchema } from "../lib/seo";
 
@@ -70,6 +71,9 @@ const jsonLd = {
 <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable site summary" />
 
 <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+
+<link rel="preconnect" href="https://api.haveaspot.com" />
+<Font cssVariable="--font-poppins" preload={[{ weight: "400", style: "normal", subset: "latin" }, { weight: "300", style: "normal", subset: "latin" }]} />
 
 <ClientRouter />
 

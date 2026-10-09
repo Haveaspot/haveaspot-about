@@ -9,7 +9,17 @@ export default defineConfig({
 	output: 'static',
 	adapter: vercel(),
 	integrations: [sitemap({ filter: (page) => !page.includes('/404') })],
+	build: { inlineStylesheets: 'always' },
 	fonts: [
+		{
+			provider: fontProviders.fontsource(),
+			name: 'Poppins',
+			cssVariable: '--font-poppins',
+			weights: [300, 400, 500, 600, 700, 800],
+			styles: ['normal', 'italic'],
+			subsets: ['latin'],
+			fallbacks: ['system-ui', 'sans-serif'],
+		},
 		{
 			provider: fontProviders.local(),
 			name: 'Atkinson',

@@ -60,6 +60,9 @@ const schema = [
 							src={src}
 							alt={`Community space ${i + 1}`}
 							class="carousel-img"
+							widths={[480, 720, 960, 1280]}
+							sizes="(min-width: 1100px) 1200px, calc(100vw - 2rem)"
+							quality={70}
 							loading={i === 0 ? "eager" : "lazy"}
 							fetchpriority={i === 0 ? "high" : undefined}
 						/>
@@ -68,7 +71,7 @@ const schema = [
 
 				<!-- Overlay portrait image -->
 				<div class="hero-overlay-img">
-					<Image src={overlayImg} alt="Community event" loading="eager" />
+					<Image src={overlayImg} alt="Community event" loading="eager" widths={[300, 450, 600]} sizes="(min-width: 768px) 300px, 50vw" quality={70} />
 				</div>
 
 				<!-- Banner -->
@@ -104,7 +107,7 @@ const schema = [
 		padding: 4rem 0 6rem;
 		overflow-x: clip; /* clips heading bleed without affecting vertical overflow for banner/overlay */
 		background-color: #ffffff;
-		font-family: 'Poppins', system-ui, sans-serif;
+		font-family: var(--font-poppins), system-ui, sans-serif;
 	}
 
 	@media (min-width: 1024px) {
@@ -134,7 +137,7 @@ const schema = [
 		font-size: clamp(46px, 14.5vw, 72px);
 		line-height: 0.95;
 		white-space: normal;
-		font-family: 'Poppins', system-ui, sans-serif;
+		font-family: var(--font-poppins), system-ui, sans-serif;
 	}
 
 	@media (min-width: 768px)  { .hero-heading { font-size: 75px; line-height: 1.1; } }
@@ -164,7 +167,7 @@ const schema = [
 		line-height: 1.625;
 		font-weight: 300;
 		margin: 0;
-		font-family: 'Poppins', system-ui, sans-serif;
+		font-family: var(--font-poppins), system-ui, sans-serif;
 	}
 
 	@media (min-width: 640px) { .hero-subtext p { font-size: 1.125rem; } }
@@ -330,7 +333,7 @@ const schema = [
 		height: 44px;
 		font-size: 16px;
 		font-weight: 500;
-		font-family: 'Poppins', system-ui, sans-serif;
+		font-family: var(--font-poppins), system-ui, sans-serif;
 		transition: background-color 0.2s ease;
 		width: 100%;
 		box-sizing: border-box;
@@ -355,7 +358,7 @@ const schema = [
 		text-align: left;
 		margin: 0;
 		display: block;
-		font-family: 'Poppins', system-ui, sans-serif;
+		font-family: var(--font-poppins), system-ui, sans-serif;
 	}
 
 	@media (min-width: 1024px) { .hero-banner-text { font-size: 1rem; } }

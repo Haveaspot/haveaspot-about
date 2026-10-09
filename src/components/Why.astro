@@ -11,7 +11,7 @@ import whyImg2 from '../assets/images/HAS-Why-Image2.webp';
 
 			<!-- Image 1 — left on desktop, top-left on mobile -->
 			<div class="why-image why-image--1">
-				<Image src={whyImg1} alt="Community building exterior" loading="eager" />
+				<Image src={whyImg1} alt="Community building exterior" widths={[300, 450, 600]} sizes="(min-width: 1024px) 420px, 45vw" quality={70} />
 			</div>
 
 			<!-- Text — centre on desktop, top (full width) on mobile -->
@@ -45,7 +45,7 @@ import whyImg2 from '../assets/images/HAS-Why-Image2.webp';
 
 			<!-- Image 2 — right on desktop, top-right on mobile -->
 			<div class="why-image why-image--2">
-				<Image src={whyImg2} alt="Community interaction" loading="eager" />
+				<Image src={whyImg2} alt="Community interaction" widths={[300, 450, 600]} sizes="(min-width: 1024px) 420px, 45vw" quality={70} />
 			</div>
 
 		</div>
@@ -59,7 +59,7 @@ import whyImg2 from '../assets/images/HAS-Why-Image2.webp';
 		width: 100%;
 		padding: 4rem 0;
 		background-color: #ffffff;
-		font-family: 'Poppins', system-ui, sans-serif;
+		font-family: var(--font-poppins), system-ui, sans-serif;
 		overflow: hidden;
 	}
 
@@ -130,7 +130,7 @@ import whyImg2 from '../assets/images/HAS-Why-Image2.webp';
 		line-height: 1.2;
 		letter-spacing: -0.02em;
 		margin: 0;
-		font-family: 'Poppins', system-ui, sans-serif;
+		font-family: var(--font-poppins), system-ui, sans-serif;
 	}
 
 	@media (min-width: 640px) { .why-heading { font-size: 2.25rem; } }
@@ -147,7 +147,7 @@ import whyImg2 from '../assets/images/HAS-Why-Image2.webp';
 		font-size: 1rem;
 		line-height: 1.625;
 		margin: 0;
-		font-family: 'Poppins', system-ui, sans-serif;
+		font-family: var(--font-poppins), system-ui, sans-serif;
 		color: #021300;
 	}
 
@@ -177,7 +177,7 @@ import whyImg2 from '../assets/images/HAS-Why-Image2.webp';
 		width: 100%;
 		font-size: 16px;
 		font-weight: 500;
-		font-family: 'Poppins', system-ui, sans-serif;
+		font-family: var(--font-poppins), system-ui, sans-serif;
 		transition: background-color 0.2s ease;
 		box-sizing: border-box;
 	}
